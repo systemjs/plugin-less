@@ -12,7 +12,7 @@ module.exports = new CSSPluginBase(function compile(style, address, outAddress, 
   // use a file path in Node and a URL in the browser
   var filename = this.builder ? fromFileURL(address) : address;
   var outname = this.builder ? fromFileURL(outAddress) : outAddress;
-  
+
   return System['import']('lesscss', module.id)
   .then(function(less) {
     return less.render(style, {
@@ -20,7 +20,7 @@ module.exports = new CSSPluginBase(function compile(style, address, outAddress, 
       rootpath: (!opts.fileAsRoot || !loader.builder) && filename.replace(/[^/]+$/, ''),
       paths: opts.fileAsRoot && [filename.replace(/[^/]+$/, '')],
       relativeUrls: opts.relativeUrls || false,
-      sourceMap: {
+      sourceMap: loader.builder && {
         sourceMapBasepath: outname.replace(/[^/]+$/, '')
       }
     });
