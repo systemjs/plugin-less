@@ -11,13 +11,17 @@ module.exports = new CSSPluginBase(function compile(style, address, outAddress) 
 
   // use a file path in Node and a URL in the browser
   var filename = this.builder ? fromFileURL(address) : address;
+  var outname = this.builder ? fromFileURL(outAddress) : outAddress;
 
   return System['import']('lesscss', module.id)
   .then(function(less) {
     return less.render(style, {
       filename: filename,
-      //rootpath: loader.rootURL || fromFileURL(loader.baseURL) || filename.replace(/[^/]+$/, ''),
-      relativeUrls: false
+      rootpath: filename.replace(/[^/]+$/, ''),
+      relativeUrls: false,
+      sourceMap: {
+        sourceMapBasepath: outname.replace(/[^/]+$/, '')
+      }
     });
   })
   .then(function(output) {
