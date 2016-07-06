@@ -12,7 +12,7 @@ module.exports = new CSSPluginBase(function compile(style, address, outAddress) 
   // use a file path in Node and a URL in the browser
   var filename = this.builder ? fromFileURL(address) : address;
 
-  return System['import']('lesscss')
+  return System['import']('lesscss', module.id)
   .then(function(less) {
     return less.render(style, {
       filename: address,
