@@ -1,0 +1,5 @@
+{
+  "name": "plugin-less",
+  "version": "0.1.0",
+  "main": "less.js"
+}
