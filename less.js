@@ -16,8 +16,8 @@ module.exports = new CSSPluginBase(function compile(style, address, outAddress) 
   .then(function(less) {
     return less.render(style, {
       filename: address,
-      rootpath: loader.rootURL || '/',
-      relativeUrls: true
+      rootpath: loader.rootURL || address.replace(/[^/]+$/, ''),
+      relativeUrls: false
     });
   })
   .then(function(output) {
