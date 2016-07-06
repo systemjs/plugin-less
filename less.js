@@ -5,20 +5,21 @@ function fromFileURL(url) {
   return url.substr(7 + !!isWin).replace(/\//g, isWin ? '\\' : '/');
 }
 
-module.exports = new CSSPluginBase(function compile(style, address, outAddress) {
+module.exports = new CSSPluginBase(function compile(style, address, outAddress, opts) {
 
   var loader = this;
 
   // use a file path in Node and a URL in the browser
   var filename = this.builder ? fromFileURL(address) : address;
   var outname = this.builder ? fromFileURL(outAddress) : outAddress;
-
+  
   return System['import']('lesscss', module.id)
   .then(function(less) {
     return less.render(style, {
       filename: filename,
-      rootpath: filename.replace(/[^/]+$/, ''),
-      relativeUrls: false,
+      rootpath: (!opts.fileAsRoot || !loader.builder) && filename.replace(/[^/]+$/, ''),
+      paths: opts.fileAsRoot && [filename.replace(/[^/]+$/, '')],
+      relativeUrls: opts.relativeUrls || false,
       sourceMap: {
         sourceMapBasepath: outname.replace(/[^/]+$/, '')
       }
