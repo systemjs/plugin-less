@@ -15,7 +15,7 @@ SystemJS.config({
   packages: {
     lesscss: {
       main: {
-        browser: '/dist/less.min.js',
+        browser: './dist/less.min.js',
         node: '@node/less'
       }
     },
