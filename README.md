@@ -6,7 +6,7 @@ npm install github:systemjs/plugin-css#master github:systemjs/plugin-less#master
 ```
 
 ```javascript
-System.config({
+SystemJS.config({
   map: {
     css: 'node_modules/systemjs-plugin-css',
     less: 'node_modules/systemjs-plugin-less',
