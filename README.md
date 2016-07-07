@@ -7,17 +7,20 @@ npm install github:systemjs/plugin-css#master github:systemjs/plugin-less#master
 
 ```javascript
 System.config({
+  map: {
+    css: 'node_modules/systemjs-plugin-css',
+    less: 'node_modules/systemjs-plugin-less',
+    lesscss: 'node_modules/less'
+  },
   packages: {
-    'path/to/less': {
-      main: 'less.js',
-      map: {
-        css: 'node_modules/systemjs-plugin-css',
-        lesscss: {
-          browser: 'node_modules/less/dist/less.min.js',
-          node: '@node/less'
-        }
+    lesscss: {
+      main: {
+        browser: '/dist/less.min.js',
+        node: '@node/less'
       }
-    }
+    },
+    css: { main: 'css.js' },
+    less: { main: 'plugin-less.js' }
   }
 });
 ```
