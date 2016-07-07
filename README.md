@@ -20,7 +20,7 @@ System.config({
       }
     },
     css: { main: 'css.js' },
-    less: { main: 'plugin-less.js' }
+    less: { main: 'less.js' }
   }
 });
 ```
