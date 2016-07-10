@@ -26,7 +26,7 @@ module.exports = new CSSPluginBase(function compile(style, address, opts) {
   })
   .then(function(output) {
     return {
-      css: output.css,
+      css: output.css + (loader.builder ? '' : ('/*# sourceURL=' + filename + '*/')),
       map: output.map,
 
       // style plugins can optionally return a modular module 
