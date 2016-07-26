@@ -12,10 +12,8 @@
     },
     "map": {
       "lesscss": {
-        "main": {
-          "node": "./less-node.js",
-          "browser": "./less-browser.js"
-        }
+        "node": "./less-node.js",
+        "browser": "./less-browser.js"
       }
     }
   }
