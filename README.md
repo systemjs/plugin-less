@@ -1,8 +1,16 @@
-Usage
+Installation
 ---
 
+With jspm:
+
 ```
-npm install github:systemjs/plugin-css#master github:systemjs/plugin-less#master less
+jspm install less
+```
+
+With native SystemJS:
+
+```
+npm install systemjs-plugin-css systemjs-plugin-less less
 ```
 
 ```javascript
@@ -24,3 +32,39 @@ SystemJS.config({
   }
 });
 ```
+
+Usage
+---
+
+```javascript
+SystemJS.config({
+  meta: {
+    '*.less': { loader: 'less' }
+  }
+});
+```
+
+Or via package configuration:
+
+```javascript
+SystemJS.config({
+  packages: {
+    'src/': {
+      meta: {
+        '*.less': { loader: 'less' }
+      }
+    }
+  }
+});
+```
+
+In-browser LESS transpilation and builds should then be provided for any LESS files.
+
+Source maps support is included.
+
+This plugin is built on the [CSS plugin base](http://github.com/systemjs/plugin-css) and supports the same [build options](https://github.com/systemjs/plugin-css#builder-support).
+
+License
+---
+
+MIT

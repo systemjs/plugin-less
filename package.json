@@ -1,5 +1,22 @@
 {
   "name": "systemjs-plugin-less",
   "version": "0.1.0",
-  "main": "less.js"
+  "main": "less.js",
+  "dependencies": {
+    "less": "^2.7.1",
+    "systemjs-plugin-css": "0.1.24"
+  },
+  "jspm": {
+    "dependencies": {
+      "css": "github:systemjs/plugin-css@0.1.24"
+    },
+    "map": {
+      "lesscss": {
+        "main": {
+          "node": "./less-node.js",
+          "browser": "./less-browser.js"
+        }
+      }
+    }
+  }
 }
