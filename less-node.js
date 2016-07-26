@@ -1,8 +1,8 @@
 !function(e){function r(e,r,o){return 4===arguments.length?t.apply(this,arguments):void n(e,{declarative:!0,deps:r,declare:o})}function t(e,r,t,o){n(e,{declarative:!1,deps:r,executingRequire:t,execute:o})}function n(e,r){r.name=e,e in v||(v[e]=r),r.normalizedDeps=r.deps}function o(e,r){if(r[e.groupIndex]=r[e.groupIndex]||[],-1==g.call(r[e.groupIndex],e)){r[e.groupIndex].push(e);for(var t=0,n=e.normalizedDeps.length;n>t;t++){var a=e.normalizedDeps[t],u=v[a];if(u&&!u.evaluated){var d=e.groupIndex+(u.declarative!=e.declarative);if(void 0===u.groupIndex||u.groupIndex<d){if(void 0!==u.groupIndex&&(r[u.groupIndex].splice(g.call(r[u.groupIndex],u),1),0==r[u.groupIndex].length))throw new TypeError("Mixed dependency cycle detected");u.groupIndex=d}o(u,r)}}}}function a(e){var r=v[e];r.groupIndex=0;var t=[];o(r,t);for(var n=!!r.declarative==t.length%2,a=t.length-1;a>=0;a--){for(var u=t[a],i=0;i<u.length;i++){var s=u[i];n?d(s):l(s)}n=!n}}function u(e){return y[e]||(y[e]={name:e,dependencies:[],exports:{},importers:[]})}function d(r){if(!r.module){var t=r.module=u(r.name),n=r.module.exports,o=r.declare.call(e,function(e,r){if(t.locked=!0,"object"==typeof e)for(var o in e)n[o]=e[o];else n[e]=r;for(var a=0,u=t.importers.length;u>a;a++){var d=t.importers[a];if(!d.locked)for(var i=0;i<d.dependencies.length;++i)d.dependencies[i]===t&&d.setters[i](n)}return t.locked=!1,r},{id:r.name});t.setters=o.setters,t.execute=o.execute;for(var a=0,i=r.normalizedDeps.length;i>a;a++){var l,s=r.normalizedDeps[a],c=v[s],f=y[s];f?l=f.exports:c&&!c.declarative?l=c.esModule:c?(d(c),f=c.module,l=f.exports):l=p(s),f&&f.importers?(f.importers.push(t),t.dependencies.push(f)):t.dependencies.push(null),t.setters[a]&&t.setters[a](l)}}}function i(e){var r,t=v[e];if(t)t.declarative?f(e,[]):t.evaluated||l(t),r=t.module.exports;else if(r=p(e),!r)throw new Error("Unable to load dependency "+e+".");return(!t||t.declarative)&&r&&r.__useDefault?r["default"]:r}function l(r){if(!r.module){var t={},n=r.module={exports:t,id:r.name};if(!r.executingRequire)for(var o=0,a=r.normalizedDeps.length;a>o;o++){var u=r.normalizedDeps[o],d=v[u];d&&l(d)}r.evaluated=!0;var c=r.execute.call(e,function(e){for(var t=0,n=r.deps.length;n>t;t++)if(r.deps[t]==e)return i(r.normalizedDeps[t]);throw new TypeError("Module "+e+" not declared as a dependency.")},t,n);c&&(n.exports=c),t=n.exports,t&&t.__esModule?r.esModule=t:r.esModule=s(t)}}function s(r){var t={};if(("object"==typeof r||"function"==typeof r)&&r!==e)if(m)for(var n in r)"default"!==n&&c(t,r,n);else{var o=r&&r.hasOwnProperty;for(var n in r)"default"===n||o&&!r.hasOwnProperty(n)||(t[n]=r[n])}return t["default"]=r,x(t,"__useDefault",{value:!0}),t}function c(e,r,t){try{var n;(n=Object.getOwnPropertyDescriptor(r,t))&&x(e,t,n)}catch(o){return e[t]=r[t],!1}}function f(r,t){var n=v[r];if(n&&!n.evaluated&&n.declarative){t.push(r);for(var o=0,a=n.normalizedDeps.length;a>o;o++){var u=n.normalizedDeps[o];-1==g.call(t,u)&&(v[u]?f(u,t):p(u))}n.evaluated||(n.evaluated=!0,n.module.execute.call(e))}}function p(e){if(I[e])return I[e];if("@node/"==e.substr(0,6))return D(e.substr(6));var r=v[e];if(!r)throw"Module "+e+" not present.";return a(e),f(e,[]),v[e]=void 0,r.declarative&&x(r.module.exports,"__esModule",{value:!0}),I[e]=r.declarative?r.module.exports:r.esModule}var v={},g=Array.prototype.indexOf||function(e){for(var r=0,t=this.length;t>r;r++)if(this[r]===e)return r;return-1},m=!0;try{Object.getOwnPropertyDescriptor({a:0},"a")}catch(h){m=!1}var x;!function(){try{Object.defineProperty({},"a",{})&&(x=Object.defineProperty)}catch(e){x=function(e,r,t){try{e[r]=t.value||t.get.call(e)}catch(n){}}}}();var y={},D="undefined"!=typeof System&&System._nodeRequire||"undefined"!=typeof require&&require.resolve&&"undefined"!=typeof process&&require,I={"@empty":{}};return function(e,n,o,a){return function(u){u(function(u){for(var d={_nodeRequire:D,register:r,registerDynamic:t,get:p,set:function(e,r){I[e]=r},newModule:function(e){return e}},i=0;i<n.length;i++)(function(e,r){r&&r.__esModule?I[e]=r:I[e]=s(r)})(n[i],arguments[i]);a(d);var l=p(e[0]);if(e.length>1)for(var i=1;i<e.length;i++)p(e[i]);return o?l["default"]:l})}}}("undefined"!=typeof self?self:global)
 
-(["1"], [], true, function($__System) {
+(["npm:less@2.7.1/index.js"], [], true, function($__System) {
 var require = this.require, exports = this.exports, module = this.module;
-$__System.registerDynamic("2", [], false, function() {
+$__System.registerDynamic("npm:mime@1.3.4/types.json", [], false, function() {
   return {
     "application/andrew-inset": [
       "ez"
@@ -2591,8 +2591,8 @@ $__System.registerDynamic("2", [], false, function() {
   };
 });
 
-$__System.registerDynamic("3", ["@node/path", "@node/fs", "2", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:mime@1.3.4/mime.js", ["@node/path", "@node/fs", "npm:mime@1.3.4/types.json", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -2637,7 +2637,7 @@ $__System.registerDynamic("3", ["@node/path", "@node/fs", "2", "4"], true, funct
     return this.extensions[type];
   };
   var mime = new Mime();
-  mime.define($__require('2'));
+  mime.define($__require('npm:mime@1.3.4/types.json'));
   mime.default_type = mime.lookup('bin');
   mime.Mime = Mime;
   mime.charsets = {lookup: function(mimeType, fallback) {
@@ -2647,7 +2647,7 @@ $__System.registerDynamic("3", ["@node/path", "@node/fs", "2", "4"], true, funct
   return module.exports;
 });
 
-$__System.registerDynamic("5", [], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:source-map@0.5.6/lib/binary-search.js", [], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
@@ -2698,7 +2698,7 @@ $__System.registerDynamic("5", [], true, function($__require, exports, module) {
   return module.exports;
 });
 
-$__System.registerDynamic("6", [], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:source-map@0.5.6/lib/quick-sort.js", [], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
@@ -2735,16 +2735,16 @@ $__System.registerDynamic("6", [], true, function($__require, exports, module) {
   return module.exports;
 });
 
-$__System.registerDynamic("7", ["8", "5", "9", "a", "6"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:source-map@0.5.6/lib/source-map-consumer.js", ["npm:source-map@0.5.6/lib/util.js", "npm:source-map@0.5.6/lib/binary-search.js", "npm:source-map@0.5.6/lib/array-set.js", "npm:source-map@0.5.6/lib/base64-vlq.js", "npm:source-map@0.5.6/lib/quick-sort.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var util = $__require('8');
-  var binarySearch = $__require('5');
-  var ArraySet = $__require('9').ArraySet;
-  var base64VLQ = $__require('a');
-  var quickSort = $__require('6').quickSort;
+  var util = $__require('npm:source-map@0.5.6/lib/util.js');
+  var binarySearch = $__require('npm:source-map@0.5.6/lib/binary-search.js');
+  var ArraySet = $__require('npm:source-map@0.5.6/lib/array-set.js').ArraySet;
+  var base64VLQ = $__require('npm:source-map@0.5.6/lib/base64-vlq.js');
+  var quickSort = $__require('npm:source-map@0.5.6/lib/quick-sort.js').quickSort;
   function SourceMapConsumer(aSourceMap) {
     var sourceMap = aSourceMap;
     if (typeof aSourceMap === 'string') {
@@ -3283,7 +3283,7 @@ $__System.registerDynamic("7", ["8", "5", "9", "a", "6"], true, function($__requ
   return module.exports;
 });
 
-$__System.registerDynamic("b", [], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:source-map@0.5.6/lib/base64.js", [], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
@@ -3326,12 +3326,12 @@ $__System.registerDynamic("b", [], true, function($__require, exports, module) {
   return module.exports;
 });
 
-$__System.registerDynamic("a", ["b"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:source-map@0.5.6/lib/base64-vlq.js", ["npm:source-map@0.5.6/lib/base64.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var base64 = $__require('b');
+  var base64 = $__require('npm:source-map@0.5.6/lib/base64.js');
   var VLQ_BASE_SHIFT = 5;
   var VLQ_BASE = 1 << VLQ_BASE_SHIFT;
   var VLQ_BASE_MASK = VLQ_BASE - 1;
@@ -3383,12 +3383,12 @@ $__System.registerDynamic("a", ["b"], true, function($__require, exports, module
   return module.exports;
 });
 
-$__System.registerDynamic("9", ["8"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:source-map@0.5.6/lib/array-set.js", ["npm:source-map@0.5.6/lib/util.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var util = $__require('8');
+  var util = $__require('npm:source-map@0.5.6/lib/util.js');
   var has = Object.prototype.hasOwnProperty;
   function ArraySet() {
     this._array = [];
@@ -3440,12 +3440,12 @@ $__System.registerDynamic("9", ["8"], true, function($__require, exports, module
   return module.exports;
 });
 
-$__System.registerDynamic("c", ["8"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:source-map@0.5.6/lib/mapping-list.js", ["npm:source-map@0.5.6/lib/util.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var util = $__require('8');
+  var util = $__require('npm:source-map@0.5.6/lib/util.js');
   function generatedPositionAfter(mappingA, mappingB) {
     var lineA = mappingA.generatedLine;
     var lineB = mappingB.generatedLine;
@@ -3484,15 +3484,15 @@ $__System.registerDynamic("c", ["8"], true, function($__require, exports, module
   return module.exports;
 });
 
-$__System.registerDynamic("d", ["a", "8", "9", "c"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:source-map@0.5.6/lib/source-map-generator.js", ["npm:source-map@0.5.6/lib/base64-vlq.js", "npm:source-map@0.5.6/lib/util.js", "npm:source-map@0.5.6/lib/array-set.js", "npm:source-map@0.5.6/lib/mapping-list.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var base64VLQ = $__require('a');
-  var util = $__require('8');
-  var ArraySet = $__require('9').ArraySet;
-  var MappingList = $__require('c').MappingList;
+  var base64VLQ = $__require('npm:source-map@0.5.6/lib/base64-vlq.js');
+  var util = $__require('npm:source-map@0.5.6/lib/util.js');
+  var ArraySet = $__require('npm:source-map@0.5.6/lib/array-set.js').ArraySet;
+  var MappingList = $__require('npm:source-map@0.5.6/lib/mapping-list.js').MappingList;
   function SourceMapGenerator(aArgs) {
     if (!aArgs) {
       aArgs = {};
@@ -3747,7 +3747,7 @@ $__System.registerDynamic("d", ["a", "8", "9", "c"], true, function($__require, 
   return module.exports;
 });
 
-$__System.registerDynamic("8", [], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:source-map@0.5.6/lib/util.js", [], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
@@ -4018,13 +4018,13 @@ $__System.registerDynamic("8", [], true, function($__require, exports, module) {
   return module.exports;
 });
 
-$__System.registerDynamic("e", ["d", "8"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:source-map@0.5.6/lib/source-node.js", ["npm:source-map@0.5.6/lib/source-map-generator.js", "npm:source-map@0.5.6/lib/util.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var SourceMapGenerator = $__require('d').SourceMapGenerator;
-  var util = $__require('8');
+  var SourceMapGenerator = $__require('npm:source-map@0.5.6/lib/source-map-generator.js').SourceMapGenerator;
+  var util = $__require('npm:source-map@0.5.6/lib/util.js');
   var REGEX_NEWLINE = /(\r?\n)/;
   var NEWLINE_CODE = 10;
   var isSourceNode = "$$$isSourceNode$$$";
@@ -4278,20 +4278,20 @@ $__System.registerDynamic("e", ["d", "8"], true, function($__require, exports, m
   return module.exports;
 });
 
-$__System.registerDynamic("f", ["d", "7", "e"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:source-map@0.5.6/source-map.js", ["npm:source-map@0.5.6/lib/source-map-generator.js", "npm:source-map@0.5.6/lib/source-map-consumer.js", "npm:source-map@0.5.6/lib/source-node.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
       GLOBAL = this;
-  exports.SourceMapGenerator = $__require('d').SourceMapGenerator;
-  exports.SourceMapConsumer = $__require('7').SourceMapConsumer;
-  exports.SourceNode = $__require('e').SourceNode;
+  exports.SourceMapGenerator = $__require('npm:source-map@0.5.6/lib/source-map-generator.js').SourceMapGenerator;
+  exports.SourceMapConsumer = $__require('npm:source-map@0.5.6/lib/source-map-consumer.js').SourceMapConsumer;
+  exports.SourceNode = $__require('npm:source-map@0.5.6/lib/source-node.js').SourceNode;
   return module.exports;
 });
 
-$__System.registerDynamic("10", ["3", "f", "4", "11"], true, function($__require, exports, module) {
-  var process = $__require("4"),
-      Buffer = $__require("11");
+$__System.registerDynamic("npm:less@2.7.1/lib/less-node/environment.js", ["npm:mime@1.3.4/mime.js", "npm:source-map@0.5.6/source-map.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"),
+      Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -4300,29 +4300,29 @@ $__System.registerDynamic("10", ["3", "f", "4", "11"], true, function($__require
       return new Buffer(str).toString('base64');
     },
     mimeLookup: function(filename) {
-      return $__require('3').lookup(filename);
+      return $__require('npm:mime@1.3.4/mime.js').lookup(filename);
     },
     charsetLookup: function(mime) {
-      return $__require('3').charsets.lookup(mime);
+      return $__require('npm:mime@1.3.4/mime.js').charsets.lookup(mime);
     },
     getSourceMapGenerator: function getSourceMapGenerator() {
-      return $__require('f').SourceMapGenerator;
+      return $__require('npm:source-map@0.5.6/source-map.js').SourceMapGenerator;
     }
   };
   return module.exports;
 });
 
-$__System.registerDynamic("12", ["@node/path", "13", "14", "15", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less-node/file-manager.js", ["@node/path", "npm:less@2.7.1/lib/less-node/fs.js", "npm:less@2.7.1/lib/less/environment/abstract-file-manager.js", "npm:promise@7.1.1/index.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
   var path = $__require('@node/path'),
-      fs = $__require('13'),
+      fs = $__require('npm:less@2.7.1/lib/less-node/fs.js'),
       PromiseConstructor,
-      AbstractFileManager = $__require('14');
+      AbstractFileManager = $__require('npm:less@2.7.1/lib/less/environment/abstract-file-manager.js');
   try {
-    PromiseConstructor = typeof Promise === 'undefined' ? $__require('15') : Promise;
+    PromiseConstructor = typeof Promise === 'undefined' ? $__require('npm:promise@7.1.1/index.js') : Promise;
   } catch (e) {}
   var FileManager = function() {};
   FileManager.prototype = new AbstractFileManager();
@@ -4431,7 +4431,7 @@ $__System.registerDynamic("12", ["@node/path", "13", "14", "15", "4"], true, fun
   return module.exports;
 });
 
-$__System.registerDynamic("16", [], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:isarray@1.0.0/index.js", [], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
@@ -4443,8 +4443,8 @@ $__System.registerDynamic("16", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("17", ["@node/buffer", "11"], true, function($__require, exports, module) {
-  var Buffer = $__require("11");
+$__System.registerDynamic("npm:string_decoder@0.10.31/index.js", ["@node/buffer", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -4583,16 +4583,16 @@ $__System.registerDynamic("17", ["@node/buffer", "11"], true, function($__requir
   return module.exports;
 });
 
-$__System.registerDynamic("18", ["1a", "16", "@node/buffer", "@node/events", "1b", "1c", "@node/util", "19", "17", "4", "11"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:readable-stream@2.0.6/lib/_stream_readable.js", ["npm:process-nextick-args@1.0.7/index.js", "npm:isarray@1.0.0/index.js", "@node/buffer", "@node/events", "npm:core-util-is@1.0.2/lib/util.js", "npm:inherits@2.0.1/inherits.js", "@node/util", "npm:readable-stream@2.0.6/lib/_stream_duplex.js", "npm:string_decoder@0.10.31/index.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
   "use strict";
-  var process = $__require("4"),
-      Buffer = $__require("11");
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"),
+      Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
   module.exports = Readable;
-  var processNextTick = $__require('1a');
-  var isArray = $__require('16');
+  var processNextTick = $__require('npm:process-nextick-args@1.0.7/index.js');
+  var isArray = $__require('npm:isarray@1.0.0/index.js');
   var Buffer = $__require('@node/buffer').Buffer;
   Readable.ReadableState = ReadableState;
   var EE = $__require('@node/events');
@@ -4609,8 +4609,8 @@ $__System.registerDynamic("18", ["1a", "16", "@node/buffer", "@node/events", "1b
     }
   })();
   var Buffer = $__require('@node/buffer').Buffer;
-  var util = $__require('1b');
-  util.inherits = $__require('1c');
+  var util = $__require('npm:core-util-is@1.0.2/lib/util.js');
+  util.inherits = $__require('npm:inherits@2.0.1/inherits.js');
   var debugUtil = $__require('@node/util');
   var debug = undefined;
   if (debugUtil && debugUtil.debuglog) {
@@ -4622,7 +4622,7 @@ $__System.registerDynamic("18", ["1a", "16", "@node/buffer", "@node/events", "1b
   util.inherits(Readable, Stream);
   var Duplex;
   function ReadableState(options, stream) {
-    Duplex = Duplex || $__require('19');
+    Duplex = Duplex || $__require('npm:readable-stream@2.0.6/lib/_stream_duplex.js');
     options = options || {};
     this.objectMode = !!options.objectMode;
     if (stream instanceof Duplex)
@@ -4652,14 +4652,14 @@ $__System.registerDynamic("18", ["1a", "16", "@node/buffer", "@node/events", "1b
     this.encoding = null;
     if (options.encoding) {
       if (!StringDecoder)
-        StringDecoder = $__require('17').StringDecoder;
+        StringDecoder = $__require('npm:string_decoder@0.10.31/index.js').StringDecoder;
       this.decoder = new StringDecoder(options.encoding);
       this.encoding = options.encoding;
     }
   }
   var Duplex;
   function Readable(options) {
-    Duplex = Duplex || $__require('19');
+    Duplex = Duplex || $__require('npm:readable-stream@2.0.6/lib/_stream_duplex.js');
     if (!(this instanceof Readable))
       return new Readable(options);
     this._readableState = new ReadableState(options, this);
@@ -4734,7 +4734,7 @@ $__System.registerDynamic("18", ["1a", "16", "@node/buffer", "@node/events", "1b
   }
   Readable.prototype.setEncoding = function(enc) {
     if (!StringDecoder)
-      StringDecoder = $__require('17').StringDecoder;
+      StringDecoder = $__require('npm:string_decoder@0.10.31/index.js').StringDecoder;
     this._readableState.decoder = new StringDecoder(enc);
     this._readableState.encoding = enc;
     return this;
@@ -5245,9 +5245,9 @@ $__System.registerDynamic("18", ["1a", "16", "@node/buffer", "@node/events", "1b
   return module.exports;
 });
 
-$__System.registerDynamic("1a", ["4"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:process-nextick-args@1.0.7/index.js", ["github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
   "use strict";
-  var process = $__require("4");
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -5293,8 +5293,8 @@ $__System.registerDynamic("1a", ["4"], true, function($__require, exports, modul
   return module.exports;
 });
 
-$__System.registerDynamic("1b", ["11"], true, function($__require, exports, module) {
-  var Buffer = $__require("11");
+$__System.registerDynamic("npm:core-util-is@1.0.2/lib/util.js", ["github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -5364,7 +5364,7 @@ $__System.registerDynamic("1b", ["11"], true, function($__require, exports, modu
   return module.exports;
 });
 
-$__System.registerDynamic("1c", ["@node/util"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:inherits@2.0.1/inherits.js", ["@node/util"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
@@ -5373,7 +5373,7 @@ $__System.registerDynamic("1c", ["@node/util"], true, function($__require, expor
   return module.exports;
 });
 
-$__System.registerDynamic("1d", ["@node/util"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:util-deprecate@1.0.2/node.js", ["@node/util"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
@@ -5382,21 +5382,21 @@ $__System.registerDynamic("1d", ["@node/util"], true, function($__require, expor
   return module.exports;
 });
 
-$__System.registerDynamic("1e", ["1a", "@node/buffer", "1b", "1c", "1d", "@node/events", "19", "4", "11"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:readable-stream@2.0.6/lib/_stream_writable.js", ["npm:process-nextick-args@1.0.7/index.js", "@node/buffer", "npm:core-util-is@1.0.2/lib/util.js", "npm:inherits@2.0.1/inherits.js", "npm:util-deprecate@1.0.2/node.js", "@node/events", "npm:readable-stream@2.0.6/lib/_stream_duplex.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
   "use strict";
-  var process = $__require("4"),
-      Buffer = $__require("11");
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"),
+      Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
   module.exports = Writable;
-  var processNextTick = $__require('1a');
+  var processNextTick = $__require('npm:process-nextick-args@1.0.7/index.js');
   var asyncWrite = !process.browser && ['v0.10', 'v0.9.'].indexOf(process.version.slice(0, 5)) > -1 ? setImmediate : processNextTick;
   var Buffer = $__require('@node/buffer').Buffer;
   Writable.WritableState = WritableState;
-  var util = $__require('1b');
-  util.inherits = $__require('1c');
-  var internalUtil = {deprecate: $__require('1d')};
+  var util = $__require('npm:core-util-is@1.0.2/lib/util.js');
+  util.inherits = $__require('npm:inherits@2.0.1/inherits.js');
+  var internalUtil = {deprecate: $__require('npm:util-deprecate@1.0.2/node.js')};
   var Stream;
   (function() {
     try {
@@ -5417,7 +5417,7 @@ $__System.registerDynamic("1e", ["1a", "@node/buffer", "1b", "1c", "1d", "@node/
   }
   var Duplex;
   function WritableState(options, stream) {
-    Duplex = Duplex || $__require('19');
+    Duplex = Duplex || $__require('npm:readable-stream@2.0.6/lib/_stream_duplex.js');
     options = options || {};
     this.objectMode = !!options.objectMode;
     if (stream instanceof Duplex)
@@ -5470,7 +5470,7 @@ $__System.registerDynamic("1e", ["1a", "@node/buffer", "1b", "1c", "1d", "@node/
   })();
   var Duplex;
   function Writable(options) {
-    Duplex = Duplex || $__require('19');
+    Duplex = Duplex || $__require('npm:readable-stream@2.0.6/lib/_stream_duplex.js');
     if (!(this instanceof Writable) && !(this instanceof Duplex))
       return new Writable(options);
     this._writableState = new WritableState(options, this);
@@ -5746,9 +5746,9 @@ $__System.registerDynamic("1e", ["1a", "@node/buffer", "1b", "1c", "1d", "@node/
   return module.exports;
 });
 
-$__System.registerDynamic("19", ["1a", "1b", "1c", "18", "1e", "4"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:readable-stream@2.0.6/lib/_stream_duplex.js", ["npm:process-nextick-args@1.0.7/index.js", "npm:core-util-is@1.0.2/lib/util.js", "npm:inherits@2.0.1/inherits.js", "npm:readable-stream@2.0.6/lib/_stream_readable.js", "npm:readable-stream@2.0.6/lib/_stream_writable.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
   "use strict";
-  var process = $__require("4");
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -5760,11 +5760,11 @@ $__System.registerDynamic("19", ["1a", "1b", "1c", "18", "1e", "4"], true, funct
     return keys;
   };
   module.exports = Duplex;
-  var processNextTick = $__require('1a');
-  var util = $__require('1b');
-  util.inherits = $__require('1c');
-  var Readable = $__require('18');
-  var Writable = $__require('1e');
+  var processNextTick = $__require('npm:process-nextick-args@1.0.7/index.js');
+  var util = $__require('npm:core-util-is@1.0.2/lib/util.js');
+  util.inherits = $__require('npm:inherits@2.0.1/inherits.js');
+  var Readable = $__require('npm:readable-stream@2.0.6/lib/_stream_readable.js');
+  var Writable = $__require('npm:readable-stream@2.0.6/lib/_stream_writable.js');
   util.inherits(Duplex, Readable);
   var keys = objectKeys(Writable.prototype);
   for (var v = 0; v < keys.length; v++) {
@@ -5803,22 +5803,22 @@ $__System.registerDynamic("19", ["1a", "1b", "1c", "18", "1e", "4"], true, funct
   return module.exports;
 });
 
-$__System.registerDynamic("1f", ["19", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:readable-stream@2.0.6/duplex.js", ["npm:readable-stream@2.0.6/lib/_stream_duplex.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  module.exports = $__require('19');
+  module.exports = $__require('npm:readable-stream@2.0.6/lib/_stream_duplex.js');
   return module.exports;
 });
 
-$__System.registerDynamic("20", ["1f", "@node/util", "4", "11"], true, function($__require, exports, module) {
-  var process = $__require("4"),
-      Buffer = $__require("11");
+$__System.registerDynamic("npm:bl@1.1.2/bl.js", ["npm:readable-stream@2.0.6/duplex.js", "@node/util", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"),
+      Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
-  var DuplexStream = $__require('1f'),
+  var DuplexStream = $__require('npm:readable-stream@2.0.6/duplex.js'),
       util = $__require('@node/util');
   function BufferList(callback) {
     if (!(this instanceof BufferList))
@@ -6004,16 +6004,16 @@ $__System.registerDynamic("20", ["1f", "@node/util", "4", "11"], true, function(
   return module.exports;
 });
 
-$__System.registerDynamic("21", ["24", "25", "26", "22", "23", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:hawk@3.1.3/lib/server.js", ["npm:boom@2.10.1/lib/index.js", "npm:hoek@2.16.3/lib/index.js", "npm:cryptiles@2.0.5/lib/index.js", "npm:hawk@3.1.3/lib/crypto.js", "npm:hawk@3.1.3/lib/utils.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Boom = $__require('24');
-  var Hoek = $__require('25');
-  var Cryptiles = $__require('26');
-  var Crypto = $__require('22');
-  var Utils = $__require('23');
+  var Boom = $__require('npm:boom@2.10.1/lib/index.js');
+  var Hoek = $__require('npm:hoek@2.16.3/lib/index.js');
+  var Cryptiles = $__require('npm:cryptiles@2.0.5/lib/index.js');
+  var Crypto = $__require('npm:hawk@3.1.3/lib/crypto.js');
+  var Utils = $__require('npm:hawk@3.1.3/lib/utils.js');
   var internals = {};
   exports.authenticate = function(req, credentialsFunc, options, callback) {
     callback = Hoek.nextTick(callback);
@@ -6244,13 +6244,13 @@ $__System.registerDynamic("21", ["24", "25", "26", "22", "23", "4"], true, funct
   return module.exports;
 });
 
-$__System.registerDynamic("26", ["@node/crypto", "24"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:cryptiles@2.0.5/lib/index.js", ["@node/crypto", "npm:boom@2.10.1/lib/index.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
       GLOBAL = this;
   var Crypto = $__require('@node/crypto');
-  var Boom = $__require('24');
+  var Boom = $__require('npm:boom@2.10.1/lib/index.js');
   var internals = {};
   exports.randomString = function(size) {
     var buffer = exports.randomBits((size + 1) * 6);
@@ -6290,16 +6290,16 @@ $__System.registerDynamic("26", ["@node/crypto", "24"], true, function($__requir
   return module.exports;
 });
 
-$__System.registerDynamic("27", ["@node/url", "25", "26", "22", "23", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:hawk@3.1.3/lib/client.js", ["@node/url", "npm:hoek@2.16.3/lib/index.js", "npm:cryptiles@2.0.5/lib/index.js", "npm:hawk@3.1.3/lib/crypto.js", "npm:hawk@3.1.3/lib/utils.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
   var Url = $__require('@node/url');
-  var Hoek = $__require('25');
-  var Cryptiles = $__require('26');
-  var Crypto = $__require('22');
-  var Utils = $__require('23');
+  var Hoek = $__require('npm:hoek@2.16.3/lib/index.js');
+  var Cryptiles = $__require('npm:cryptiles@2.0.5/lib/index.js');
+  var Crypto = $__require('npm:hawk@3.1.3/lib/crypto.js');
+  var Utils = $__require('npm:hawk@3.1.3/lib/utils.js');
   var internals = {};
   exports.header = function(uri, method, options) {
     var result = {
@@ -6445,14 +6445,14 @@ $__System.registerDynamic("27", ["@node/url", "25", "26", "22", "23", "4"], true
   return module.exports;
 });
 
-$__System.registerDynamic("22", ["@node/crypto", "@node/url", "23", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:hawk@3.1.3/lib/crypto.js", ["@node/crypto", "@node/url", "npm:hawk@3.1.3/lib/utils.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
   var Crypto = $__require('@node/crypto');
   var Url = $__require('@node/url');
-  var Utils = $__require('23');
+  var Utils = $__require('npm:hawk@3.1.3/lib/utils.js');
   var internals = {};
   exports.headerVersion = '1';
   exports.algorithms = ['sha1', 'sha256'];
@@ -6509,15 +6509,15 @@ $__System.registerDynamic("22", ["@node/crypto", "@node/url", "23", "4"], true, 
   return module.exports;
 });
 
-$__System.registerDynamic("28", ["@node/dgram", "@node/dns", "25", "4", "11"], true, function($__require, exports, module) {
-  var process = $__require("4"),
-      Buffer = $__require("11");
+$__System.registerDynamic("npm:sntp@1.0.9/lib/index.js", ["@node/dgram", "@node/dns", "npm:hoek@2.16.3/lib/index.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"),
+      Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
   var Dgram = $__require('@node/dgram');
   var Dns = $__require('@node/dns');
-  var Hoek = $__require('25');
+  var Hoek = $__require('npm:hoek@2.16.3/lib/index.js');
   var internals = {};
   exports.time = function(options, callback) {
     if (arguments.length !== 2) {
@@ -6764,18 +6764,18 @@ $__System.registerDynamic("28", ["@node/dgram", "@node/dns", "25", "4", "11"], t
   return module.exports;
 });
 
-$__System.registerDynamic("29", ["28", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:sntp@1.0.9/index.js", ["npm:sntp@1.0.9/lib/index.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  module.exports = $__require('28');
+  module.exports = $__require('npm:sntp@1.0.9/lib/index.js');
   return module.exports;
 });
 
-$__System.registerDynamic("2a", ["4", "11"], true, function($__require, exports, module) {
-  var process = $__require("4"),
-      Buffer = $__require("11");
+$__System.registerDynamic("npm:hoek@2.16.3/lib/escape.js", ["github:jspm/nodelibs-process@0.2.0-alpha/process-node.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"),
+      Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -6863,16 +6863,16 @@ $__System.registerDynamic("2a", ["4", "11"], true, function($__require, exports,
   return module.exports;
 });
 
-$__System.registerDynamic("25", ["@node/crypto", "@node/path", "@node/util", "2a", "4", "11"], true, function($__require, exports, module) {
-  var process = $__require("4"),
-      Buffer = $__require("11");
+$__System.registerDynamic("npm:hoek@2.16.3/lib/index.js", ["@node/crypto", "@node/path", "@node/util", "npm:hoek@2.16.3/lib/escape.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"),
+      Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
   var Crypto = $__require('@node/crypto');
   var Path = $__require('@node/path');
   var Util = $__require('@node/util');
-  var Escape = $__require('2a');
+  var Escape = $__require('npm:hoek@2.16.3/lib/escape.js');
   var internals = {};
   exports.clone = function(obj, seen) {
     if (typeof obj !== 'object' || obj === null) {
@@ -7525,13 +7525,13 @@ $__System.registerDynamic("25", ["@node/crypto", "@node/path", "@node/util", "2a
   return module.exports;
 });
 
-$__System.registerDynamic("24", ["@node/http", "25"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:boom@2.10.1/lib/index.js", ["@node/http", "npm:hoek@2.16.3/lib/index.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
       GLOBAL = this;
   var Http = $__require('@node/http');
-  var Hoek = $__require('25');
+  var Hoek = $__require('npm:hoek@2.16.3/lib/index.js');
   var internals = {};
   exports.wrap = function(error, statusCode, message) {
     Hoek.assert(error instanceof Error, 'Cannot wrap non-Error object');
@@ -7718,7 +7718,7 @@ $__System.registerDynamic("24", ["@node/http", "25"], true, function($__require,
   return module.exports;
 });
 
-$__System.registerDynamic("2b", [], false, function() {
+$__System.registerDynamic("npm:hawk@3.1.3/package.json", [], false, function() {
   return {
     "name": "hawk",
     "description": "HTTP Hawk Authentication Scheme",
@@ -7755,16 +7755,16 @@ $__System.registerDynamic("2b", [], false, function() {
   };
 });
 
-$__System.registerDynamic("23", ["29", "24", "2b", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:hawk@3.1.3/lib/utils.js", ["npm:sntp@1.0.9/index.js", "npm:boom@2.10.1/lib/index.js", "npm:hawk@3.1.3/package.json", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Sntp = $__require('29');
-  var Boom = $__require('24');
+  var Sntp = $__require('npm:sntp@1.0.9/index.js');
+  var Boom = $__require('npm:boom@2.10.1/lib/index.js');
   var internals = {};
   exports.version = function() {
-    return $__require('2b').version;
+    return $__require('npm:hawk@3.1.3/package.json').version;
   };
   exports.limits = {maxMatchLength: 4096};
   internals.hostHeaderRegex = /^(?:(?:\r\n)?\s)*((?:[^:]+)|(?:\[[^\]]+\]))(?::(\d+))?(?:(?:\r\n)?\s)*$/;
@@ -7870,17 +7870,17 @@ $__System.registerDynamic("23", ["29", "24", "2b", "4"], true, function($__requi
   return module.exports;
 });
 
-$__System.registerDynamic("2c", ["24", "29", "21", "27", "22", "23", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:hawk@3.1.3/lib/index.js", ["npm:boom@2.10.1/lib/index.js", "npm:sntp@1.0.9/index.js", "npm:hawk@3.1.3/lib/server.js", "npm:hawk@3.1.3/lib/client.js", "npm:hawk@3.1.3/lib/crypto.js", "npm:hawk@3.1.3/lib/utils.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  exports.error = exports.Error = $__require('24');
-  exports.sntp = $__require('29');
-  exports.server = $__require('21');
-  exports.client = $__require('27');
-  exports.crypto = $__require('22');
-  exports.utils = $__require('23');
+  exports.error = exports.Error = $__require('npm:boom@2.10.1/lib/index.js');
+  exports.sntp = $__require('npm:sntp@1.0.9/index.js');
+  exports.server = $__require('npm:hawk@3.1.3/lib/server.js');
+  exports.client = $__require('npm:hawk@3.1.3/lib/client.js');
+  exports.crypto = $__require('npm:hawk@3.1.3/lib/crypto.js');
+  exports.utils = $__require('npm:hawk@3.1.3/lib/utils.js');
   exports.uri = {
     authenticate: exports.server.authenticateBewit,
     getBewit: exports.client.getBewit
@@ -7888,7 +7888,7 @@ $__System.registerDynamic("2c", ["24", "29", "21", "27", "22", "23", "4"], true,
   return module.exports;
 });
 
-$__System.registerDynamic("2d", ["@node/crypto", "@node/url"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:aws-sign2@0.6.0/index.js", ["@node/crypto", "@node/url"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
@@ -7962,8 +7962,8 @@ $__System.registerDynamic("2d", ["@node/crypto", "@node/url"], true, function($_
   return module.exports;
 });
 
-$__System.registerDynamic("2e", ["4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:aws4@1.4.1/lru.js", ["github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -8056,9 +8056,9 @@ $__System.registerDynamic("2e", ["4"], true, function($__require, exports, modul
   return module.exports;
 });
 
-$__System.registerDynamic("2f", ["@node/url", "@node/querystring", "@node/crypto", "2e", "4", "11"], true, function($__require, exports, module) {
-  var process = $__require("4"),
-      Buffer = $__require("11");
+$__System.registerDynamic("npm:aws4@1.4.1/aws4.js", ["@node/url", "@node/querystring", "@node/crypto", "npm:aws4@1.4.1/lru.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"),
+      Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -8066,7 +8066,7 @@ $__System.registerDynamic("2f", ["@node/url", "@node/querystring", "@node/crypto
       url = $__require('@node/url'),
       querystring = $__require('@node/querystring'),
       crypto = $__require('@node/crypto'),
-      lru = $__require('2e'),
+      lru = $__require('npm:aws4@1.4.1/lru.js'),
       credentialsCache = lru(1000);
   function hmac(key, string, encoding) {
     return crypto.createHmac('sha256', key).update(string, 'utf8').digest(encoding);
@@ -8298,14 +8298,14 @@ $__System.registerDynamic("2f", ["@node/url", "@node/querystring", "@node/crypto
   return module.exports;
 });
 
-$__System.registerDynamic("30", ["32", "@node/util", "31"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:http-signature@1.1.1/lib/parser.js", ["npm:assert-plus@0.2.0/assert.js", "@node/util", "npm:http-signature@1.1.1/lib/utils.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var assert = $__require('32');
+  var assert = $__require('npm:assert-plus@0.2.0/assert.js');
   var util = $__require('@node/util');
-  var utils = $__require('31');
+  var utils = $__require('npm:http-signature@1.1.1/lib/utils.js');
   var HASH_ALGOS = utils.HASH_ALGOS;
   var PK_ALGOS = utils.PK_ALGOS;
   var HttpSignatureError = utils.HttpSignatureError;
@@ -8500,7 +8500,7 @@ $__System.registerDynamic("30", ["32", "@node/util", "31"], true, function($__re
   return module.exports;
 });
 
-$__System.registerDynamic("33", ["@node/assert", "@node/util"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:extsprintf@1.0.2/lib/extsprintf.js", ["@node/assert", "@node/util"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
@@ -8605,14 +8605,14 @@ $__System.registerDynamic("33", ["@node/assert", "@node/util"], true, function($
   return module.exports;
 });
 
-$__System.registerDynamic("34", ["@node/assert", "@node/util", "33"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:verror@1.3.6/lib/verror.js", ["@node/assert", "@node/util", "npm:extsprintf@1.0.2/lib/extsprintf.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
       GLOBAL = this;
   var mod_assert = $__require('@node/assert');
   var mod_util = $__require('@node/util');
-  var mod_extsprintf = $__require('33');
+  var mod_extsprintf = $__require('npm:extsprintf@1.0.2/lib/extsprintf.js');
   exports.VError = VError;
   exports.WError = WError;
   exports.MultiError = MultiError;
@@ -8710,7 +8710,7 @@ $__System.registerDynamic("34", ["@node/assert", "@node/util", "33"], true, func
   return module.exports;
 });
 
-$__System.registerDynamic("35", [], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:json-schema@0.2.2/lib/validate.js", [], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
@@ -8944,16 +8944,16 @@ $__System.registerDynamic("35", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("36", ["@node/assert", "@node/util", "33", "34", "35"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:jsprim@1.3.0/lib/jsprim.js", ["@node/assert", "@node/util", "npm:extsprintf@1.0.2/lib/extsprintf.js", "npm:verror@1.3.6/lib/verror.js", "npm:json-schema@0.2.2/lib/validate.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
       GLOBAL = this;
   var mod_assert = $__require('@node/assert');
   var mod_util = $__require('@node/util');
-  var mod_extsprintf = $__require('33');
-  var mod_verror = $__require('34');
-  var mod_jsonschema = $__require('35');
+  var mod_extsprintf = $__require('npm:extsprintf@1.0.2/lib/extsprintf.js');
+  var mod_verror = $__require('npm:verror@1.3.6/lib/verror.js');
+  var mod_jsonschema = $__require('npm:json-schema@0.2.2/lib/validate.js');
   exports.deepCopy = deepCopy;
   exports.deepEqual = deepEqual;
   exports.isEmpty = isEmpty;
@@ -9224,18 +9224,18 @@ $__System.registerDynamic("36", ["@node/assert", "@node/util", "33", "34", "35"]
   return module.exports;
 });
 
-$__System.registerDynamic("37", ["32", "@node/crypto", "@node/http", "@node/util", "38", "36", "31", "11"], true, function($__require, exports, module) {
-  var Buffer = $__require("11");
+$__System.registerDynamic("npm:http-signature@1.1.1/lib/signer.js", ["npm:assert-plus@0.2.0/assert.js", "@node/crypto", "@node/http", "@node/util", "npm:sshpk@1.8.3/lib/index.js", "npm:jsprim@1.3.0/lib/jsprim.js", "npm:http-signature@1.1.1/lib/utils.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
-  var assert = $__require('32');
+  var assert = $__require('npm:assert-plus@0.2.0/assert.js');
   var crypto = $__require('@node/crypto');
   var http = $__require('@node/http');
   var util = $__require('@node/util');
-  var sshpk = $__require('38');
-  var jsprim = $__require('36');
-  var utils = $__require('31');
+  var sshpk = $__require('npm:sshpk@1.8.3/lib/index.js');
+  var jsprim = $__require('npm:jsprim@1.3.0/lib/jsprim.js');
+  var utils = $__require('npm:http-signature@1.1.1/lib/utils.js');
   var sprintf = $__require('@node/util').format;
   var HASH_ALGOS = utils.HASH_ALGOS;
   var PK_ALGOS = utils.PK_ALGOS;
@@ -9451,15 +9451,15 @@ $__System.registerDynamic("37", ["32", "@node/crypto", "@node/http", "@node/util
   return module.exports;
 });
 
-$__System.registerDynamic("39", ["32", "@node/crypto", "38", "31", "11"], true, function($__require, exports, module) {
-  var Buffer = $__require("11");
+$__System.registerDynamic("npm:http-signature@1.1.1/lib/verify.js", ["npm:assert-plus@0.2.0/assert.js", "@node/crypto", "npm:sshpk@1.8.3/lib/index.js", "npm:http-signature@1.1.1/lib/utils.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
-  var assert = $__require('32');
+  var assert = $__require('npm:assert-plus@0.2.0/assert.js');
   var crypto = $__require('@node/crypto');
-  var sshpk = $__require('38');
-  var utils = $__require('31');
+  var sshpk = $__require('npm:sshpk@1.8.3/lib/index.js');
+  var utils = $__require('npm:http-signature@1.1.1/lib/utils.js');
   var HASH_ALGOS = utils.HASH_ALGOS;
   var PK_ALGOS = utils.PK_ALGOS;
   var InvalidAlgorithmError = utils.InvalidAlgorithmError;
@@ -9503,9 +9503,9 @@ $__System.registerDynamic("39", ["32", "@node/crypto", "38", "31", "11"], true, 
   return module.exports;
 });
 
-$__System.registerDynamic("32", ["@node/assert", "@node/stream", "@node/util", "4", "11"], true, function($__require, exports, module) {
-  var process = $__require("4"),
-      Buffer = $__require("11");
+$__System.registerDynamic("npm:assert-plus@0.2.0/assert.js", ["@node/assert", "@node/stream", "@node/util", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"),
+      Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -9686,18 +9686,18 @@ $__System.registerDynamic("32", ["@node/assert", "@node/stream", "@node/util", "
   return module.exports;
 });
 
-$__System.registerDynamic("3a", ["3f", "3b", "@node/crypto", "3c", "3d", "3e", "11"], true, function($__require, exports, module) {
-  var Buffer = $__require("11");
+$__System.registerDynamic("npm:sshpk@1.8.3/lib/fingerprint.js", ["npm:assert-plus@1.0.0/assert.js", "npm:sshpk@1.8.3/lib/algs.js", "@node/crypto", "npm:sshpk@1.8.3/lib/errors.js", "npm:sshpk@1.8.3/lib/key.js", "npm:sshpk@1.8.3/lib/utils.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
   module.exports = Fingerprint;
-  var assert = $__require('3f');
-  var algs = $__require('3b');
+  var assert = $__require('npm:assert-plus@1.0.0/assert.js');
+  var algs = $__require('npm:sshpk@1.8.3/lib/algs.js');
   var crypto = $__require('@node/crypto');
-  var errs = $__require('3c');
-  var Key = $__require('3d');
-  var utils = $__require('3e');
+  var errs = $__require('npm:sshpk@1.8.3/lib/errors.js');
+  var Key = $__require('npm:sshpk@1.8.3/lib/key.js');
+  var utils = $__require('npm:sshpk@1.8.3/lib/utils.js');
   var FingerprintFormatError = errs.FingerprintFormatError;
   var InvalidAlgorithmError = errs.InvalidAlgorithmError;
   function Fingerprint(opts) {
@@ -9802,13 +9802,13 @@ $__System.registerDynamic("3a", ["3f", "3b", "@node/crypto", "3c", "3d", "3e", "
   return module.exports;
 });
 
-$__System.registerDynamic("40", ["42", "41"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:ecc-jsbn@0.1.1/lib/sec.js", ["npm:jsbn@0.1.0/index.js", "npm:ecc-jsbn@0.1.1/lib/ec.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var BigInteger = $__require('42').BigInteger;
-  var ECCurveFp = $__require('41').ECCurveFp;
+  var BigInteger = $__require('npm:jsbn@0.1.0/index.js').BigInteger;
+  var ECCurveFp = $__require('npm:ecc-jsbn@0.1.1/lib/ec.js').ECCurveFp;
   function X9ECParameters(curve, g, n, h) {
     this.curve = curve;
     this.g = g;
@@ -9933,15 +9933,15 @@ $__System.registerDynamic("40", ["42", "41"], true, function($__require, exports
   return module.exports;
 });
 
-$__System.registerDynamic("43", ["@node/crypto", "42", "41", "40", "11"], true, function($__require, exports, module) {
-  var Buffer = $__require("11");
+$__System.registerDynamic("npm:ecc-jsbn@0.1.1/index.js", ["@node/crypto", "npm:jsbn@0.1.0/index.js", "npm:ecc-jsbn@0.1.1/lib/ec.js", "npm:ecc-jsbn@0.1.1/lib/sec.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
   var crypto = $__require('@node/crypto');
-  var BigInteger = $__require('42').BigInteger;
-  var ECPointFp = $__require('41').ECPointFp;
-  exports.ECCurves = $__require('40');
+  var BigInteger = $__require('npm:jsbn@0.1.0/index.js').BigInteger;
+  var ECPointFp = $__require('npm:ecc-jsbn@0.1.1/lib/ec.js').ECPointFp;
+  exports.ECCurves = $__require('npm:ecc-jsbn@0.1.1/lib/sec.js');
   function unstupid(hex, len) {
     return (hex.length >= len) ? hex : unstupid("0" + hex, len);
   }
@@ -9981,12 +9981,12 @@ $__System.registerDynamic("43", ["@node/crypto", "42", "41", "40", "11"], true, 
   return module.exports;
 });
 
-$__System.registerDynamic("41", ["42"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:ecc-jsbn@0.1.1/lib/ec.js", ["npm:jsbn@0.1.0/index.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var BigInteger = $__require('42').BigInteger;
+  var BigInteger = $__require('npm:jsbn@0.1.0/index.js').BigInteger;
   var Barrett = BigInteger.prototype.Barrett;
   function ECFieldElementFp(q, x) {
     this.x = x;
@@ -10413,19 +10413,19 @@ $__System.registerDynamic("41", ["42"], true, function($__require, exports, modu
   return module.exports;
 });
 
-$__System.registerDynamic("44", ["3f", "@node/crypto", "3b", "3e", "3d", "45", "43", "41", "42", "46", "11"], true, function($__require, exports, module) {
-  var Buffer = $__require("11");
+$__System.registerDynamic("npm:sshpk@1.8.3/lib/dhe.js", ["npm:assert-plus@1.0.0/assert.js", "@node/crypto", "npm:sshpk@1.8.3/lib/algs.js", "npm:sshpk@1.8.3/lib/utils.js", "npm:sshpk@1.8.3/lib/key.js", "npm:sshpk@1.8.3/lib/private-key.js", "npm:ecc-jsbn@0.1.1/index.js", "npm:ecc-jsbn@0.1.1/lib/ec.js", "npm:jsbn@0.1.0/index.js", "npm:jodid25519@1.0.2/index.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
   module.exports = DiffieHellman;
-  var assert = $__require('3f');
+  var assert = $__require('npm:assert-plus@1.0.0/assert.js');
   var crypto = $__require('@node/crypto');
-  var algs = $__require('3b');
-  var utils = $__require('3e');
+  var algs = $__require('npm:sshpk@1.8.3/lib/algs.js');
+  var utils = $__require('npm:sshpk@1.8.3/lib/utils.js');
   var ed;
-  var Key = $__require('3d');
-  var PrivateKey = $__require('45');
+  var Key = $__require('npm:sshpk@1.8.3/lib/key.js');
+  var PrivateKey = $__require('npm:sshpk@1.8.3/lib/private-key.js');
   var CRYPTO_HAVE_ECDH = (crypto.createECDH !== undefined);
   var ecdh,
       ec,
@@ -10449,11 +10449,11 @@ $__System.registerDynamic("44", ["3f", "@node/crypto", "3b", "3e", "3d", "45", "
     } else if (key.type === 'ecdsa') {
       if (!CRYPTO_HAVE_ECDH) {
         if (ecdh === undefined)
-          ecdh = $__require('43');
+          ecdh = $__require('npm:ecc-jsbn@0.1.1/index.js');
         if (ec === undefined)
-          ec = $__require('41');
+          ec = $__require('npm:ecc-jsbn@0.1.1/lib/ec.js');
         if (jsbn === undefined)
-          jsbn = $__require('42').BigInteger;
+          jsbn = $__require('npm:jsbn@0.1.0/index.js').BigInteger;
         this._ecParams = new X9ECParameters(this._curve);
         if (this._isPriv) {
           this._priv = new ECPrivate(this._ecParams, key.part.d.data);
@@ -10476,7 +10476,7 @@ $__System.registerDynamic("44", ["3f", "@node/crypto", "3b", "3e", "3d", "45", "
       this._dh.setPublicKey(key.part.Q.data);
     } else if (key.type === 'curve25519') {
       if (ed === undefined)
-        ed = $__require('46');
+        ed = $__require('npm:jodid25519@1.0.2/index.js');
       if (this._isPriv) {
         this._priv = key.part.r.data;
         if (this._priv[0] === 0x00)
@@ -10711,19 +10711,19 @@ $__System.registerDynamic("44", ["3f", "@node/crypto", "3b", "3e", "3d", "45", "
   return module.exports;
 });
 
-$__System.registerDynamic("47", ["3f", "3b", "@node/crypto", "3c", "3e", "49", "48", "11"], true, function($__require, exports, module) {
-  var Buffer = $__require("11");
+$__System.registerDynamic("npm:sshpk@1.8.3/lib/signature.js", ["npm:assert-plus@1.0.0/assert.js", "npm:sshpk@1.8.3/lib/algs.js", "@node/crypto", "npm:sshpk@1.8.3/lib/errors.js", "npm:sshpk@1.8.3/lib/utils.js", "npm:asn1@0.2.3/lib/index.js", "npm:sshpk@1.8.3/lib/ssh-buffer.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
   module.exports = Signature;
-  var assert = $__require('3f');
-  var algs = $__require('3b');
+  var assert = $__require('npm:assert-plus@1.0.0/assert.js');
+  var algs = $__require('npm:sshpk@1.8.3/lib/algs.js');
   var crypto = $__require('@node/crypto');
-  var errs = $__require('3c');
-  var utils = $__require('3e');
-  var asn1 = $__require('49');
-  var SSHBuffer = $__require('48');
+  var errs = $__require('npm:sshpk@1.8.3/lib/errors.js');
+  var utils = $__require('npm:sshpk@1.8.3/lib/utils.js');
+  var asn1 = $__require('npm:asn1@0.2.3/lib/index.js');
+  var SSHBuffer = $__require('npm:sshpk@1.8.3/lib/ssh-buffer.js');
   var InvalidAlgorithmError = errs.InvalidAlgorithmError;
   var SignatureParseError = errs.SignatureParseError;
   function Signature(opts) {
@@ -10929,8 +10929,8 @@ $__System.registerDynamic("47", ["3f", "3b", "@node/crypto", "3c", "3e", "49", "
   return module.exports;
 });
 
-$__System.registerDynamic("4a", ["@node/crypto", "11"], true, function($__require, exports, module) {
-  var Buffer = $__require("11");
+$__System.registerDynamic("npm:tweetnacl@0.13.3/nacl-fast.js", ["@node/crypto", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -13396,8 +13396,8 @@ $__System.registerDynamic("4a", ["@node/crypto", "11"], true, function($__requir
   return module.exports;
 });
 
-$__System.registerDynamic("4b", ["@node/stream", "@node/util", "3f", "47", "4a", "11"], true, function($__require, exports, module) {
-  var Buffer = $__require("11");
+$__System.registerDynamic("npm:sshpk@1.8.3/lib/ed-compat.js", ["@node/stream", "@node/util", "npm:assert-plus@1.0.0/assert.js", "npm:sshpk@1.8.3/lib/signature.js", "npm:tweetnacl@0.13.3/nacl-fast.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -13408,11 +13408,11 @@ $__System.registerDynamic("4b", ["@node/stream", "@node/util", "3f", "47", "4a",
   var nacl;
   var stream = $__require('@node/stream');
   var util = $__require('@node/util');
-  var assert = $__require('3f');
-  var Signature = $__require('47');
+  var assert = $__require('npm:assert-plus@1.0.0/assert.js');
+  var Signature = $__require('npm:sshpk@1.8.3/lib/signature.js');
   function Verifier(key, hashAlgo) {
     if (nacl === undefined)
-      nacl = $__require('4a');
+      nacl = $__require('npm:tweetnacl@0.13.3/nacl-fast.js');
     if (hashAlgo.toLowerCase() !== 'sha512')
       throw (new Error('ED25519 only supports the use of ' + 'SHA-512 hashes'));
     this.key = key;
@@ -13445,7 +13445,7 @@ $__System.registerDynamic("4b", ["@node/stream", "@node/util", "3f", "47", "4a",
   };
   function Signer(key, hashAlgo) {
     if (nacl === undefined)
-      nacl = $__require('4a');
+      nacl = $__require('npm:tweetnacl@0.13.3/nacl-fast.js');
     if (hashAlgo.toLowerCase() !== 'sha512')
       throw (new Error('ED25519 only supports the use of ' + 'SHA-512 hashes'));
     this.key = key;
@@ -13472,8 +13472,8 @@ $__System.registerDynamic("4b", ["@node/stream", "@node/util", "3f", "47", "4a",
   return module.exports;
 });
 
-$__System.registerDynamic("4c", ["3f", "3e", "3d", "45", "4d", "4e", "4f", "11"], true, function($__require, exports, module) {
-  var Buffer = $__require("11");
+$__System.registerDynamic("npm:sshpk@1.8.3/lib/formats/auto.js", ["npm:assert-plus@1.0.0/assert.js", "npm:sshpk@1.8.3/lib/utils.js", "npm:sshpk@1.8.3/lib/key.js", "npm:sshpk@1.8.3/lib/private-key.js", "npm:sshpk@1.8.3/lib/formats/pem.js", "npm:sshpk@1.8.3/lib/formats/ssh.js", "npm:sshpk@1.8.3/lib/formats/rfc4253.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -13481,13 +13481,13 @@ $__System.registerDynamic("4c", ["3f", "3e", "3d", "45", "4d", "4e", "4f", "11"]
     read: read,
     write: write
   };
-  var assert = $__require('3f');
-  var utils = $__require('3e');
-  var Key = $__require('3d');
-  var PrivateKey = $__require('45');
-  var pem = $__require('4d');
-  var ssh = $__require('4e');
-  var rfc4253 = $__require('4f');
+  var assert = $__require('npm:assert-plus@1.0.0/assert.js');
+  var utils = $__require('npm:sshpk@1.8.3/lib/utils.js');
+  var Key = $__require('npm:sshpk@1.8.3/lib/key.js');
+  var PrivateKey = $__require('npm:sshpk@1.8.3/lib/private-key.js');
+  var pem = $__require('npm:sshpk@1.8.3/lib/formats/pem.js');
+  var ssh = $__require('npm:sshpk@1.8.3/lib/formats/ssh.js');
+  var rfc4253 = $__require('npm:sshpk@1.8.3/lib/formats/rfc4253.js');
   function read(buf, options) {
     if (typeof(buf) === 'string') {
       if (buf.trim().match(/^[-]+[ ]*BEGIN/))
@@ -13538,14 +13538,14 @@ $__System.registerDynamic("4c", ["3f", "3e", "3d", "45", "4d", "4e", "4f", "11"]
   return module.exports;
 });
 
-$__System.registerDynamic("50", ["@node/assert", "51", "52", "11"], true, function($__require, exports, module) {
-  var Buffer = $__require("11");
+$__System.registerDynamic("npm:asn1@0.2.3/lib/ber/reader.js", ["@node/assert", "npm:asn1@0.2.3/lib/ber/types.js", "npm:asn1@0.2.3/lib/ber/errors.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
   var assert = $__require('@node/assert');
-  var ASN1 = $__require('51');
-  var errors = $__require('52');
+  var ASN1 = $__require('npm:asn1@0.2.3/lib/ber/types.js');
+  var errors = $__require('npm:asn1@0.2.3/lib/ber/errors.js');
   var newInvalidAsn1Error = errors.newInvalidAsn1Error;
   function Reader(data) {
     if (!data || !Buffer.isBuffer(data))
@@ -13700,7 +13700,7 @@ $__System.registerDynamic("50", ["@node/assert", "51", "52", "11"], true, functi
   return module.exports;
 });
 
-$__System.registerDynamic("51", [], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:asn1@0.2.3/lib/ber/types.js", [], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
@@ -13741,7 +13741,7 @@ $__System.registerDynamic("51", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("52", [], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:asn1@0.2.3/lib/ber/errors.js", [], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
@@ -13755,14 +13755,14 @@ $__System.registerDynamic("52", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("53", ["@node/assert", "51", "52", "11"], true, function($__require, exports, module) {
-  var Buffer = $__require("11");
+$__System.registerDynamic("npm:asn1@0.2.3/lib/ber/writer.js", ["@node/assert", "npm:asn1@0.2.3/lib/ber/types.js", "npm:asn1@0.2.3/lib/ber/errors.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
   var assert = $__require('@node/assert');
-  var ASN1 = $__require('51');
-  var errors = $__require('52');
+  var ASN1 = $__require('npm:asn1@0.2.3/lib/ber/types.js');
+  var errors = $__require('npm:asn1@0.2.3/lib/ber/errors.js');
   var newInvalidAsn1Error = errors.newInvalidAsn1Error;
   var DEFAULT_OPTS = {
     size: 1024,
@@ -13997,15 +13997,15 @@ $__System.registerDynamic("53", ["@node/assert", "51", "52", "11"], true, functi
   return module.exports;
 });
 
-$__System.registerDynamic("54", ["52", "51", "50", "53"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:asn1@0.2.3/lib/ber/index.js", ["npm:asn1@0.2.3/lib/ber/errors.js", "npm:asn1@0.2.3/lib/ber/types.js", "npm:asn1@0.2.3/lib/ber/reader.js", "npm:asn1@0.2.3/lib/ber/writer.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var errors = $__require('52');
-  var types = $__require('51');
-  var Reader = $__require('50');
-  var Writer = $__require('53');
+  var errors = $__require('npm:asn1@0.2.3/lib/ber/errors.js');
+  var types = $__require('npm:asn1@0.2.3/lib/ber/types.js');
+  var Reader = $__require('npm:asn1@0.2.3/lib/ber/reader.js');
+  var Writer = $__require('npm:asn1@0.2.3/lib/ber/writer.js');
   module.exports = {
     Reader: Reader,
     Writer: Writer
@@ -14021,12 +14021,12 @@ $__System.registerDynamic("54", ["52", "51", "50", "53"], true, function($__requ
   return module.exports;
 });
 
-$__System.registerDynamic("49", ["54"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:asn1@0.2.3/lib/index.js", ["npm:asn1@0.2.3/lib/ber/index.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var Ber = $__require('54');
+  var Ber = $__require('npm:asn1@0.2.3/lib/ber/index.js');
   module.exports = {
     Ber: Ber,
     BerReader: Ber.Reader,
@@ -14035,8 +14035,8 @@ $__System.registerDynamic("49", ["54"], true, function($__require, exports, modu
   return module.exports;
 });
 
-$__System.registerDynamic("3b", ["11"], true, function($__require, exports, module) {
-  var Buffer = $__require("11");
+$__System.registerDynamic("npm:sshpk@1.8.3/lib/algs.js", ["github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -14118,8 +14118,8 @@ $__System.registerDynamic("3b", ["11"], true, function($__require, exports, modu
   return module.exports;
 });
 
-$__System.registerDynamic("55", ["3f", "49", "3b", "3e", "3d", "45", "4d", "56", "11"], true, function($__require, exports, module) {
-  var Buffer = $__require("11");
+$__System.registerDynamic("npm:sshpk@1.8.3/lib/formats/pkcs1.js", ["npm:assert-plus@1.0.0/assert.js", "npm:asn1@0.2.3/lib/index.js", "npm:sshpk@1.8.3/lib/algs.js", "npm:sshpk@1.8.3/lib/utils.js", "npm:sshpk@1.8.3/lib/key.js", "npm:sshpk@1.8.3/lib/private-key.js", "npm:sshpk@1.8.3/lib/formats/pem.js", "npm:sshpk@1.8.3/lib/formats/pkcs8.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -14129,14 +14129,14 @@ $__System.registerDynamic("55", ["3f", "49", "3b", "3e", "3d", "45", "4d", "56",
     write: write,
     writePkcs1: writePkcs1
   };
-  var assert = $__require('3f');
-  var asn1 = $__require('49');
-  var algs = $__require('3b');
-  var utils = $__require('3e');
-  var Key = $__require('3d');
-  var PrivateKey = $__require('45');
-  var pem = $__require('4d');
-  var pkcs8 = $__require('56');
+  var assert = $__require('npm:assert-plus@1.0.0/assert.js');
+  var asn1 = $__require('npm:asn1@0.2.3/lib/index.js');
+  var algs = $__require('npm:sshpk@1.8.3/lib/algs.js');
+  var utils = $__require('npm:sshpk@1.8.3/lib/utils.js');
+  var Key = $__require('npm:sshpk@1.8.3/lib/key.js');
+  var PrivateKey = $__require('npm:sshpk@1.8.3/lib/private-key.js');
+  var pem = $__require('npm:sshpk@1.8.3/lib/formats/pem.js');
+  var pkcs8 = $__require('npm:sshpk@1.8.3/lib/formats/pkcs8.js');
   var readECDSACurve = pkcs8.readECDSACurve;
   function read(buf, options) {
     return (pem.read(buf, options, 'pkcs1'));
@@ -14427,8 +14427,8 @@ $__System.registerDynamic("55", ["3f", "49", "3b", "3e", "3d", "45", "4d", "56",
   return module.exports;
 });
 
-$__System.registerDynamic("4d", ["3f", "49", "@node/crypto", "3b", "3e", "3d", "45", "55", "56", "57", "4f", "3c", "11"], true, function($__require, exports, module) {
-  var Buffer = $__require("11");
+$__System.registerDynamic("npm:sshpk@1.8.3/lib/formats/pem.js", ["npm:assert-plus@1.0.0/assert.js", "npm:asn1@0.2.3/lib/index.js", "@node/crypto", "npm:sshpk@1.8.3/lib/algs.js", "npm:sshpk@1.8.3/lib/utils.js", "npm:sshpk@1.8.3/lib/key.js", "npm:sshpk@1.8.3/lib/private-key.js", "npm:sshpk@1.8.3/lib/formats/pkcs1.js", "npm:sshpk@1.8.3/lib/formats/pkcs8.js", "npm:sshpk@1.8.3/lib/formats/ssh-private.js", "npm:sshpk@1.8.3/lib/formats/rfc4253.js", "npm:sshpk@1.8.3/lib/errors.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -14436,18 +14436,18 @@ $__System.registerDynamic("4d", ["3f", "49", "@node/crypto", "3b", "3e", "3d", "
     read: read,
     write: write
   };
-  var assert = $__require('3f');
-  var asn1 = $__require('49');
+  var assert = $__require('npm:assert-plus@1.0.0/assert.js');
+  var asn1 = $__require('npm:asn1@0.2.3/lib/index.js');
   var crypto = $__require('@node/crypto');
-  var algs = $__require('3b');
-  var utils = $__require('3e');
-  var Key = $__require('3d');
-  var PrivateKey = $__require('45');
-  var pkcs1 = $__require('55');
-  var pkcs8 = $__require('56');
-  var sshpriv = $__require('57');
-  var rfc4253 = $__require('4f');
-  var errors = $__require('3c');
+  var algs = $__require('npm:sshpk@1.8.3/lib/algs.js');
+  var utils = $__require('npm:sshpk@1.8.3/lib/utils.js');
+  var Key = $__require('npm:sshpk@1.8.3/lib/key.js');
+  var PrivateKey = $__require('npm:sshpk@1.8.3/lib/private-key.js');
+  var pkcs1 = $__require('npm:sshpk@1.8.3/lib/formats/pkcs1.js');
+  var pkcs8 = $__require('npm:sshpk@1.8.3/lib/formats/pkcs8.js');
+  var sshpriv = $__require('npm:sshpk@1.8.3/lib/formats/ssh-private.js');
+  var rfc4253 = $__require('npm:sshpk@1.8.3/lib/formats/rfc4253.js');
+  var errors = $__require('npm:sshpk@1.8.3/lib/errors.js');
   function read(buf, options, forceType) {
     var input = buf;
     if (typeof(buf) !== 'string') {
@@ -14580,8 +14580,8 @@ $__System.registerDynamic("4d", ["3f", "49", "@node/crypto", "3b", "3e", "3d", "
   return module.exports;
 });
 
-$__System.registerDynamic("56", ["3f", "49", "3b", "3e", "3d", "45", "4d", "11"], true, function($__require, exports, module) {
-  var Buffer = $__require("11");
+$__System.registerDynamic("npm:sshpk@1.8.3/lib/formats/pkcs8.js", ["npm:assert-plus@1.0.0/assert.js", "npm:asn1@0.2.3/lib/index.js", "npm:sshpk@1.8.3/lib/algs.js", "npm:sshpk@1.8.3/lib/utils.js", "npm:sshpk@1.8.3/lib/key.js", "npm:sshpk@1.8.3/lib/private-key.js", "npm:sshpk@1.8.3/lib/formats/pem.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -14593,13 +14593,13 @@ $__System.registerDynamic("56", ["3f", "49", "3b", "3e", "3d", "45", "4d", "11"]
     readECDSACurve: readECDSACurve,
     writeECDSACurve: writeECDSACurve
   };
-  var assert = $__require('3f');
-  var asn1 = $__require('49');
-  var algs = $__require('3b');
-  var utils = $__require('3e');
-  var Key = $__require('3d');
-  var PrivateKey = $__require('45');
-  var pem = $__require('4d');
+  var assert = $__require('npm:assert-plus@1.0.0/assert.js');
+  var asn1 = $__require('npm:asn1@0.2.3/lib/index.js');
+  var algs = $__require('npm:sshpk@1.8.3/lib/algs.js');
+  var utils = $__require('npm:sshpk@1.8.3/lib/utils.js');
+  var Key = $__require('npm:sshpk@1.8.3/lib/key.js');
+  var PrivateKey = $__require('npm:sshpk@1.8.3/lib/private-key.js');
+  var pem = $__require('npm:sshpk@1.8.3/lib/formats/pem.js');
   function read(buf, options) {
     return (pem.read(buf, options, 'pkcs8'));
   }
@@ -15020,8 +15020,8 @@ $__System.registerDynamic("56", ["3f", "49", "3b", "3e", "3d", "45", "4d", "11"]
   return module.exports;
 });
 
-$__System.registerDynamic("3e", ["3f", "45", "@node/crypto", "42", "11"], true, function($__require, exports, module) {
-  var Buffer = $__require("11");
+$__System.registerDynamic("npm:sshpk@1.8.3/lib/utils.js", ["npm:assert-plus@1.0.0/assert.js", "npm:sshpk@1.8.3/lib/private-key.js", "@node/crypto", "npm:jsbn@0.1.0/index.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -15036,8 +15036,8 @@ $__System.registerDynamic("3e", ["3f", "45", "@node/crypto", "42", "11"], true, 
     isCompatible: isCompatible,
     opensslKeyDeriv: opensslKeyDeriv
   };
-  var assert = $__require('3f');
-  var PrivateKey = $__require('45');
+  var assert = $__require('npm:assert-plus@1.0.0/assert.js');
+  var PrivateKey = $__require('npm:sshpk@1.8.3/lib/private-key.js');
   var crypto = $__require('@node/crypto');
   var MAX_CLASS_DEPTH = 3;
   function isCompatible(obj, klass, needVer) {
@@ -15208,7 +15208,7 @@ $__System.registerDynamic("3e", ["3f", "45", "@node/crypto", "42", "11"], true, 
     assert.buffer(p);
     assert.buffer(x);
     try {
-      var bigInt = $__require('42').BigInteger;
+      var bigInt = $__require('npm:jsbn@0.1.0/index.js').BigInteger;
     } catch (e) {
       throw (new Error('To load a PKCS#8 format DSA private key, ' + 'the node jsbn library is required.'));
     }
@@ -15223,7 +15223,7 @@ $__System.registerDynamic("3e", ["3f", "45", "@node/crypto", "42", "11"], true, 
     assert.object(key);
     assertCompatible(key, PrivateKey, [1, 1]);
     try {
-      var bigInt = $__require('42').BigInteger;
+      var bigInt = $__require('npm:jsbn@0.1.0/index.js').BigInteger;
     } catch (e) {
       throw (new Error('To write a PEM private key from ' + 'this source, the node jsbn lib is required.'));
     }
@@ -15253,8 +15253,8 @@ $__System.registerDynamic("3e", ["3f", "45", "@node/crypto", "42", "11"], true, 
   return module.exports;
 });
 
-$__System.registerDynamic("4e", ["3f", "4f", "3e", "3d", "45", "57", "11"], true, function($__require, exports, module) {
-  var Buffer = $__require("11");
+$__System.registerDynamic("npm:sshpk@1.8.3/lib/formats/ssh.js", ["npm:assert-plus@1.0.0/assert.js", "npm:sshpk@1.8.3/lib/formats/rfc4253.js", "npm:sshpk@1.8.3/lib/utils.js", "npm:sshpk@1.8.3/lib/key.js", "npm:sshpk@1.8.3/lib/private-key.js", "npm:sshpk@1.8.3/lib/formats/ssh-private.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -15262,12 +15262,12 @@ $__System.registerDynamic("4e", ["3f", "4f", "3e", "3d", "45", "57", "11"], true
     read: read,
     write: write
   };
-  var assert = $__require('3f');
-  var rfc4253 = $__require('4f');
-  var utils = $__require('3e');
-  var Key = $__require('3d');
-  var PrivateKey = $__require('45');
-  var sshpriv = $__require('57');
+  var assert = $__require('npm:assert-plus@1.0.0/assert.js');
+  var rfc4253 = $__require('npm:sshpk@1.8.3/lib/formats/rfc4253.js');
+  var utils = $__require('npm:sshpk@1.8.3/lib/utils.js');
+  var Key = $__require('npm:sshpk@1.8.3/lib/key.js');
+  var PrivateKey = $__require('npm:sshpk@1.8.3/lib/private-key.js');
+  var sshpriv = $__require('npm:sshpk@1.8.3/lib/formats/ssh-private.js');
   var SSHKEY_RE = /^([a-z0-9-]+)[ \t]+([a-zA-Z0-9+\/]+[=]*)([\n \t]+([^\n]+))?$/;
   var SSHKEY_RE2 = /^([a-z0-9-]+)[ \t]+([a-zA-Z0-9+\/ \t\n]+[=]*)(.*)$/;
   function read(buf, options) {
@@ -15331,35 +15331,35 @@ $__System.registerDynamic("4e", ["3f", "4f", "3e", "3d", "45", "57", "11"], true
   return module.exports;
 });
 
-$__System.registerDynamic("3d", ["3f", "3b", "@node/crypto", "3a", "47", "44", "3c", "3e", "45", "4b", "4c", "4d", "55", "56", "4f", "4e", "57", "11"], true, function($__require, exports, module) {
-  var Buffer = $__require("11");
+$__System.registerDynamic("npm:sshpk@1.8.3/lib/key.js", ["npm:assert-plus@1.0.0/assert.js", "npm:sshpk@1.8.3/lib/algs.js", "@node/crypto", "npm:sshpk@1.8.3/lib/fingerprint.js", "npm:sshpk@1.8.3/lib/signature.js", "npm:sshpk@1.8.3/lib/dhe.js", "npm:sshpk@1.8.3/lib/errors.js", "npm:sshpk@1.8.3/lib/utils.js", "npm:sshpk@1.8.3/lib/private-key.js", "npm:sshpk@1.8.3/lib/ed-compat.js", "npm:sshpk@1.8.3/lib/formats/auto.js", "npm:sshpk@1.8.3/lib/formats/pem.js", "npm:sshpk@1.8.3/lib/formats/pkcs1.js", "npm:sshpk@1.8.3/lib/formats/pkcs8.js", "npm:sshpk@1.8.3/lib/formats/rfc4253.js", "npm:sshpk@1.8.3/lib/formats/ssh.js", "npm:sshpk@1.8.3/lib/formats/ssh-private.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
   module.exports = Key;
-  var assert = $__require('3f');
-  var algs = $__require('3b');
+  var assert = $__require('npm:assert-plus@1.0.0/assert.js');
+  var algs = $__require('npm:sshpk@1.8.3/lib/algs.js');
   var crypto = $__require('@node/crypto');
-  var Fingerprint = $__require('3a');
-  var Signature = $__require('47');
-  var DiffieHellman = $__require('44');
-  var errs = $__require('3c');
-  var utils = $__require('3e');
-  var PrivateKey = $__require('45');
+  var Fingerprint = $__require('npm:sshpk@1.8.3/lib/fingerprint.js');
+  var Signature = $__require('npm:sshpk@1.8.3/lib/signature.js');
+  var DiffieHellman = $__require('npm:sshpk@1.8.3/lib/dhe.js');
+  var errs = $__require('npm:sshpk@1.8.3/lib/errors.js');
+  var utils = $__require('npm:sshpk@1.8.3/lib/utils.js');
+  var PrivateKey = $__require('npm:sshpk@1.8.3/lib/private-key.js');
   var edCompat;
   try {
-    edCompat = $__require('4b');
+    edCompat = $__require('npm:sshpk@1.8.3/lib/ed-compat.js');
   } catch (e) {}
   var InvalidAlgorithmError = errs.InvalidAlgorithmError;
   var KeyParseError = errs.KeyParseError;
   var formats = {};
-  formats['auto'] = $__require('4c');
-  formats['pem'] = $__require('4d');
-  formats['pkcs1'] = $__require('55');
-  formats['pkcs8'] = $__require('56');
-  formats['rfc4253'] = $__require('4f');
-  formats['ssh'] = $__require('4e');
-  formats['ssh-private'] = $__require('57');
+  formats['auto'] = $__require('npm:sshpk@1.8.3/lib/formats/auto.js');
+  formats['pem'] = $__require('npm:sshpk@1.8.3/lib/formats/pem.js');
+  formats['pkcs1'] = $__require('npm:sshpk@1.8.3/lib/formats/pkcs1.js');
+  formats['pkcs8'] = $__require('npm:sshpk@1.8.3/lib/formats/pkcs8.js');
+  formats['rfc4253'] = $__require('npm:sshpk@1.8.3/lib/formats/rfc4253.js');
+  formats['ssh'] = $__require('npm:sshpk@1.8.3/lib/formats/ssh.js');
+  formats['ssh-private'] = $__require('npm:sshpk@1.8.3/lib/formats/ssh-private.js');
   formats['openssh'] = formats['ssh-private'];
   function Key(opts) {
     assert.object(opts, 'options');
@@ -15550,8 +15550,8 @@ $__System.registerDynamic("3d", ["3f", "3b", "@node/crypto", "3a", "47", "44", "
   return module.exports;
 });
 
-$__System.registerDynamic("4f", ["3f", "3b", "3e", "3d", "45", "48", "11"], true, function($__require, exports, module) {
-  var Buffer = $__require("11");
+$__System.registerDynamic("npm:sshpk@1.8.3/lib/formats/rfc4253.js", ["npm:assert-plus@1.0.0/assert.js", "npm:sshpk@1.8.3/lib/algs.js", "npm:sshpk@1.8.3/lib/utils.js", "npm:sshpk@1.8.3/lib/key.js", "npm:sshpk@1.8.3/lib/private-key.js", "npm:sshpk@1.8.3/lib/ssh-buffer.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -15564,12 +15564,12 @@ $__System.registerDynamic("4f", ["3f", "3b", "3e", "3d", "45", "48", "11"], true
     keyTypeToAlg: keyTypeToAlg,
     algToKeyType: algToKeyType
   };
-  var assert = $__require('3f');
-  var algs = $__require('3b');
-  var utils = $__require('3e');
-  var Key = $__require('3d');
-  var PrivateKey = $__require('45');
-  var SSHBuffer = $__require('48');
+  var assert = $__require('npm:assert-plus@1.0.0/assert.js');
+  var algs = $__require('npm:sshpk@1.8.3/lib/algs.js');
+  var utils = $__require('npm:sshpk@1.8.3/lib/utils.js');
+  var Key = $__require('npm:sshpk@1.8.3/lib/key.js');
+  var PrivateKey = $__require('npm:sshpk@1.8.3/lib/private-key.js');
+  var SSHBuffer = $__require('npm:sshpk@1.8.3/lib/ssh-buffer.js');
   function algToKeyType(alg) {
     assert.string(alg);
     if (alg === 'ssh-dss')
@@ -15672,13 +15672,13 @@ $__System.registerDynamic("4f", ["3f", "3b", "3e", "3d", "45", "48", "11"], true
   return module.exports;
 });
 
-$__System.registerDynamic("48", ["3f", "11"], true, function($__require, exports, module) {
-  var Buffer = $__require("11");
+$__System.registerDynamic("npm:sshpk@1.8.3/lib/ssh-buffer.js", ["npm:assert-plus@1.0.0/assert.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
   module.exports = SSHBuffer;
-  var assert = $__require('3f');
+  var assert = $__require('npm:assert-plus@1.0.0/assert.js');
   function SSHBuffer(opts) {
     assert.object(opts, 'options');
     if (opts.buffer !== undefined)
@@ -15778,8 +15778,8 @@ $__System.registerDynamic("48", ["3f", "11"], true, function($__require, exports
   return module.exports;
 });
 
-$__System.registerDynamic("57", ["3f", "49", "3b", "3e", "@node/crypto", "3d", "45", "4d", "4f", "48", "11"], true, function($__require, exports, module) {
-  var Buffer = $__require("11");
+$__System.registerDynamic("npm:sshpk@1.8.3/lib/formats/ssh-private.js", ["npm:assert-plus@1.0.0/assert.js", "npm:asn1@0.2.3/lib/index.js", "npm:sshpk@1.8.3/lib/algs.js", "npm:sshpk@1.8.3/lib/utils.js", "@node/crypto", "npm:sshpk@1.8.3/lib/key.js", "npm:sshpk@1.8.3/lib/private-key.js", "npm:sshpk@1.8.3/lib/formats/pem.js", "npm:sshpk@1.8.3/lib/formats/rfc4253.js", "npm:sshpk@1.8.3/lib/ssh-buffer.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -15788,16 +15788,16 @@ $__System.registerDynamic("57", ["3f", "49", "3b", "3e", "@node/crypto", "3d", "
     readSSHPrivate: readSSHPrivate,
     write: write
   };
-  var assert = $__require('3f');
-  var asn1 = $__require('49');
-  var algs = $__require('3b');
-  var utils = $__require('3e');
+  var assert = $__require('npm:assert-plus@1.0.0/assert.js');
+  var asn1 = $__require('npm:asn1@0.2.3/lib/index.js');
+  var algs = $__require('npm:sshpk@1.8.3/lib/algs.js');
+  var utils = $__require('npm:sshpk@1.8.3/lib/utils.js');
   var crypto = $__require('@node/crypto');
-  var Key = $__require('3d');
-  var PrivateKey = $__require('45');
-  var pem = $__require('4d');
-  var rfc4253 = $__require('4f');
-  var SSHBuffer = $__require('48');
+  var Key = $__require('npm:sshpk@1.8.3/lib/key.js');
+  var PrivateKey = $__require('npm:sshpk@1.8.3/lib/private-key.js');
+  var pem = $__require('npm:sshpk@1.8.3/lib/formats/pem.js');
+  var rfc4253 = $__require('npm:sshpk@1.8.3/lib/formats/rfc4253.js');
+  var SSHBuffer = $__require('npm:sshpk@1.8.3/lib/ssh-buffer.js');
   function read(buf, options) {
     return (pem.read(buf, options));
   }
@@ -15886,15 +15886,15 @@ $__System.registerDynamic("57", ["3f", "49", "3b", "3e", "@node/crypto", "3d", "
   return module.exports;
 });
 
-$__System.registerDynamic("58", ["59", "5a", "5b", "11"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:jodid25519@1.0.2/lib/dh.js", ["npm:jodid25519@1.0.2/lib/core.js", "npm:jodid25519@1.0.2/lib/utils.js", "npm:jodid25519@1.0.2/lib/curve255.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
   "use strict";
-  var Buffer = $__require("11");
+  var Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
-  var core = $__require('59');
-  var utils = $__require('5a');
-  var curve255 = $__require('5b');
+  var core = $__require('npm:jodid25519@1.0.2/lib/core.js');
+  var utils = $__require('npm:jodid25519@1.0.2/lib/utils.js');
+  var curve255 = $__require('npm:jodid25519@1.0.2/lib/curve255.js');
   var ns = {};
   function _toString(vector) {
     var u = new Uint16Array(vector);
@@ -15930,7 +15930,7 @@ $__System.registerDynamic("58", ["59", "5a", "5b", "11"], true, function($__requ
   return module.exports;
 });
 
-$__System.registerDynamic("42", [], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:jsbn@0.1.0/index.js", [], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
@@ -17413,16 +17413,16 @@ $__System.registerDynamic("42", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("5c", ["59", "5b", "5a", "42", "@node/crypto", "11"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:jodid25519@1.0.2/lib/eddsa.js", ["npm:jodid25519@1.0.2/lib/core.js", "npm:jodid25519@1.0.2/lib/curve255.js", "npm:jodid25519@1.0.2/lib/utils.js", "npm:jsbn@0.1.0/index.js", "@node/crypto", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
   "use strict";
-  var Buffer = $__require("11");
+  var Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
-  var core = $__require('59');
-  var curve255 = $__require('5b');
-  var utils = $__require('5a');
-  var BigInteger = $__require('42').BigInteger;
+  var core = $__require('npm:jodid25519@1.0.2/lib/core.js');
+  var curve255 = $__require('npm:jodid25519@1.0.2/lib/curve255.js');
+  var utils = $__require('npm:jodid25519@1.0.2/lib/utils.js');
+  var BigInteger = $__require('npm:jsbn@0.1.0/index.js').BigInteger;
   var crypto = $__require('@node/crypto');
   var ns = {};
   function _bi255(value) {
@@ -17813,14 +17813,14 @@ $__System.registerDynamic("5c", ["59", "5b", "5a", "42", "@node/crypto", "11"], 
   return module.exports;
 });
 
-$__System.registerDynamic("5b", ["59", "5a"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:jodid25519@1.0.2/lib/curve255.js", ["npm:jodid25519@1.0.2/lib/core.js", "npm:jodid25519@1.0.2/lib/utils.js"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var core = $__require('59');
-  var utils = $__require('5a');
+  var core = $__require('npm:jodid25519@1.0.2/lib/core.js');
+  var utils = $__require('npm:jodid25519@1.0.2/lib/utils.js');
   var ns = {};
   function curve25519_raw(f, c) {
     var a,
@@ -17886,7 +17886,7 @@ $__System.registerDynamic("5b", ["59", "5a"], true, function($__require, exports
   return module.exports;
 });
 
-$__System.registerDynamic("59", ["@node/crypto"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:jodid25519@1.0.2/lib/core.js", ["@node/crypto"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -18239,13 +18239,13 @@ $__System.registerDynamic("59", ["@node/crypto"], true, function($__require, exp
   return module.exports;
 });
 
-$__System.registerDynamic("5a", ["59"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:jodid25519@1.0.2/lib/utils.js", ["npm:jodid25519@1.0.2/lib/core.js"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var core = $__require('59');
+  var core = $__require('npm:jodid25519@1.0.2/lib/core.js');
   var ns = {};
   var _HEXCHARS = "0123456789abcdef";
   function _hexencode(vector) {
@@ -18332,16 +18332,16 @@ $__System.registerDynamic("5a", ["59"], true, function($__require, exports, modu
   return module.exports;
 });
 
-$__System.registerDynamic("46", ["58", "5c", "5b", "5a"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:jodid25519@1.0.2/index.js", ["npm:jodid25519@1.0.2/lib/dh.js", "npm:jodid25519@1.0.2/lib/eddsa.js", "npm:jodid25519@1.0.2/lib/curve255.js", "npm:jodid25519@1.0.2/lib/utils.js"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var dh = $__require('58');
-  var eddsa = $__require('5c');
-  var curve255 = $__require('5b');
-  var utils = $__require('5a');
+  var dh = $__require('npm:jodid25519@1.0.2/lib/dh.js');
+  var eddsa = $__require('npm:jodid25519@1.0.2/lib/eddsa.js');
+  var curve255 = $__require('npm:jodid25519@1.0.2/lib/curve255.js');
+  var utils = $__require('npm:jodid25519@1.0.2/lib/utils.js');
   var ns = {};
   ns.VERSION = '0.7.1';
   ns.dh = dh;
@@ -18352,36 +18352,36 @@ $__System.registerDynamic("46", ["58", "5c", "5b", "5a"], true, function($__requ
   return module.exports;
 });
 
-$__System.registerDynamic("45", ["3f", "3b", "@node/crypto", "3a", "47", "3c", "@node/util", "3e", "4b", "3d", "4c", "4d", "55", "56", "4f", "57", "46", "11"], true, function($__require, exports, module) {
-  var Buffer = $__require("11");
+$__System.registerDynamic("npm:sshpk@1.8.3/lib/private-key.js", ["npm:assert-plus@1.0.0/assert.js", "npm:sshpk@1.8.3/lib/algs.js", "@node/crypto", "npm:sshpk@1.8.3/lib/fingerprint.js", "npm:sshpk@1.8.3/lib/signature.js", "npm:sshpk@1.8.3/lib/errors.js", "@node/util", "npm:sshpk@1.8.3/lib/utils.js", "npm:sshpk@1.8.3/lib/ed-compat.js", "npm:sshpk@1.8.3/lib/key.js", "npm:sshpk@1.8.3/lib/formats/auto.js", "npm:sshpk@1.8.3/lib/formats/pem.js", "npm:sshpk@1.8.3/lib/formats/pkcs1.js", "npm:sshpk@1.8.3/lib/formats/pkcs8.js", "npm:sshpk@1.8.3/lib/formats/rfc4253.js", "npm:sshpk@1.8.3/lib/formats/ssh-private.js", "npm:jodid25519@1.0.2/index.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
   module.exports = PrivateKey;
-  var assert = $__require('3f');
-  var algs = $__require('3b');
+  var assert = $__require('npm:assert-plus@1.0.0/assert.js');
+  var algs = $__require('npm:sshpk@1.8.3/lib/algs.js');
   var crypto = $__require('@node/crypto');
-  var Fingerprint = $__require('3a');
-  var Signature = $__require('47');
-  var errs = $__require('3c');
+  var Fingerprint = $__require('npm:sshpk@1.8.3/lib/fingerprint.js');
+  var Signature = $__require('npm:sshpk@1.8.3/lib/signature.js');
+  var errs = $__require('npm:sshpk@1.8.3/lib/errors.js');
   var util = $__require('@node/util');
-  var utils = $__require('3e');
+  var utils = $__require('npm:sshpk@1.8.3/lib/utils.js');
   var edCompat;
   var ed;
   try {
-    edCompat = $__require('4b');
+    edCompat = $__require('npm:sshpk@1.8.3/lib/ed-compat.js');
   } catch (e) {}
-  var Key = $__require('3d');
+  var Key = $__require('npm:sshpk@1.8.3/lib/key.js');
   var InvalidAlgorithmError = errs.InvalidAlgorithmError;
   var KeyParseError = errs.KeyParseError;
   var KeyEncryptedError = errs.KeyEncryptedError;
   var formats = {};
-  formats['auto'] = $__require('4c');
-  formats['pem'] = $__require('4d');
-  formats['pkcs1'] = $__require('55');
-  formats['pkcs8'] = $__require('56');
-  formats['rfc4253'] = $__require('4f');
-  formats['ssh-private'] = $__require('57');
+  formats['auto'] = $__require('npm:sshpk@1.8.3/lib/formats/auto.js');
+  formats['pem'] = $__require('npm:sshpk@1.8.3/lib/formats/pem.js');
+  formats['pkcs1'] = $__require('npm:sshpk@1.8.3/lib/formats/pkcs1.js');
+  formats['pkcs8'] = $__require('npm:sshpk@1.8.3/lib/formats/pkcs8.js');
+  formats['rfc4253'] = $__require('npm:sshpk@1.8.3/lib/formats/rfc4253.js');
+  formats['ssh-private'] = $__require('npm:sshpk@1.8.3/lib/formats/ssh-private.js');
   formats['openssh'] = formats['ssh-private'];
   formats['ssh'] = formats['ssh-private'];
   function PrivateKey(opts) {
@@ -18427,7 +18427,7 @@ $__System.registerDynamic("45", ["3f", "3b", "@node/crypto", "3a", "47", "3c", "
         pub;
     if (this.type === 'ed25519' && newType === 'curve25519') {
       if (ed === undefined)
-        ed = $__require('46');
+        ed = $__require('npm:jodid25519@1.0.2/index.js');
       priv = this.part.r.data;
       if (priv[0] === 0x00)
         priv = priv.slice(1);
@@ -18446,7 +18446,7 @@ $__System.registerDynamic("45", ["3f", "3b", "@node/crypto", "3a", "47", "3c", "
       }));
     } else if (this.type === 'curve25519' && newType === 'ed25519') {
       if (ed === undefined)
-        ed = $__require('46');
+        ed = $__require('npm:jodid25519@1.0.2/index.js');
       priv = this.part.r.data;
       if (priv[0] === 0x00)
         priv = priv.slice(1);
@@ -18551,9 +18551,9 @@ $__System.registerDynamic("45", ["3f", "3b", "@node/crypto", "3a", "47", "3c", "
   return module.exports;
 });
 
-$__System.registerDynamic("3f", ["@node/assert", "@node/stream", "@node/util", "4", "11"], true, function($__require, exports, module) {
-  var process = $__require("4"),
-      Buffer = $__require("11");
+$__System.registerDynamic("npm:assert-plus@1.0.0/assert.js", ["@node/assert", "@node/stream", "@node/util", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"),
+      Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -18737,12 +18737,12 @@ $__System.registerDynamic("3f", ["@node/assert", "@node/stream", "@node/util", "
   return module.exports;
 });
 
-$__System.registerDynamic("3c", ["3f", "@node/util"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:sshpk@1.8.3/lib/errors.js", ["npm:assert-plus@1.0.0/assert.js", "@node/util"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var assert = $__require('3f');
+  var assert = $__require('npm:assert-plus@1.0.0/assert.js');
   var util = $__require('@node/util');
   function FingerprintFormatError(fp, format) {
     if (Error.captureStackTrace)
@@ -18804,16 +18804,16 @@ $__System.registerDynamic("3c", ["3f", "@node/util"], true, function($__require,
   return module.exports;
 });
 
-$__System.registerDynamic("38", ["3d", "3a", "47", "45", "3c"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:sshpk@1.8.3/lib/index.js", ["npm:sshpk@1.8.3/lib/key.js", "npm:sshpk@1.8.3/lib/fingerprint.js", "npm:sshpk@1.8.3/lib/signature.js", "npm:sshpk@1.8.3/lib/private-key.js", "npm:sshpk@1.8.3/lib/errors.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var Key = $__require('3d');
-  var Fingerprint = $__require('3a');
-  var Signature = $__require('47');
-  var PrivateKey = $__require('45');
-  var errs = $__require('3c');
+  var Key = $__require('npm:sshpk@1.8.3/lib/key.js');
+  var Fingerprint = $__require('npm:sshpk@1.8.3/lib/fingerprint.js');
+  var Signature = $__require('npm:sshpk@1.8.3/lib/signature.js');
+  var PrivateKey = $__require('npm:sshpk@1.8.3/lib/private-key.js');
+  var errs = $__require('npm:sshpk@1.8.3/lib/errors.js');
   module.exports = {
     Key: Key,
     parseKey: Key.parse,
@@ -18832,13 +18832,13 @@ $__System.registerDynamic("38", ["3d", "3a", "47", "45", "3c"], true, function($
   return module.exports;
 });
 
-$__System.registerDynamic("31", ["32", "38", "@node/util"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:http-signature@1.1.1/lib/utils.js", ["npm:assert-plus@0.2.0/assert.js", "npm:sshpk@1.8.3/lib/index.js", "@node/util"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var assert = $__require('32');
-  var sshpk = $__require('38');
+  var assert = $__require('npm:assert-plus@0.2.0/assert.js');
+  var sshpk = $__require('npm:sshpk@1.8.3/lib/index.js');
   var util = $__require('@node/util');
   var HASH_ALGOS = {
     'sha1': true,
@@ -18900,15 +18900,15 @@ $__System.registerDynamic("31", ["32", "38", "@node/util"], true, function($__re
   return module.exports;
 });
 
-$__System.registerDynamic("5d", ["30", "37", "39", "31"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:http-signature@1.1.1/lib/index.js", ["npm:http-signature@1.1.1/lib/parser.js", "npm:http-signature@1.1.1/lib/signer.js", "npm:http-signature@1.1.1/lib/verify.js", "npm:http-signature@1.1.1/lib/utils.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var parser = $__require('30');
-  var signer = $__require('37');
-  var verify = $__require('39');
-  var utils = $__require('31');
+  var parser = $__require('npm:http-signature@1.1.1/lib/parser.js');
+  var signer = $__require('npm:http-signature@1.1.1/lib/signer.js');
+  var verify = $__require('npm:http-signature@1.1.1/lib/verify.js');
+  var utils = $__require('npm:http-signature@1.1.1/lib/utils.js');
   module.exports = {
     parse: parser.parseRequest,
     parseRequest: parser.parseRequest,
@@ -18926,9 +18926,9 @@ $__System.registerDynamic("5d", ["30", "37", "39", "31"], true, function($__requ
   return module.exports;
 });
 
-$__System.registerDynamic("5e", ["@node/util", "@node/stream", "@node/string_decoder", "4", "11"], true, function($__require, exports, module) {
-  var process = $__require("4"),
-      Buffer = $__require("11");
+$__System.registerDynamic("npm:stringstream@0.0.5/stringstream.js", ["@node/util", "@node/stream", "@node/string_decoder", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"),
+      Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -19027,7 +19027,7 @@ $__System.registerDynamic("5e", ["@node/util", "@node/stream", "@node/string_dec
   return module.exports;
 });
 
-$__System.registerDynamic("5f", ["@node/util", "@node/http", "@node/net", "@node/tls", "@node/https"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:forever-agent@0.6.1/index.js", ["@node/util", "@node/http", "@node/net", "@node/tls", "@node/https"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
@@ -19145,7 +19145,7 @@ $__System.registerDynamic("5f", ["@node/util", "@node/http", "@node/net", "@node
   return module.exports;
 });
 
-$__System.registerDynamic("60", [], false, function() {
+$__System.registerDynamic("npm:mime-db@1.23.0/db.json", [], false, function() {
   return {
     "application/1d-interleaved-parityfec": {
       "source": "iana"
@@ -27660,22 +27660,22 @@ $__System.registerDynamic("60", [], false, function() {
   };
 });
 
-$__System.registerDynamic("61", ["60"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:mime-db@1.23.0/index.js", ["npm:mime-db@1.23.0/db.json"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
       GLOBAL = this;
-  module.exports = $__require('60');
+  module.exports = $__require('npm:mime-db@1.23.0/db.json');
   return module.exports;
 });
 
-$__System.registerDynamic("62", ["61", "@node/path"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:mime-types@2.1.11/index.js", ["npm:mime-db@1.23.0/index.js", "@node/path"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var db = $__require('61');
+  var db = $__require('npm:mime-db@1.23.0/index.js');
   var extname = $__require('@node/path').extname;
   var extractTypeRegExp = /^\s*([^;\s]*)(?:;|\s|$)/;
   var textTypeRegExp = /^text\//i;
@@ -27762,8 +27762,8 @@ $__System.registerDynamic("62", ["61", "@node/path"], true, function($__require,
   return module.exports;
 });
 
-$__System.registerDynamic("63", ["4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:async@1.5.2/lib/async.js", ["github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -28820,8 +28820,8 @@ $__System.registerDynamic("63", ["4"], true, function($__require, exports, modul
   return module.exports;
 });
 
-$__System.registerDynamic("64", ["4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:form-data@1.0.0-rc4/lib/populate.js", ["github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -28836,22 +28836,22 @@ $__System.registerDynamic("64", ["4"], true, function($__require, exports, modul
   return module.exports;
 });
 
-$__System.registerDynamic("65", ["66", "@node/util", "@node/path", "@node/http", "@node/https", "@node/url", "@node/fs", "62", "63", "64", "4", "11"], true, function($__require, exports, module) {
-  var process = $__require("4"),
-      Buffer = $__require("11");
+$__System.registerDynamic("npm:form-data@1.0.0-rc4/lib/form_data.js", ["npm:combined-stream@1.0.5/lib/combined_stream.js", "@node/util", "@node/path", "@node/http", "@node/https", "@node/url", "@node/fs", "npm:mime-types@2.1.11/index.js", "npm:async@1.5.2/lib/async.js", "npm:form-data@1.0.0-rc4/lib/populate.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"),
+      Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
-  var CombinedStream = $__require('66');
+  var CombinedStream = $__require('npm:combined-stream@1.0.5/lib/combined_stream.js');
   var util = $__require('@node/util');
   var path = $__require('@node/path');
   var http = $__require('@node/http');
   var https = $__require('@node/https');
   var parseUrl = $__require('@node/url').parse;
   var fs = $__require('@node/fs');
-  var mime = $__require('62');
-  var async = $__require('63');
-  var populate = $__require('64');
+  var mime = $__require('npm:mime-types@2.1.11/index.js');
+  var async = $__require('npm:async@1.5.2/lib/async.js');
+  var populate = $__require('npm:form-data@1.0.0-rc4/lib/populate.js');
   module.exports = FormData;
   util.inherits(FormData, CombinedStream);
   function FormData() {
@@ -29096,7 +29096,7 @@ $__System.registerDynamic("65", ["66", "@node/util", "@node/path", "@node/http",
   return module.exports;
 });
 
-$__System.registerDynamic("67", [], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:is-typedarray@1.0.0/index.js", [], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
@@ -29128,7 +29128,7 @@ $__System.registerDynamic("67", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("68", [], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:tough-cookie@2.3.1/lib/store.js", [], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -29161,15 +29161,15 @@ $__System.registerDynamic("68", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("69", ["68", "6a", "6b", "@node/util"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:tough-cookie@2.3.1/lib/memstore.js", ["npm:tough-cookie@2.3.1/lib/store.js", "npm:tough-cookie@2.3.1/lib/permuteDomain.js", "npm:tough-cookie@2.3.1/lib/pathMatch.js", "@node/util"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var Store = $__require('68').Store;
-  var permuteDomain = $__require('6a').permuteDomain;
-  var pathMatch = $__require('6b').pathMatch;
+  var Store = $__require('npm:tough-cookie@2.3.1/lib/store.js').Store;
+  var permuteDomain = $__require('npm:tough-cookie@2.3.1/lib/permuteDomain.js').permuteDomain;
+  var pathMatch = $__require('npm:tough-cookie@2.3.1/lib/pathMatch.js').pathMatch;
   var util = $__require('@node/util');
   function MemoryCookieStore() {
     Store.call(this);
@@ -29281,7 +29281,7 @@ $__System.registerDynamic("69", ["68", "6a", "6b", "@node/util"], true, function
   return module.exports;
 });
 
-$__System.registerDynamic("6b", [], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:tough-cookie@2.3.1/lib/pathMatch.js", [], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -29306,7 +29306,7 @@ $__System.registerDynamic("6b", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("6c", [], false, function() {
+$__System.registerDynamic("npm:tough-cookie@2.3.1/package.json", [], false, function() {
   return {
     "author": {
       "name": "Jeremy Stashewsky",
@@ -29380,7 +29380,7 @@ $__System.registerDynamic("6c", [], false, function() {
   };
 });
 
-$__System.registerDynamic("6d", ["@node/punycode"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:tough-cookie@2.3.1/lib/pubsuffix.js", ["@node/punycode"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -37218,13 +37218,13 @@ $__System.registerDynamic("6d", ["@node/punycode"], true, function($__require, e
   return module.exports;
 });
 
-$__System.registerDynamic("6a", ["6d"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:tough-cookie@2.3.1/lib/permuteDomain.js", ["npm:tough-cookie@2.3.1/lib/pubsuffix.js"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var pubsuffix = $__require('6d');
+  var pubsuffix = $__require('npm:tough-cookie@2.3.1/lib/pubsuffix.js');
   function permuteDomain(domain) {
     var pubSuf = pubsuffix.getPublicSuffix(domain);
     if (!pubSuf) {
@@ -37247,7 +37247,7 @@ $__System.registerDynamic("6a", ["6d"], true, function($__require, exports, modu
   return module.exports;
 });
 
-$__System.registerDynamic("6e", ["@node/net", "@node/url", "6d", "68", "69", "6b", "6c", "@node/punycode", "6a"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:tough-cookie@2.3.1/lib/cookie.js", ["@node/net", "@node/url", "npm:tough-cookie@2.3.1/lib/pubsuffix.js", "npm:tough-cookie@2.3.1/lib/store.js", "npm:tough-cookie@2.3.1/lib/memstore.js", "npm:tough-cookie@2.3.1/lib/pathMatch.js", "npm:tough-cookie@2.3.1/package.json", "@node/punycode", "npm:tough-cookie@2.3.1/lib/permuteDomain.js"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -37255,11 +37255,11 @@ $__System.registerDynamic("6e", ["@node/net", "@node/url", "6d", "68", "69", "6b
       GLOBAL = this;
   var net = $__require('@node/net');
   var urlParse = $__require('@node/url').parse;
-  var pubsuffix = $__require('6d');
-  var Store = $__require('68').Store;
-  var MemoryCookieStore = $__require('69').MemoryCookieStore;
-  var pathMatch = $__require('6b').pathMatch;
-  var VERSION = $__require('6c').version;
+  var pubsuffix = $__require('npm:tough-cookie@2.3.1/lib/pubsuffix.js');
+  var Store = $__require('npm:tough-cookie@2.3.1/lib/store.js').Store;
+  var MemoryCookieStore = $__require('npm:tough-cookie@2.3.1/lib/memstore.js').MemoryCookieStore;
+  var pathMatch = $__require('npm:tough-cookie@2.3.1/lib/pathMatch.js').pathMatch;
+  var VERSION = $__require('npm:tough-cookie@2.3.1/package.json').version;
   var punycode;
   try {
     punycode = $__require('@node/punycode');
@@ -38131,20 +38131,20 @@ $__System.registerDynamic("6e", ["@node/net", "@node/url", "6d", "68", "69", "6b
     pathMatch: pathMatch,
     getPublicSuffix: pubsuffix.getPublicSuffix,
     cookieCompare: cookieCompare,
-    permuteDomain: $__require('6a').permuteDomain,
+    permuteDomain: $__require('npm:tough-cookie@2.3.1/lib/permuteDomain.js').permuteDomain,
     permutePath: permutePath,
     canonicalDomain: canonicalDomain
   };
   return module.exports;
 });
 
-$__System.registerDynamic("6f", ["6e", "4"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:request@2.74.0/lib/cookies.js", ["npm:tough-cookie@2.3.1/lib/cookie.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
   "use strict";
-  var process = $__require("4");
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var tough = $__require('6e');
+  var tough = $__require('npm:tough-cookie@2.3.1/lib/cookie.js');
   var Cookie = tough.Cookie,
       CookieJar = tough.CookieJar;
   exports.parse = function(str) {
@@ -38178,9 +38178,9 @@ $__System.registerDynamic("6f", ["6e", "4"], true, function($__require, exports,
   return module.exports;
 });
 
-$__System.registerDynamic("70", ["4"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:request@2.74.0/lib/getProxyFromURI.js", ["github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
   "use strict";
-  var process = $__require("4");
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -38232,13 +38232,13 @@ $__System.registerDynamic("70", ["4"], true, function($__require, exports, modul
   return module.exports;
 });
 
-$__System.registerDynamic("71", ["72", "@node/querystring", "4"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:request@2.74.0/lib/querystring.js", ["npm:qs@6.2.1/lib/index.js", "@node/querystring", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
   "use strict";
-  var process = $__require("4");
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var qs = $__require('72'),
+  var qs = $__require('npm:qs@6.2.1/lib/index.js'),
       querystring = $__require('@node/querystring');
   function Querystring(request) {
     this.request = request;
@@ -38272,7 +38272,7 @@ $__System.registerDynamic("71", ["72", "@node/querystring", "4"], true, function
   return module.exports;
 });
 
-$__System.registerDynamic("73", [], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:pinkie@2.0.4/index.js", [], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -38511,17 +38511,17 @@ $__System.registerDynamic("73", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("74", ["73"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:pinkie-promise@2.0.1/index.js", ["npm:pinkie@2.0.4/index.js"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
-  module.exports = typeof Promise === 'function' ? Promise : $__require('73');
+  module.exports = typeof Promise === 'function' ? Promise : $__require('npm:pinkie@2.0.4/index.js');
   return module.exports;
 });
 
-$__System.registerDynamic("75", [], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:har-validator@2.0.6/lib/error.js", [], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -38536,7 +38536,7 @@ $__System.registerDynamic("75", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("76", [], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:is-property@1.0.2/is-property.js", [], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -38549,12 +38549,12 @@ $__System.registerDynamic("76", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("77", ["76"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:generate-object-property@1.2.0/index.js", ["npm:is-property@1.0.2/is-property.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var isProperty = $__require('76');
+  var isProperty = $__require('npm:is-property@1.0.2/is-property.js');
   var gen = function(obj, prop) {
     return isProperty(prop) ? obj + '.' + prop : obj + '[' + JSON.stringify(prop) + ']';
   };
@@ -38566,7 +38566,7 @@ $__System.registerDynamic("77", ["76"], true, function($__require, exports, modu
   return module.exports;
 });
 
-$__System.registerDynamic("78", ["@node/util"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:generate-function@2.0.0/index.js", ["@node/util"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
@@ -38625,7 +38625,7 @@ $__System.registerDynamic("78", ["@node/util"], true, function($__require, expor
   return module.exports;
 });
 
-$__System.registerDynamic("79", [], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:jsonpointer@2.0.0/jsonpointer.js", [], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
@@ -38696,7 +38696,7 @@ $__System.registerDynamic("79", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("7a", [], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:xtend@4.0.1/immutable.js", [], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
@@ -38718,7 +38718,7 @@ $__System.registerDynamic("7a", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("7b", [], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:is-my-json-valid@2.13.1/formats.js", [], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
@@ -38740,16 +38740,16 @@ $__System.registerDynamic("7b", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("7c", ["77", "78", "79", "7a", "7b"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:is-my-json-valid@2.13.1/index.js", ["npm:generate-object-property@1.2.0/index.js", "npm:generate-function@2.0.0/index.js", "npm:jsonpointer@2.0.0/jsonpointer.js", "npm:xtend@4.0.1/immutable.js", "npm:is-my-json-valid@2.13.1/formats.js"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var genobj = $__require('77');
-  var genfun = $__require('78');
-  var jsonpointer = $__require('79');
-  var xtend = $__require('7a');
-  var formats = $__require('7b');
+  var genobj = $__require('npm:generate-object-property@1.2.0/index.js');
+  var genfun = $__require('npm:generate-function@2.0.0/index.js');
+  var jsonpointer = $__require('npm:jsonpointer@2.0.0/jsonpointer.js');
+  var xtend = $__require('npm:xtend@4.0.1/immutable.js');
+  var formats = $__require('npm:is-my-json-valid@2.13.1/formats.js');
   var get = function(obj, additionalSchemas, ptr) {
     var visit = function(sub) {
       if (sub && sub.id === ptr)
@@ -39247,15 +39247,15 @@ $__System.registerDynamic("7c", ["77", "78", "79", "7a", "7b"], true, function($
   return module.exports;
 });
 
-$__System.registerDynamic("7d", ["7e", "75", "7c"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:har-validator@2.0.6/lib/runner.js", ["npm:har-validator@2.0.6/lib/schemas/index.js", "npm:har-validator@2.0.6/lib/error.js", "npm:is-my-json-valid@2.13.1/index.js"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var schemas = $__require('7e');
-  var ValidationError = $__require('75');
-  var validator = $__require('7c');
+  var schemas = $__require('npm:har-validator@2.0.6/lib/schemas/index.js');
+  var ValidationError = $__require('npm:har-validator@2.0.6/lib/error.js');
+  var validator = $__require('npm:is-my-json-valid@2.13.1/index.js');
   module.exports = function(schema, data, cb) {
     var valid = false;
     var validate = validator(schema, {
@@ -39274,7 +39274,7 @@ $__System.registerDynamic("7d", ["7e", "75", "7c"], true, function($__require, e
   return module.exports;
 });
 
-$__System.registerDynamic("7f", [], false, function() {
+$__System.registerDynamic("npm:har-validator@2.0.6/lib/schemas/cache.json", [], false, function() {
   return {
     "properties": {
       "beforeRequest": {
@@ -39290,7 +39290,7 @@ $__System.registerDynamic("7f", [], false, function() {
   };
 });
 
-$__System.registerDynamic("80", [], false, function() {
+$__System.registerDynamic("npm:har-validator@2.0.6/lib/schemas/cacheEntry.json", [], false, function() {
   return {
     "oneOf": [
       {
@@ -39327,7 +39327,7 @@ $__System.registerDynamic("80", [], false, function() {
   };
 });
 
-$__System.registerDynamic("81", [], false, function() {
+$__System.registerDynamic("npm:har-validator@2.0.6/lib/schemas/content.json", [], false, function() {
   return {
     "type": "object",
     "required": [
@@ -39357,7 +39357,7 @@ $__System.registerDynamic("81", [], false, function() {
   };
 });
 
-$__System.registerDynamic("82", [], false, function() {
+$__System.registerDynamic("npm:har-validator@2.0.6/lib/schemas/cookie.json", [], false, function() {
   return {
     "type": "object",
     "required": [
@@ -39397,7 +39397,7 @@ $__System.registerDynamic("82", [], false, function() {
   };
 });
 
-$__System.registerDynamic("83", [], false, function() {
+$__System.registerDynamic("npm:har-validator@2.0.6/lib/schemas/creator.json", [], false, function() {
   return {
     "type": "object",
     "required": [
@@ -39418,7 +39418,7 @@ $__System.registerDynamic("83", [], false, function() {
   };
 });
 
-$__System.registerDynamic("84", [], false, function() {
+$__System.registerDynamic("npm:har-validator@2.0.6/lib/schemas/entry.json", [], false, function() {
   return {
     "type": "object",
     "optional": true,
@@ -39476,7 +39476,7 @@ $__System.registerDynamic("84", [], false, function() {
   };
 });
 
-$__System.registerDynamic("85", [], false, function() {
+$__System.registerDynamic("npm:har-validator@2.0.6/lib/schemas/har.json", [], false, function() {
   return {
     "type": "object",
     "required": [
@@ -39490,7 +39490,7 @@ $__System.registerDynamic("85", [], false, function() {
   };
 });
 
-$__System.registerDynamic("86", [], false, function() {
+$__System.registerDynamic("npm:har-validator@2.0.6/lib/schemas/log.json", [], false, function() {
   return {
     "type": "object",
     "required": [
@@ -39527,7 +39527,7 @@ $__System.registerDynamic("86", [], false, function() {
   };
 });
 
-$__System.registerDynamic("87", [], false, function() {
+$__System.registerDynamic("npm:har-validator@2.0.6/lib/schemas/page.json", [], false, function() {
   return {
     "type": "object",
     "optional": true,
@@ -39560,7 +39560,7 @@ $__System.registerDynamic("87", [], false, function() {
   };
 });
 
-$__System.registerDynamic("88", [], false, function() {
+$__System.registerDynamic("npm:har-validator@2.0.6/lib/schemas/pageTimings.json", [], false, function() {
   return {
     "type": "object",
     "properties": {
@@ -39579,7 +39579,7 @@ $__System.registerDynamic("88", [], false, function() {
   };
 });
 
-$__System.registerDynamic("89", [], false, function() {
+$__System.registerDynamic("npm:har-validator@2.0.6/lib/schemas/postData.json", [], false, function() {
   return {
     "type": "object",
     "optional": true,
@@ -39623,7 +39623,7 @@ $__System.registerDynamic("89", [], false, function() {
   };
 });
 
-$__System.registerDynamic("8a", [], false, function() {
+$__System.registerDynamic("npm:har-validator@2.0.6/lib/schemas/record.json", [], false, function() {
   return {
     "type": "object",
     "required": [
@@ -39644,7 +39644,7 @@ $__System.registerDynamic("8a", [], false, function() {
   };
 });
 
-$__System.registerDynamic("8b", [], false, function() {
+$__System.registerDynamic("npm:har-validator@2.0.6/lib/schemas/request.json", [], false, function() {
   return {
     "type": "object",
     "required": [
@@ -39702,7 +39702,7 @@ $__System.registerDynamic("8b", [], false, function() {
   };
 });
 
-$__System.registerDynamic("8c", [], false, function() {
+$__System.registerDynamic("npm:har-validator@2.0.6/lib/schemas/response.json", [], false, function() {
   return {
     "type": "object",
     "required": [
@@ -39757,7 +39757,7 @@ $__System.registerDynamic("8c", [], false, function() {
   };
 });
 
-$__System.registerDynamic("8d", [], false, function() {
+$__System.registerDynamic("npm:har-validator@2.0.6/lib/schemas/timings.json", [], false, function() {
   return {
     "required": [
       "send",
@@ -39800,28 +39800,28 @@ $__System.registerDynamic("8d", [], false, function() {
   };
 });
 
-$__System.registerDynamic("7e", ["7f", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "8a", "8b", "8c", "8d"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:har-validator@2.0.6/lib/schemas/index.js", ["npm:har-validator@2.0.6/lib/schemas/cache.json", "npm:har-validator@2.0.6/lib/schemas/cacheEntry.json", "npm:har-validator@2.0.6/lib/schemas/content.json", "npm:har-validator@2.0.6/lib/schemas/cookie.json", "npm:har-validator@2.0.6/lib/schemas/creator.json", "npm:har-validator@2.0.6/lib/schemas/entry.json", "npm:har-validator@2.0.6/lib/schemas/har.json", "npm:har-validator@2.0.6/lib/schemas/log.json", "npm:har-validator@2.0.6/lib/schemas/page.json", "npm:har-validator@2.0.6/lib/schemas/pageTimings.json", "npm:har-validator@2.0.6/lib/schemas/postData.json", "npm:har-validator@2.0.6/lib/schemas/record.json", "npm:har-validator@2.0.6/lib/schemas/request.json", "npm:har-validator@2.0.6/lib/schemas/response.json", "npm:har-validator@2.0.6/lib/schemas/timings.json"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
   var schemas = {
-    cache: $__require('7f'),
-    cacheEntry: $__require('80'),
-    content: $__require('81'),
-    cookie: $__require('82'),
-    creator: $__require('83'),
-    entry: $__require('84'),
-    har: $__require('85'),
-    log: $__require('86'),
-    page: $__require('87'),
-    pageTimings: $__require('88'),
-    postData: $__require('89'),
-    record: $__require('8a'),
-    request: $__require('8b'),
-    response: $__require('8c'),
-    timings: $__require('8d')
+    cache: $__require('npm:har-validator@2.0.6/lib/schemas/cache.json'),
+    cacheEntry: $__require('npm:har-validator@2.0.6/lib/schemas/cacheEntry.json'),
+    content: $__require('npm:har-validator@2.0.6/lib/schemas/content.json'),
+    cookie: $__require('npm:har-validator@2.0.6/lib/schemas/cookie.json'),
+    creator: $__require('npm:har-validator@2.0.6/lib/schemas/creator.json'),
+    entry: $__require('npm:har-validator@2.0.6/lib/schemas/entry.json'),
+    har: $__require('npm:har-validator@2.0.6/lib/schemas/har.json'),
+    log: $__require('npm:har-validator@2.0.6/lib/schemas/log.json'),
+    page: $__require('npm:har-validator@2.0.6/lib/schemas/page.json'),
+    pageTimings: $__require('npm:har-validator@2.0.6/lib/schemas/pageTimings.json'),
+    postData: $__require('npm:har-validator@2.0.6/lib/schemas/postData.json'),
+    record: $__require('npm:har-validator@2.0.6/lib/schemas/record.json'),
+    request: $__require('npm:har-validator@2.0.6/lib/schemas/request.json'),
+    response: $__require('npm:har-validator@2.0.6/lib/schemas/response.json'),
+    timings: $__require('npm:har-validator@2.0.6/lib/schemas/timings.json')
   };
   schemas.cache.properties.beforeRequest = schemas.cacheEntry;
   schemas.cache.properties.afterRequest = schemas.cacheEntry;
@@ -39846,15 +39846,15 @@ $__System.registerDynamic("7e", ["7f", "80", "81", "82", "83", "84", "85", "86",
   return module.exports;
 });
 
-$__System.registerDynamic("8e", ["74", "7d", "7e"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:har-validator@2.0.6/lib/index.js", ["npm:pinkie-promise@2.0.1/index.js", "npm:har-validator@2.0.6/lib/runner.js", "npm:har-validator@2.0.6/lib/schemas/index.js"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var Promise = $__require('74');
-  var runner = $__require('7d');
-  var schemas = $__require('7e');
+  var Promise = $__require('npm:pinkie-promise@2.0.1/index.js');
+  var runner = $__require('npm:har-validator@2.0.6/lib/runner.js');
+  var schemas = $__require('npm:har-validator@2.0.6/lib/schemas/index.js');
   var promisify = function(schema) {
     return function(data) {
       return new Promise(function(resolve, reject) {
@@ -39871,7 +39871,7 @@ $__System.registerDynamic("8e", ["74", "7d", "7e"], true, function($__require, e
   return module.exports;
 });
 
-$__System.registerDynamic("8f", [], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:extend@3.0.0/index.js", [], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -39943,16 +39943,16 @@ $__System.registerDynamic("8f", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("90", ["@node/fs", "@node/querystring", "8e", "8f", "4"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:request@2.74.0/lib/har.js", ["@node/fs", "@node/querystring", "npm:har-validator@2.0.6/lib/index.js", "npm:extend@3.0.0/index.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
   "use strict";
-  var process = $__require("4");
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
   var fs = $__require('@node/fs');
   var qs = $__require('@node/querystring');
-  var validate = $__require('8e');
-  var extend = $__require('8f');
+  var validate = $__require('npm:har-validator@2.0.6/lib/index.js');
+  var extend = $__require('npm:extend@3.0.0/index.js');
   function Har(request) {
     this.request = request;
   }
@@ -40091,7 +40091,7 @@ $__System.registerDynamic("90", ["@node/fs", "@node/querystring", "8e", "8f", "4
   return module.exports;
 });
 
-$__System.registerDynamic("91", [], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:json-stringify-safe@5.0.1/stringify.js", [], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
@@ -40125,14 +40125,14 @@ $__System.registerDynamic("91", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("92", ["91", "@node/crypto", "4", "11"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:request@2.74.0/lib/helpers.js", ["npm:json-stringify-safe@5.0.1/stringify.js", "@node/crypto", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
   "use strict";
-  var process = $__require("4"),
-      Buffer = $__require("11");
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"),
+      Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
-  var jsonSafeStringify = $__require('91'),
+  var jsonSafeStringify = $__require('npm:json-stringify-safe@5.0.1/stringify.js'),
       crypto = $__require('@node/crypto');
   function deferMethod() {
     if (typeof setImmediate === 'undefined') {
@@ -40191,15 +40191,15 @@ $__System.registerDynamic("92", ["91", "@node/crypto", "4", "11"], true, functio
   return module.exports;
 });
 
-$__System.registerDynamic("93", ["94", "95", "92", "4"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:request@2.74.0/lib/auth.js", ["npm:caseless@0.11.0/index.js", "npm:node-uuid@1.4.7/uuid.js", "npm:request@2.74.0/lib/helpers.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
   "use strict";
-  var process = $__require("4");
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var caseless = $__require('94'),
-      uuid = $__require('95'),
-      helpers = $__require('92');
+  var caseless = $__require('npm:caseless@0.11.0/index.js'),
+      uuid = $__require('npm:node-uuid@1.4.7/uuid.js'),
+      helpers = $__require('npm:request@2.74.0/lib/helpers.js');
   var md5 = helpers.md5,
       toBase64 = helpers.toBase64;
   function Auth(request) {
@@ -40327,13 +40327,13 @@ $__System.registerDynamic("93", ["94", "95", "92", "4"], true, function($__requi
   return module.exports;
 });
 
-$__System.registerDynamic("96", ["97"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:qs@6.2.1/lib/stringify.js", ["npm:qs@6.2.1/lib/utils.js"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var Utils = $__require('97');
+  var Utils = $__require('npm:qs@6.2.1/lib/utils.js');
   var arrayPrefixGenerators = {
     brackets: function brackets(prefix) {
       return prefix + '[]';
@@ -40446,7 +40446,7 @@ $__System.registerDynamic("96", ["97"], true, function($__require, exports, modu
   return module.exports;
 });
 
-$__System.registerDynamic("97", [], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:qs@6.2.1/lib/utils.js", [], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -40576,13 +40576,13 @@ $__System.registerDynamic("97", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("98", ["97"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:qs@6.2.1/lib/parse.js", ["npm:qs@6.2.1/lib/utils.js"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var Utils = $__require('97');
+  var Utils = $__require('npm:qs@6.2.1/lib/utils.js');
   var has = Object.prototype.hasOwnProperty;
   var defaults = {
     delimiter: '&',
@@ -40703,14 +40703,14 @@ $__System.registerDynamic("98", ["97"], true, function($__require, exports, modu
   return module.exports;
 });
 
-$__System.registerDynamic("72", ["96", "98"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:qs@6.2.1/lib/index.js", ["npm:qs@6.2.1/lib/stringify.js", "npm:qs@6.2.1/lib/parse.js"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var Stringify = $__require('96');
-  var Parse = $__require('98');
+  var Stringify = $__require('npm:qs@6.2.1/lib/stringify.js');
+  var Parse = $__require('npm:qs@6.2.1/lib/parse.js');
   module.exports = {
     stringify: Stringify,
     parse: Parse
@@ -40718,7 +40718,7 @@ $__System.registerDynamic("72", ["96", "98"], true, function($__require, exports
   return module.exports;
 });
 
-$__System.registerDynamic("94", [], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:caseless@0.11.0/index.js", [], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
@@ -40800,7 +40800,7 @@ $__System.registerDynamic("94", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("99", ["@node/crypto", "@node/querystring"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:oauth-sign@0.8.2/index.js", ["@node/crypto", "@node/querystring"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
@@ -40891,18 +40891,18 @@ $__System.registerDynamic("99", ["@node/crypto", "@node/querystring"], true, fun
   return module.exports;
 });
 
-$__System.registerDynamic("9a", ["@node/url", "72", "94", "95", "99", "@node/crypto", "4", "11"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:request@2.74.0/lib/oauth.js", ["@node/url", "npm:qs@6.2.1/lib/index.js", "npm:caseless@0.11.0/index.js", "npm:node-uuid@1.4.7/uuid.js", "npm:oauth-sign@0.8.2/index.js", "@node/crypto", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
   "use strict";
-  var process = $__require("4"),
-      Buffer = $__require("11");
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"),
+      Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
   var url = $__require('@node/url'),
-      qs = $__require('72'),
-      caseless = $__require('94'),
-      uuid = $__require('95'),
-      oauth = $__require('99'),
+      qs = $__require('npm:qs@6.2.1/lib/index.js'),
+      caseless = $__require('npm:caseless@0.11.0/index.js'),
+      uuid = $__require('npm:node-uuid@1.4.7/uuid.js'),
+      oauth = $__require('npm:oauth-sign@0.8.2/index.js'),
       crypto = $__require('@node/crypto');
   function OAuth(request) {
     this.request = request;
@@ -41010,8 +41010,8 @@ $__System.registerDynamic("9a", ["@node/url", "72", "94", "95", "99", "@node/cry
   return module.exports;
 });
 
-$__System.registerDynamic("95", ["@node/crypto", "11"], true, function($__require, exports, module) {
-  var Buffer = $__require("11");
+$__System.registerDynamic("npm:node-uuid@1.4.7/uuid.js", ["@node/crypto", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -41182,7 +41182,7 @@ $__System.registerDynamic("95", ["@node/crypto", "11"], true, function($__requir
   return module.exports;
 });
 
-$__System.registerDynamic("9b", ["@node/stream", "@node/util"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:delayed-stream@1.0.0/lib/delayed_stream.js", ["@node/stream", "@node/util"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
@@ -41274,14 +41274,14 @@ $__System.registerDynamic("9b", ["@node/stream", "@node/util"], true, function($
   return module.exports;
 });
 
-$__System.registerDynamic("66", ["@node/util", "@node/stream", "9b", "11"], true, function($__require, exports, module) {
-  var Buffer = $__require("11");
+$__System.registerDynamic("npm:combined-stream@1.0.5/lib/combined_stream.js", ["@node/util", "@node/stream", "npm:delayed-stream@1.0.0/lib/delayed_stream.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
+  var Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
   var util = $__require('@node/util');
   var Stream = $__require('@node/stream').Stream;
-  var DelayedStream = $__require('9b');
+  var DelayedStream = $__require('npm:delayed-stream@1.0.0/lib/delayed_stream.js');
   module.exports = CombinedStream;
   function CombinedStream() {
     this.writable = false;
@@ -41430,7 +41430,7 @@ $__System.registerDynamic("66", ["@node/util", "@node/stream", "9b", "11"], true
   return module.exports;
 });
 
-$__System.registerDynamic("9c", ["@node/stream"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:isstream@0.1.2/isstream.js", ["@node/stream"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
@@ -41455,16 +41455,16 @@ $__System.registerDynamic("9c", ["@node/stream"], true, function($__require, exp
   return module.exports;
 });
 
-$__System.registerDynamic("9d", ["95", "66", "9c", "4", "11"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:request@2.74.0/lib/multipart.js", ["npm:node-uuid@1.4.7/uuid.js", "npm:combined-stream@1.0.5/lib/combined_stream.js", "npm:isstream@0.1.2/isstream.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
   "use strict";
-  var process = $__require("4"),
-      Buffer = $__require("11");
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"),
+      Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
-  var uuid = $__require('95'),
-      CombinedStream = $__require('66'),
-      isstream = $__require('9c');
+  var uuid = $__require('npm:node-uuid@1.4.7/uuid.js'),
+      CombinedStream = $__require('npm:combined-stream@1.0.5/lib/combined_stream.js'),
+      isstream = $__require('npm:isstream@0.1.2/isstream.js');
   function Multipart(request) {
     this.request = request;
     this.boundary = uuid();
@@ -41555,9 +41555,9 @@ $__System.registerDynamic("9d", ["95", "66", "9c", "4", "11"], true, function($_
   return module.exports;
 });
 
-$__System.registerDynamic("9e", ["@node/url", "4"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:request@2.74.0/lib/redirect.js", ["@node/url", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
   "use strict";
-  var process = $__require("4");
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -41684,10 +41684,10 @@ $__System.registerDynamic("9e", ["@node/url", "4"], true, function($__require, e
   return module.exports;
 });
 
-$__System.registerDynamic("9f", ["@node/net", "@node/tls", "@node/http", "@node/https", "@node/events", "@node/assert", "@node/util", "4", "11"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:tunnel-agent@0.4.3/index.js", ["@node/net", "@node/tls", "@node/http", "@node/https", "@node/events", "@node/assert", "@node/util", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
   "use strict";
-  var process = $__require("4"),
-      Buffer = $__require("11");
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"),
+      Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -41900,14 +41900,14 @@ $__System.registerDynamic("9f", ["@node/net", "@node/tls", "@node/http", "@node/
   return module.exports;
 });
 
-$__System.registerDynamic("a0", ["@node/url", "9f", "4"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:request@2.74.0/lib/tunnel.js", ["@node/url", "npm:tunnel-agent@0.4.3/index.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
   "use strict";
-  var process = $__require("4");
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
   var url = $__require('@node/url'),
-      tunnel = $__require('9f');
+      tunnel = $__require('npm:tunnel-agent@0.4.3/index.js');
   var defaultProxyHeaderWhiteList = ['accept', 'accept-charset', 'accept-encoding', 'accept-language', 'accept-ranges', 'cache-control', 'content-encoding', 'content-language', 'content-location', 'content-md5', 'content-range', 'content-type', 'connection', 'date', 'expect', 'max-forwards', 'pragma', 'referer', 'te', 'user-agent', 'via'];
   var defaultProxyHeaderExclusiveList = ['proxy-authorization'];
   function constructProxyHost(uriObject) {
@@ -42019,7 +42019,7 @@ $__System.registerDynamic("a0", ["@node/url", "9f", "4"], true, function($__requ
   return module.exports;
 });
 
-$__System.registerDynamic("11", ["@node/buffer"], true, function($__require, exports, module) {
+$__System.registerDynamic("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js", ["@node/buffer"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
@@ -42028,10 +42028,10 @@ $__System.registerDynamic("11", ["@node/buffer"], true, function($__require, exp
   return module.exports;
 });
 
-$__System.registerDynamic("a1", ["@node/http", "@node/https", "@node/url", "@node/util", "@node/stream", "@node/zlib", "20", "2c", "2d", "2f", "5d", "62", "5e", "94", "5f", "65", "8f", "9c", "67", "92", "6f", "70", "71", "90", "93", "9a", "9d", "9e", "a0", "4", "11"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:request@2.74.0/request.js", ["@node/http", "@node/https", "@node/url", "@node/util", "@node/stream", "@node/zlib", "npm:bl@1.1.2/bl.js", "npm:hawk@3.1.3/lib/index.js", "npm:aws-sign2@0.6.0/index.js", "npm:aws4@1.4.1/aws4.js", "npm:http-signature@1.1.1/lib/index.js", "npm:mime-types@2.1.11/index.js", "npm:stringstream@0.0.5/stringstream.js", "npm:caseless@0.11.0/index.js", "npm:forever-agent@0.6.1/index.js", "npm:form-data@1.0.0-rc4/lib/form_data.js", "npm:extend@3.0.0/index.js", "npm:isstream@0.1.2/isstream.js", "npm:is-typedarray@1.0.0/index.js", "npm:request@2.74.0/lib/helpers.js", "npm:request@2.74.0/lib/cookies.js", "npm:request@2.74.0/lib/getProxyFromURI.js", "npm:request@2.74.0/lib/querystring.js", "npm:request@2.74.0/lib/har.js", "npm:request@2.74.0/lib/auth.js", "npm:request@2.74.0/lib/oauth.js", "npm:request@2.74.0/lib/multipart.js", "npm:request@2.74.0/lib/redirect.js", "npm:request@2.74.0/lib/tunnel.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js", "github:jspm/nodelibs-buffer@0.2.0-alpha/global.js"], true, function($__require, exports, module) {
   "use strict";
-  var process = $__require("4"),
-      Buffer = $__require("11");
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"),
+      Buffer = $__require("github:jspm/nodelibs-buffer@0.2.0-alpha/global.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -42041,29 +42041,29 @@ $__System.registerDynamic("a1", ["@node/http", "@node/https", "@node/url", "@nod
       util = $__require('@node/util'),
       stream = $__require('@node/stream'),
       zlib = $__require('@node/zlib'),
-      bl = $__require('20'),
-      hawk = $__require('2c'),
-      aws2 = $__require('2d'),
-      aws4 = $__require('2f'),
-      httpSignature = $__require('5d'),
-      mime = $__require('62'),
-      stringstream = $__require('5e'),
-      caseless = $__require('94'),
-      ForeverAgent = $__require('5f'),
-      FormData = $__require('65'),
-      extend = $__require('8f'),
-      isstream = $__require('9c'),
-      isTypedArray = $__require('67').strict,
-      helpers = $__require('92'),
-      cookies = $__require('6f'),
-      getProxyFromURI = $__require('70'),
-      Querystring = $__require('71').Querystring,
-      Har = $__require('90').Har,
-      Auth = $__require('93').Auth,
-      OAuth = $__require('9a').OAuth,
-      Multipart = $__require('9d').Multipart,
-      Redirect = $__require('9e').Redirect,
-      Tunnel = $__require('a0').Tunnel;
+      bl = $__require('npm:bl@1.1.2/bl.js'),
+      hawk = $__require('npm:hawk@3.1.3/lib/index.js'),
+      aws2 = $__require('npm:aws-sign2@0.6.0/index.js'),
+      aws4 = $__require('npm:aws4@1.4.1/aws4.js'),
+      httpSignature = $__require('npm:http-signature@1.1.1/lib/index.js'),
+      mime = $__require('npm:mime-types@2.1.11/index.js'),
+      stringstream = $__require('npm:stringstream@0.0.5/stringstream.js'),
+      caseless = $__require('npm:caseless@0.11.0/index.js'),
+      ForeverAgent = $__require('npm:forever-agent@0.6.1/index.js'),
+      FormData = $__require('npm:form-data@1.0.0-rc4/lib/form_data.js'),
+      extend = $__require('npm:extend@3.0.0/index.js'),
+      isstream = $__require('npm:isstream@0.1.2/isstream.js'),
+      isTypedArray = $__require('npm:is-typedarray@1.0.0/index.js').strict,
+      helpers = $__require('npm:request@2.74.0/lib/helpers.js'),
+      cookies = $__require('npm:request@2.74.0/lib/cookies.js'),
+      getProxyFromURI = $__require('npm:request@2.74.0/lib/getProxyFromURI.js'),
+      Querystring = $__require('npm:request@2.74.0/lib/querystring.js').Querystring,
+      Har = $__require('npm:request@2.74.0/lib/har.js').Har,
+      Auth = $__require('npm:request@2.74.0/lib/auth.js').Auth,
+      OAuth = $__require('npm:request@2.74.0/lib/oauth.js').OAuth,
+      Multipart = $__require('npm:request@2.74.0/lib/multipart.js').Multipart,
+      Redirect = $__require('npm:request@2.74.0/lib/redirect.js').Redirect,
+      Tunnel = $__require('npm:request@2.74.0/lib/tunnel.js').Tunnel;
   var safeStringify = helpers.safeStringify,
       isReadStream = helpers.isReadStream,
       toBase64 = helpers.toBase64,
@@ -43185,15 +43185,15 @@ $__System.registerDynamic("a1", ["@node/http", "@node/https", "@node/url", "@nod
   return module.exports;
 });
 
-$__System.registerDynamic("a2", ["8f", "6f", "92", "a1", "4"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:request@2.74.0/index.js", ["npm:extend@3.0.0/index.js", "npm:request@2.74.0/lib/cookies.js", "npm:request@2.74.0/lib/helpers.js", "npm:request@2.74.0/request.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
   "use strict";
-  var process = $__require("4");
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var extend = $__require('8f'),
-      cookies = $__require('6f'),
-      helpers = $__require('92');
+  var extend = $__require('npm:extend@3.0.0/index.js'),
+      cookies = $__require('npm:request@2.74.0/lib/cookies.js'),
+      helpers = $__require('npm:request@2.74.0/lib/helpers.js');
   var isFunction = helpers.isFunction,
       paramsHaveRequestBody = helpers.paramsHaveRequestBody;
   function initParams(uri, options, callback) {
@@ -43286,7 +43286,7 @@ $__System.registerDynamic("a2", ["8f", "6f", "92", "a1", "4"], true, function($_
     return request.defaults(options);
   };
   module.exports = request;
-  request.Request = $__require('a1');
+  request.Request = $__require('npm:request@2.74.0/request.js');
   request.initParams = initParams;
   Object.defineProperty(request, 'debug', {
     enumerable: true,
@@ -43300,8 +43300,8 @@ $__System.registerDynamic("a2", ["8f", "6f", "92", "a1", "4"], true, function($_
   return module.exports;
 });
 
-$__System.registerDynamic("a3", ["@node/url", "14", "a4", "15", "a2", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less-node/url-file-manager.js", ["@node/url", "npm:less@2.7.1/lib/less/environment/abstract-file-manager.js", "npm:less@2.7.1/lib/less/logger.js", "npm:promise@7.1.1/index.js", "npm:request@2.74.0/index.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -43309,8 +43309,8 @@ $__System.registerDynamic("a3", ["@node/url", "14", "a4", "15", "a2", "4"], true
       url = $__require('@node/url'),
       request,
       PromiseConstructor,
-      AbstractFileManager = $__require('14'),
-      logger = $__require('a4');
+      AbstractFileManager = $__require('npm:less@2.7.1/lib/less/environment/abstract-file-manager.js'),
+      logger = $__require('npm:less@2.7.1/lib/less/logger.js');
   var UrlFileManager = function() {};
   UrlFileManager.prototype = new AbstractFileManager();
   UrlFileManager.prototype.supports = function(filename, currentDirectory, options, environment) {
@@ -43318,12 +43318,12 @@ $__System.registerDynamic("a3", ["@node/url", "14", "a4", "15", "a2", "4"], true
   };
   UrlFileManager.prototype.loadFile = function(filename, currentDirectory, options, environment) {
     if (!PromiseConstructor) {
-      PromiseConstructor = typeof Promise === 'undefined' ? $__require('15') : Promise;
+      PromiseConstructor = typeof Promise === 'undefined' ? $__require('npm:promise@7.1.1/index.js') : Promise;
     }
     return new PromiseConstructor(function(fulfill, reject) {
       if (request === undefined) {
         try {
-          request = $__require('a2');
+          request = $__require('npm:request@2.74.0/index.js');
         } catch (e) {
           request = null;
         }
@@ -43373,24 +43373,24 @@ $__System.registerDynamic("a3", ["@node/url", "14", "a4", "15", "a2", "4"], true
   return module.exports;
 });
 
-$__System.registerDynamic("a5", ["a6", "a7", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/data/index.js", ["npm:less@2.7.1/lib/less/data/colors.js", "npm:less@2.7.1/lib/less/data/unit-conversions.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
   module.exports = {
-    colors: $__require('a6'),
-    unitConversions: $__require('a7')
+    colors: $__require('npm:less@2.7.1/lib/less/data/colors.js'),
+    unitConversions: $__require('npm:less@2.7.1/lib/less/data/unit-conversions.js')
   };
   return module.exports;
 });
 
-$__System.registerDynamic("a8", ["a4", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/environment/environment.js", ["npm:less@2.7.1/lib/less/logger.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var logger = $__require('a4');
+  var logger = $__require('npm:less@2.7.1/lib/less/logger.js');
   var environment = function(externalEnvironment, fileManagers) {
     this.fileManagers = fileManagers || [];
     externalEnvironment = externalEnvironment || {};
@@ -43436,8 +43436,8 @@ $__System.registerDynamic("a8", ["a4", "4"], true, function($__require, exports,
   return module.exports;
 });
 
-$__System.registerDynamic("14", ["4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/environment/abstract-file-manager.js", ["github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -43550,16 +43550,16 @@ $__System.registerDynamic("14", ["4"], true, function($__require, exports, modul
   return module.exports;
 });
 
-$__System.registerDynamic("a9", ["aa", "ab", "ac", "ad", "ae", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/functions/color.js", ["npm:less@2.7.1/lib/less/tree/dimension.js", "npm:less@2.7.1/lib/less/tree/color.js", "npm:less@2.7.1/lib/less/tree/quoted.js", "npm:less@2.7.1/lib/less/tree/anonymous.js", "npm:less@2.7.1/lib/less/functions/function-registry.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Dimension = $__require('aa'),
-      Color = $__require('ab'),
-      Quoted = $__require('ac'),
-      Anonymous = $__require('ad'),
-      functionRegistry = $__require('ae'),
+  var Dimension = $__require('npm:less@2.7.1/lib/less/tree/dimension.js'),
+      Color = $__require('npm:less@2.7.1/lib/less/tree/color.js'),
+      Quoted = $__require('npm:less@2.7.1/lib/less/tree/quoted.js'),
+      Anonymous = $__require('npm:less@2.7.1/lib/less/tree/anonymous.js'),
+      functionRegistry = $__require('npm:less@2.7.1/lib/less/functions/function-registry.js'),
       colorFunctions;
   function clamp(val) {
     return Math.min(1, Math.max(0, val));
@@ -43829,13 +43829,13 @@ $__System.registerDynamic("a9", ["aa", "ab", "ac", "ad", "ae", "4"], true, funct
   return module.exports;
 });
 
-$__System.registerDynamic("af", ["ab", "ae", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/functions/color-blending.js", ["npm:less@2.7.1/lib/less/tree/color.js", "npm:less@2.7.1/lib/less/functions/function-registry.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Color = $__require('ab'),
-      functionRegistry = $__require('ae');
+  var Color = $__require('npm:less@2.7.1/lib/less/tree/color.js'),
+      functionRegistry = $__require('npm:less@2.7.1/lib/less/functions/function-registry.js');
   function colorBlend(mode, color1, color2) {
     var ab = color1.alpha,
         cb,
@@ -43901,19 +43901,19 @@ $__System.registerDynamic("af", ["ab", "ae", "4"], true, function($__require, ex
   return module.exports;
 });
 
-$__System.registerDynamic("b0", ["ac", "b1", "ae", "a4", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/functions/data-uri.js", ["npm:less@2.7.1/lib/less/tree/quoted.js", "npm:less@2.7.1/lib/less/tree/url.js", "npm:less@2.7.1/lib/less/functions/function-registry.js", "npm:less@2.7.1/lib/less/logger.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
   module.exports = function(environment) {
-    var Quoted = $__require('ac'),
-        URL = $__require('b1'),
-        functionRegistry = $__require('ae'),
+    var Quoted = $__require('npm:less@2.7.1/lib/less/tree/quoted.js'),
+        URL = $__require('npm:less@2.7.1/lib/less/tree/url.js'),
+        functionRegistry = $__require('npm:less@2.7.1/lib/less/functions/function-registry.js'),
         fallback = function(functionThis, node) {
           return new URL(node, functionThis.index, functionThis.currentFileInfo).eval(functionThis.context);
         },
-        logger = $__require('a4');
+        logger = $__require('npm:less@2.7.1/lib/less/logger.js');
     functionRegistry.add("data-uri", function(mimetypeNode, filePathNode) {
       if (!filePathNode) {
         filePathNode = mimetypeNode;
@@ -43972,13 +43972,13 @@ $__System.registerDynamic("b0", ["ac", "b1", "ae", "a4", "4"], true, function($_
   return module.exports;
 });
 
-$__System.registerDynamic("b2", ["ae", "b3", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/functions/math.js", ["npm:less@2.7.1/lib/less/functions/function-registry.js", "npm:less@2.7.1/lib/less/functions/math-helper.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var functionRegistry = $__require('ae'),
-      mathHelper = $__require('b3');
+  var functionRegistry = $__require('npm:less@2.7.1/lib/less/functions/function-registry.js'),
+      mathHelper = $__require('npm:less@2.7.1/lib/less/functions/math-helper.js');
   var mathFunctions = {
     ceil: null,
     floor: null,
@@ -44006,12 +44006,12 @@ $__System.registerDynamic("b2", ["ae", "b3", "4"], true, function($__require, ex
   return module.exports;
 });
 
-$__System.registerDynamic("b3", ["aa", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/functions/math-helper.js", ["npm:less@2.7.1/lib/less/tree/dimension.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Dimension = $__require('aa');
+  var Dimension = $__require('npm:less@2.7.1/lib/less/tree/dimension.js');
   var MathHelper = function() {};
   MathHelper._math = function(fn, unit, n) {
     if (!(n instanceof Dimension)) {
@@ -44031,15 +44031,15 @@ $__System.registerDynamic("b3", ["aa", "4"], true, function($__require, exports,
   return module.exports;
 });
 
-$__System.registerDynamic("b4", ["aa", "ad", "ae", "b3", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/functions/number.js", ["npm:less@2.7.1/lib/less/tree/dimension.js", "npm:less@2.7.1/lib/less/tree/anonymous.js", "npm:less@2.7.1/lib/less/functions/function-registry.js", "npm:less@2.7.1/lib/less/functions/math-helper.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Dimension = $__require('aa'),
-      Anonymous = $__require('ad'),
-      functionRegistry = $__require('ae'),
-      mathHelper = $__require('b3');
+  var Dimension = $__require('npm:less@2.7.1/lib/less/tree/dimension.js'),
+      Anonymous = $__require('npm:less@2.7.1/lib/less/tree/anonymous.js'),
+      functionRegistry = $__require('npm:less@2.7.1/lib/less/functions/function-registry.js'),
+      mathHelper = $__require('npm:less@2.7.1/lib/less/functions/math-helper.js');
   var minMax = function(isMin, args) {
     args = Array.prototype.slice.call(args);
     switch (args.length) {
@@ -44134,15 +44134,15 @@ $__System.registerDynamic("b4", ["aa", "ad", "ae", "b3", "4"], true, function($_
   return module.exports;
 });
 
-$__System.registerDynamic("b5", ["ac", "ad", "b6", "ae", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/functions/string.js", ["npm:less@2.7.1/lib/less/tree/quoted.js", "npm:less@2.7.1/lib/less/tree/anonymous.js", "npm:less@2.7.1/lib/less/tree/javascript.js", "npm:less@2.7.1/lib/less/functions/function-registry.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Quoted = $__require('ac'),
-      Anonymous = $__require('ad'),
-      JavaScript = $__require('b6'),
-      functionRegistry = $__require('ae');
+  var Quoted = $__require('npm:less@2.7.1/lib/less/tree/quoted.js'),
+      Anonymous = $__require('npm:less@2.7.1/lib/less/tree/anonymous.js'),
+      JavaScript = $__require('npm:less@2.7.1/lib/less/tree/javascript.js'),
+      functionRegistry = $__require('npm:less@2.7.1/lib/less/functions/function-registry.js');
   functionRegistry.addMultiple({
     e: function(str) {
       return new Anonymous(str instanceof JavaScript ? str.evaluated : str.value);
@@ -44172,18 +44172,18 @@ $__System.registerDynamic("b5", ["ac", "ad", "b6", "ae", "4"], true, function($_
   return module.exports;
 });
 
-$__System.registerDynamic("b7", ["aa", "ab", "b8", "ac", "b1", "ae", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/functions/svg.js", ["npm:less@2.7.1/lib/less/tree/dimension.js", "npm:less@2.7.1/lib/less/tree/color.js", "npm:less@2.7.1/lib/less/tree/expression.js", "npm:less@2.7.1/lib/less/tree/quoted.js", "npm:less@2.7.1/lib/less/tree/url.js", "npm:less@2.7.1/lib/less/functions/function-registry.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
   module.exports = function(environment) {
-    var Dimension = $__require('aa'),
-        Color = $__require('ab'),
-        Expression = $__require('b8'),
-        Quoted = $__require('ac'),
-        URL = $__require('b1'),
-        functionRegistry = $__require('ae');
+    var Dimension = $__require('npm:less@2.7.1/lib/less/tree/dimension.js'),
+        Color = $__require('npm:less@2.7.1/lib/less/tree/color.js'),
+        Expression = $__require('npm:less@2.7.1/lib/less/tree/expression.js'),
+        Quoted = $__require('npm:less@2.7.1/lib/less/tree/quoted.js'),
+        URL = $__require('npm:less@2.7.1/lib/less/tree/url.js'),
+        functionRegistry = $__require('npm:less@2.7.1/lib/less/functions/function-registry.js');
     functionRegistry.add("svg-gradient", function(direction) {
       var stops,
           gradientDirectionSvg,
@@ -44263,20 +44263,20 @@ $__System.registerDynamic("b7", ["aa", "ab", "b8", "ac", "b1", "ae", "4"], true,
   return module.exports;
 });
 
-$__System.registerDynamic("b9", ["ba", "bb", "aa", "ab", "ac", "ad", "b1", "bc", "ae", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/functions/types.js", ["npm:less@2.7.1/lib/less/tree/keyword.js", "npm:less@2.7.1/lib/less/tree/detached-ruleset.js", "npm:less@2.7.1/lib/less/tree/dimension.js", "npm:less@2.7.1/lib/less/tree/color.js", "npm:less@2.7.1/lib/less/tree/quoted.js", "npm:less@2.7.1/lib/less/tree/anonymous.js", "npm:less@2.7.1/lib/less/tree/url.js", "npm:less@2.7.1/lib/less/tree/operation.js", "npm:less@2.7.1/lib/less/functions/function-registry.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Keyword = $__require('ba'),
-      DetachedRuleset = $__require('bb'),
-      Dimension = $__require('aa'),
-      Color = $__require('ab'),
-      Quoted = $__require('ac'),
-      Anonymous = $__require('ad'),
-      URL = $__require('b1'),
-      Operation = $__require('bc'),
-      functionRegistry = $__require('ae');
+  var Keyword = $__require('npm:less@2.7.1/lib/less/tree/keyword.js'),
+      DetachedRuleset = $__require('npm:less@2.7.1/lib/less/tree/detached-ruleset.js'),
+      Dimension = $__require('npm:less@2.7.1/lib/less/tree/dimension.js'),
+      Color = $__require('npm:less@2.7.1/lib/less/tree/color.js'),
+      Quoted = $__require('npm:less@2.7.1/lib/less/tree/quoted.js'),
+      Anonymous = $__require('npm:less@2.7.1/lib/less/tree/anonymous.js'),
+      URL = $__require('npm:less@2.7.1/lib/less/tree/url.js'),
+      Operation = $__require('npm:less@2.7.1/lib/less/tree/operation.js'),
+      functionRegistry = $__require('npm:less@2.7.1/lib/less/functions/function-registry.js');
   var isa = function(n, Type) {
     return (n instanceof Type) ? Keyword.True : Keyword.False;
   },
@@ -44361,32 +44361,32 @@ $__System.registerDynamic("b9", ["ba", "bb", "aa", "ab", "ac", "ad", "b1", "bc",
   return module.exports;
 });
 
-$__System.registerDynamic("bd", ["ae", "be", "bf", "a9", "af", "b0", "b2", "b4", "b5", "b7", "b9", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/functions/index.js", ["npm:less@2.7.1/lib/less/functions/function-registry.js", "npm:less@2.7.1/lib/less/functions/function-caller.js", "npm:less@2.7.1/lib/less/functions/default.js", "npm:less@2.7.1/lib/less/functions/color.js", "npm:less@2.7.1/lib/less/functions/color-blending.js", "npm:less@2.7.1/lib/less/functions/data-uri.js", "npm:less@2.7.1/lib/less/functions/math.js", "npm:less@2.7.1/lib/less/functions/number.js", "npm:less@2.7.1/lib/less/functions/string.js", "npm:less@2.7.1/lib/less/functions/svg.js", "npm:less@2.7.1/lib/less/functions/types.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
   module.exports = function(environment) {
     var functions = {
-      functionRegistry: $__require('ae'),
-      functionCaller: $__require('be')
+      functionRegistry: $__require('npm:less@2.7.1/lib/less/functions/function-registry.js'),
+      functionCaller: $__require('npm:less@2.7.1/lib/less/functions/function-caller.js')
     };
-    $__require('bf');
-    $__require('a9');
-    $__require('af');
-    $__require('b0')(environment);
-    $__require('b2');
-    $__require('b4');
-    $__require('b5');
-    $__require('b7')(environment);
-    $__require('b9');
+    $__require('npm:less@2.7.1/lib/less/functions/default.js');
+    $__require('npm:less@2.7.1/lib/less/functions/color.js');
+    $__require('npm:less@2.7.1/lib/less/functions/color-blending.js');
+    $__require('npm:less@2.7.1/lib/less/functions/data-uri.js')(environment);
+    $__require('npm:less@2.7.1/lib/less/functions/math.js');
+    $__require('npm:less@2.7.1/lib/less/functions/number.js');
+    $__require('npm:less@2.7.1/lib/less/functions/string.js');
+    $__require('npm:less@2.7.1/lib/less/functions/svg.js')(environment);
+    $__require('npm:less@2.7.1/lib/less/functions/types.js');
     return functions;
   };
   return module.exports;
 });
 
-$__System.registerDynamic("c0", ["4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/source-map-output.js", ["github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -44526,8 +44526,8 @@ $__System.registerDynamic("c0", ["4"], true, function($__require, exports, modul
   return module.exports;
 });
 
-$__System.registerDynamic("c1", ["4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/source-map-builder.js", ["github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -44593,14 +44593,14 @@ $__System.registerDynamic("c1", ["4"], true, function($__require, exports, modul
   return module.exports;
 });
 
-$__System.registerDynamic("c2", ["c3", "c4", "a4", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/parse-tree.js", ["npm:less@2.7.1/lib/less/less-error.js", "npm:less@2.7.1/lib/less/transform-tree.js", "npm:less@2.7.1/lib/less/logger.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var LessError = $__require('c3'),
-      transformTree = $__require('c4'),
-      logger = $__require('a4');
+  var LessError = $__require('npm:less@2.7.1/lib/less/less-error.js'),
+      transformTree = $__require('npm:less@2.7.1/lib/less/transform-tree.js'),
+      logger = $__require('npm:less@2.7.1/lib/less/logger.js');
   module.exports = function(SourceMapBuilder) {
     var ParseTree = function(root, imports) {
       this.root = root;
@@ -44661,13 +44661,13 @@ $__System.registerDynamic("c2", ["c3", "c4", "a4", "4"], true, function($__requi
   return module.exports;
 });
 
-$__System.registerDynamic("c5", ["c3", "c6", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/plugins/function-importer.js", ["npm:less@2.7.1/lib/less/less-error.js", "npm:less@2.7.1/lib/less/tree/index.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var LessError = $__require('c3'),
-      tree = $__require('c6');
+  var LessError = $__require('npm:less@2.7.1/lib/less/less-error.js'),
+      tree = $__require('npm:less@2.7.1/lib/less/tree/index.js');
   var FunctionImporter = module.exports = function FunctionImporter(context, fileInfo) {
     this.fileInfo = fileInfo;
   };
@@ -44699,14 +44699,14 @@ $__System.registerDynamic("c5", ["c3", "c6", "4"], true, function($__require, ex
   return module.exports;
 });
 
-$__System.registerDynamic("c7", ["c8", "c9", "c5", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/import-manager.js", ["npm:less@2.7.1/lib/less/contexts.js", "npm:less@2.7.1/lib/less/parser/parser.js", "npm:less@2.7.1/lib/less/plugins/function-importer.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var contexts = $__require('c8'),
-      Parser = $__require('c9'),
-      FunctionImporter = $__require('c5');
+  var contexts = $__require('npm:less@2.7.1/lib/less/contexts.js'),
+      Parser = $__require('npm:less@2.7.1/lib/less/parser/parser.js'),
+      FunctionImporter = $__require('npm:less@2.7.1/lib/less/plugins/function-importer.js');
   module.exports = function(environment) {
     var ImportManager = function(context, rootFileInfo) {
       this.rootFilename = rootFileInfo.filename;
@@ -44794,8 +44794,8 @@ $__System.registerDynamic("c7", ["c8", "c9", "c5", "4"], true, function($__requi
   return module.exports;
 });
 
-$__System.registerDynamic("ca", ["15", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/render.js", ["npm:promise@7.1.1/index.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -44808,7 +44808,7 @@ $__System.registerDynamic("ca", ["15", "4"], true, function($__require, exports,
       }
       if (!callback) {
         if (!PromiseConstructor) {
-          PromiseConstructor = typeof Promise === 'undefined' ? $__require('15') : Promise;
+          PromiseConstructor = typeof Promise === 'undefined' ? $__require('npm:promise@7.1.1/index.js') : Promise;
         }
         var self = this;
         return new PromiseConstructor(function(resolve, reject) {
@@ -44841,8 +44841,8 @@ $__System.registerDynamic("ca", ["15", "4"], true, function($__require, exports,
   return module.exports;
 });
 
-$__System.registerDynamic("cb", ["4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/parser/chunker.js", ["github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -44986,12 +44986,12 @@ $__System.registerDynamic("cb", ["4"], true, function($__require, exports, modul
   return module.exports;
 });
 
-$__System.registerDynamic("cc", ["cb", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/parser/parser-input.js", ["npm:less@2.7.1/lib/less/parser/chunker.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var chunker = $__require('cb');
+  var chunker = $__require('npm:less@2.7.1/lib/less/parser/chunker.js');
   module.exports = function() {
     var input,
         j,
@@ -45210,16 +45210,16 @@ $__System.registerDynamic("cc", ["cb", "4"], true, function($__require, exports,
   return module.exports;
 });
 
-$__System.registerDynamic("c9", ["c3", "c6", "ce", "cc", "cd", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/parser/parser.js", ["npm:less@2.7.1/lib/less/less-error.js", "npm:less@2.7.1/lib/less/tree/index.js", "npm:less@2.7.1/lib/less/visitors/index.js", "npm:less@2.7.1/lib/less/parser/parser-input.js", "npm:less@2.7.1/lib/less/utils.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var LessError = $__require('c3'),
-      tree = $__require('c6'),
-      visitors = $__require('ce'),
-      getParserInput = $__require('cc'),
-      utils = $__require('cd');
+  var LessError = $__require('npm:less@2.7.1/lib/less/less-error.js'),
+      tree = $__require('npm:less@2.7.1/lib/less/tree/index.js'),
+      visitors = $__require('npm:less@2.7.1/lib/less/visitors/index.js'),
+      getParserInput = $__require('npm:less@2.7.1/lib/less/parser/parser-input.js'),
+      utils = $__require('npm:less@2.7.1/lib/less/utils.js');
   var Parser = function Parser(context, imports, fileInfo) {
     var parsers,
         parserInput = getParserInput();
@@ -46676,13 +46676,13 @@ $__System.registerDynamic("c9", ["c3", "c6", "ce", "cc", "cd", "4"], true, funct
   return module.exports;
 });
 
-$__System.registerDynamic("cf", ["d0"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:promise@7.1.1/lib/done.js", ["npm:promise@7.1.1/lib/core.js"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var Promise = $__require('d0');
+  var Promise = $__require('npm:promise@7.1.1/lib/core.js');
   module.exports = Promise;
   Promise.prototype.done = function(onFulfilled, onRejected) {
     var self = arguments.length ? this.then.apply(this, arguments) : this;
@@ -46695,13 +46695,13 @@ $__System.registerDynamic("cf", ["d0"], true, function($__require, exports, modu
   return module.exports;
 });
 
-$__System.registerDynamic("d1", ["d0"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:promise@7.1.1/lib/finally.js", ["npm:promise@7.1.1/lib/core.js"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var Promise = $__require('d0');
+  var Promise = $__require('npm:promise@7.1.1/lib/core.js');
   module.exports = Promise;
   Promise.prototype['finally'] = function(f) {
     return this.then(function(value) {
@@ -46717,13 +46717,13 @@ $__System.registerDynamic("d1", ["d0"], true, function($__require, exports, modu
   return module.exports;
 });
 
-$__System.registerDynamic("d2", ["d0"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:promise@7.1.1/lib/es6-extensions.js", ["npm:promise@7.1.1/lib/core.js"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var Promise = $__require('d0');
+  var Promise = $__require('npm:promise@7.1.1/lib/core.js');
   module.exports = Promise;
   var TRUE = valuePromise(true);
   var FALSE = valuePromise(false);
@@ -46825,13 +46825,13 @@ $__System.registerDynamic("d2", ["d0"], true, function($__require, exports, modu
   return module.exports;
 });
 
-$__System.registerDynamic("d3", ["d4", "4"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:asap@2.0.4/asap.js", ["npm:asap@2.0.4/raw.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
   "use strict";
-  var process = $__require("4");
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var rawAsap = $__require('d4');
+  var rawAsap = $__require('npm:asap@2.0.4/raw.js');
   var freeTasks = [];
   module.exports = asap;
   function asap(task) {
@@ -46872,14 +46872,14 @@ $__System.registerDynamic("d3", ["d4", "4"], true, function($__require, exports,
   return module.exports;
 });
 
-$__System.registerDynamic("d5", ["d0", "d3"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:promise@7.1.1/lib/node-extensions.js", ["npm:promise@7.1.1/lib/core.js", "npm:asap@2.0.4/asap.js"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var Promise = $__require('d0');
-  var asap = $__require('d3');
+  var Promise = $__require('npm:promise@7.1.1/lib/core.js');
+  var asap = $__require('npm:asap@2.0.4/asap.js');
   module.exports = Promise;
   Promise.denodeify = function(fn, argumentCount) {
     if (typeof argumentCount === 'number' && argumentCount !== Infinity) {
@@ -46944,9 +46944,9 @@ $__System.registerDynamic("d5", ["d0", "d3"], true, function($__require, exports
   return module.exports;
 });
 
-$__System.registerDynamic("d4", ["@node/domain", "4"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:asap@2.0.4/raw.js", ["@node/domain", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
   "use strict";
-  var process = $__require("4");
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -47003,13 +47003,13 @@ $__System.registerDynamic("d4", ["@node/domain", "4"], true, function($__require
   return module.exports;
 });
 
-$__System.registerDynamic("d0", ["d4"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:promise@7.1.1/lib/core.js", ["npm:asap@2.0.4/raw.js"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var asap = $__require('d4');
+  var asap = $__require('npm:asap@2.0.4/raw.js');
   function noop() {}
   var LAST_ERROR = null;
   var IS_ERROR = {};
@@ -47183,13 +47183,13 @@ $__System.registerDynamic("d0", ["d4"], true, function($__require, exports, modu
   return module.exports;
 });
 
-$__System.registerDynamic("d6", ["d0"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:promise@7.1.1/lib/synchronous.js", ["npm:promise@7.1.1/lib/core.js"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var Promise = $__require('d0');
+  var Promise = $__require('npm:promise@7.1.1/lib/core.js');
   module.exports = Promise;
   Promise.enableSynchronous = function() {
     Promise.prototype.isPending = function() {
@@ -47240,40 +47240,40 @@ $__System.registerDynamic("d6", ["d0"], true, function($__require, exports, modu
   return module.exports;
 });
 
-$__System.registerDynamic("d7", ["d0", "cf", "d1", "d2", "d5", "d6"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:promise@7.1.1/lib/index.js", ["npm:promise@7.1.1/lib/core.js", "npm:promise@7.1.1/lib/done.js", "npm:promise@7.1.1/lib/finally.js", "npm:promise@7.1.1/lib/es6-extensions.js", "npm:promise@7.1.1/lib/node-extensions.js", "npm:promise@7.1.1/lib/synchronous.js"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
-  module.exports = $__require('d0');
-  $__require('cf');
-  $__require('d1');
-  $__require('d2');
-  $__require('d5');
-  $__require('d6');
+  module.exports = $__require('npm:promise@7.1.1/lib/core.js');
+  $__require('npm:promise@7.1.1/lib/done.js');
+  $__require('npm:promise@7.1.1/lib/finally.js');
+  $__require('npm:promise@7.1.1/lib/es6-extensions.js');
+  $__require('npm:promise@7.1.1/lib/node-extensions.js');
+  $__require('npm:promise@7.1.1/lib/synchronous.js');
   return module.exports;
 });
 
-$__System.registerDynamic("15", ["d7"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:promise@7.1.1/index.js", ["npm:promise@7.1.1/lib/index.js"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
-  module.exports = $__require('d7');
+  module.exports = $__require('npm:promise@7.1.1/lib/index.js');
   return module.exports;
 });
 
-$__System.registerDynamic("d8", ["c8", "c9", "d9", "15", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/parse.js", ["npm:less@2.7.1/lib/less/contexts.js", "npm:less@2.7.1/lib/less/parser/parser.js", "npm:less@2.7.1/lib/less/plugin-manager.js", "npm:promise@7.1.1/index.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
   var PromiseConstructor,
-      contexts = $__require('c8'),
-      Parser = $__require('c9'),
-      PluginManager = $__require('d9');
+      contexts = $__require('npm:less@2.7.1/lib/less/contexts.js'),
+      Parser = $__require('npm:less@2.7.1/lib/less/parser/parser.js'),
+      PluginManager = $__require('npm:less@2.7.1/lib/less/plugin-manager.js');
   module.exports = function(environment, ParseTree, ImportManager) {
     var parse = function(input, options, callback) {
       options = options || {};
@@ -47283,7 +47283,7 @@ $__System.registerDynamic("d8", ["c8", "c9", "d9", "15", "4"], true, function($_
       }
       if (!callback) {
         if (!PromiseConstructor) {
-          PromiseConstructor = typeof Promise === 'undefined' ? $__require('15') : Promise;
+          PromiseConstructor = typeof Promise === 'undefined' ? $__require('npm:promise@7.1.1/index.js') : Promise;
         }
         var self = this;
         return new PromiseConstructor(function(resolve, reject) {
@@ -47333,12 +47333,12 @@ $__System.registerDynamic("d8", ["c8", "c9", "d9", "15", "4"], true, function($_
   return module.exports;
 });
 
-$__System.registerDynamic("c3", ["cd", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/less-error.js", ["npm:less@2.7.1/lib/less/utils.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var utils = $__require('cd');
+  var utils = $__require('npm:less@2.7.1/lib/less/utils.js');
   var LessError = module.exports = function LessError(e, importManager, currentFilename) {
     Error.call(this);
     var filename = e.filename || currentFilename;
@@ -47372,8 +47372,8 @@ $__System.registerDynamic("c3", ["cd", "4"], true, function($__require, exports,
   return module.exports;
 });
 
-$__System.registerDynamic("da", ["4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/visitors/import-sequencer.js", ["github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -47430,14 +47430,14 @@ $__System.registerDynamic("da", ["4"], true, function($__require, exports, modul
   return module.exports;
 });
 
-$__System.registerDynamic("db", ["c8", "dc", "da", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/visitors/import-visitor.js", ["npm:less@2.7.1/lib/less/contexts.js", "npm:less@2.7.1/lib/less/visitors/visitor.js", "npm:less@2.7.1/lib/less/visitors/import-sequencer.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var contexts = $__require('c8'),
-      Visitor = $__require('dc'),
-      ImportSequencer = $__require('da');
+  var contexts = $__require('npm:less@2.7.1/lib/less/contexts.js'),
+      Visitor = $__require('npm:less@2.7.1/lib/less/visitors/visitor.js'),
+      ImportSequencer = $__require('npm:less@2.7.1/lib/less/visitors/import-sequencer.js');
   var ImportVisitor = function(importer, finish) {
     this._visitor = new Visitor(this);
     this._importer = importer;
@@ -47603,8 +47603,8 @@ $__System.registerDynamic("db", ["c8", "dc", "da", "4"], true, function($__requi
   return module.exports;
 });
 
-$__System.registerDynamic("dd", ["4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/visitors/set-tree-visibility-visitor.js", ["github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -47647,14 +47647,14 @@ $__System.registerDynamic("dd", ["4"], true, function($__require, exports, modul
   return module.exports;
 });
 
-$__System.registerDynamic("de", ["c6", "dc", "a4", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/visitors/extend-visitor.js", ["npm:less@2.7.1/lib/less/tree/index.js", "npm:less@2.7.1/lib/less/visitors/visitor.js", "npm:less@2.7.1/lib/less/logger.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var tree = $__require('c6'),
-      Visitor = $__require('dc'),
-      logger = $__require('a4');
+  var tree = $__require('npm:less@2.7.1/lib/less/tree/index.js'),
+      Visitor = $__require('npm:less@2.7.1/lib/less/visitors/visitor.js'),
+      logger = $__require('npm:less@2.7.1/lib/less/logger.js');
   var ExtendFinderVisitor = function() {
     this._visitor = new Visitor(this);
     this.contexts = [];
@@ -48031,12 +48031,12 @@ $__System.registerDynamic("de", ["c6", "dc", "a4", "4"], true, function($__requi
   return module.exports;
 });
 
-$__System.registerDynamic("df", ["dc", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/visitors/join-selector-visitor.js", ["npm:less@2.7.1/lib/less/visitors/visitor.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Visitor = $__require('dc');
+  var Visitor = $__require('npm:less@2.7.1/lib/less/visitors/visitor.js');
   var JoinSelectorVisitor = function() {
     this.contexts = [[]];
     this._visitor = new Visitor(this);
@@ -48091,12 +48091,12 @@ $__System.registerDynamic("df", ["dc", "4"], true, function($__require, exports,
   return module.exports;
 });
 
-$__System.registerDynamic("dc", ["c6", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/visitors/visitor.js", ["npm:less@2.7.1/lib/less/tree/index.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var tree = $__require('c6');
+  var tree = $__require('npm:less@2.7.1/lib/less/tree/index.js');
   var _visitArgs = {visitDeeper: true},
       _hasIndexed = false;
   function _noop(node) {
@@ -48233,13 +48233,13 @@ $__System.registerDynamic("dc", ["c6", "4"], true, function($__require, exports,
   return module.exports;
 });
 
-$__System.registerDynamic("e0", ["c6", "dc", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/visitors/to-css-visitor.js", ["npm:less@2.7.1/lib/less/tree/index.js", "npm:less@2.7.1/lib/less/visitors/visitor.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var tree = $__require('c6'),
-      Visitor = $__require('dc');
+  var tree = $__require('npm:less@2.7.1/lib/less/tree/index.js'),
+      Visitor = $__require('npm:less@2.7.1/lib/less/visitors/visitor.js');
   var CSSVisitorUtils = function(context) {
     this._visitor = new Visitor(this);
     this._context = context;
@@ -48565,29 +48565,29 @@ $__System.registerDynamic("e0", ["c6", "dc", "4"], true, function($__require, ex
   return module.exports;
 });
 
-$__System.registerDynamic("ce", ["dc", "db", "dd", "de", "df", "e0", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/visitors/index.js", ["npm:less@2.7.1/lib/less/visitors/visitor.js", "npm:less@2.7.1/lib/less/visitors/import-visitor.js", "npm:less@2.7.1/lib/less/visitors/set-tree-visibility-visitor.js", "npm:less@2.7.1/lib/less/visitors/extend-visitor.js", "npm:less@2.7.1/lib/less/visitors/join-selector-visitor.js", "npm:less@2.7.1/lib/less/visitors/to-css-visitor.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
   var visitors = {
-    Visitor: $__require('dc'),
-    ImportVisitor: $__require('db'),
-    MarkVisibleSelectorsVisitor: $__require('dd'),
-    ExtendVisitor: $__require('de'),
-    JoinSelectorVisitor: $__require('df'),
-    ToCSSVisitor: $__require('e0')
+    Visitor: $__require('npm:less@2.7.1/lib/less/visitors/visitor.js'),
+    ImportVisitor: $__require('npm:less@2.7.1/lib/less/visitors/import-visitor.js'),
+    MarkVisibleSelectorsVisitor: $__require('npm:less@2.7.1/lib/less/visitors/set-tree-visibility-visitor.js'),
+    ExtendVisitor: $__require('npm:less@2.7.1/lib/less/visitors/extend-visitor.js'),
+    JoinSelectorVisitor: $__require('npm:less@2.7.1/lib/less/visitors/join-selector-visitor.js'),
+    ToCSSVisitor: $__require('npm:less@2.7.1/lib/less/visitors/to-css-visitor.js')
   };
   module.exports = visitors;
   return module.exports;
 });
 
-$__System.registerDynamic("e1", ["e2", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/alpha.js", ["npm:less@2.7.1/lib/less/tree/node.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js');
   var Alpha = function(val) {
     this.value = val;
   };
@@ -48615,13 +48615,13 @@ $__System.registerDynamic("e1", ["e2", "4"], true, function($__require, exports,
   return module.exports;
 });
 
-$__System.registerDynamic("bb", ["e2", "c8", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/detached-ruleset.js", ["npm:less@2.7.1/lib/less/tree/node.js", "npm:less@2.7.1/lib/less/contexts.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2'),
-      contexts = $__require('c8');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js'),
+      contexts = $__require('npm:less@2.7.1/lib/less/contexts.js');
   var DetachedRuleset = function(ruleset, frames) {
     this.ruleset = ruleset;
     this.frames = frames;
@@ -48643,12 +48643,12 @@ $__System.registerDynamic("bb", ["e2", "c8", "4"], true, function($__require, ex
   return module.exports;
 });
 
-$__System.registerDynamic("e3", ["e2", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/attribute.js", ["npm:less@2.7.1/lib/less/tree/node.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js');
   var Attribute = function(key, op, value) {
     this.key = key;
     this.op = op;
@@ -48674,12 +48674,12 @@ $__System.registerDynamic("e3", ["e2", "4"], true, function($__require, exports,
   return module.exports;
 });
 
-$__System.registerDynamic("be", ["b8", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/functions/function-caller.js", ["npm:less@2.7.1/lib/less/tree/expression.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Expression = $__require('b8');
+  var Expression = $__require('npm:less@2.7.1/lib/less/tree/expression.js');
   var functionCaller = function(name, context, index, currentFileInfo) {
     this.name = name.toLowerCase();
     this.index = index;
@@ -48720,13 +48720,13 @@ $__System.registerDynamic("be", ["b8", "4"], true, function($__require, exports,
   return module.exports;
 });
 
-$__System.registerDynamic("e4", ["e2", "be", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/call.js", ["npm:less@2.7.1/lib/less/tree/node.js", "npm:less@2.7.1/lib/less/functions/function-caller.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2'),
-      FunctionCaller = $__require('be');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js'),
+      FunctionCaller = $__require('npm:less@2.7.1/lib/less/functions/function-caller.js');
   var Call = function(name, args, index, currentFileInfo) {
     this.name = name;
     this.args = args;
@@ -48779,12 +48779,12 @@ $__System.registerDynamic("e4", ["e2", "be", "4"], true, function($__require, ex
   return module.exports;
 });
 
-$__System.registerDynamic("b1", ["e2", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/url.js", ["npm:less@2.7.1/lib/less/tree/node.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js');
   var URL = function(val, index, currentFileInfo, isEvald) {
     this.value = val;
     this.currentFileInfo = currentFileInfo;
@@ -48833,17 +48833,17 @@ $__System.registerDynamic("b1", ["e2", "4"], true, function($__require, exports,
   return module.exports;
 });
 
-$__System.registerDynamic("e5", ["e2", "e6", "b1", "ac", "e7", "ad", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/import.js", ["npm:less@2.7.1/lib/less/tree/node.js", "npm:less@2.7.1/lib/less/tree/media.js", "npm:less@2.7.1/lib/less/tree/url.js", "npm:less@2.7.1/lib/less/tree/quoted.js", "npm:less@2.7.1/lib/less/tree/ruleset.js", "npm:less@2.7.1/lib/less/tree/anonymous.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2'),
-      Media = $__require('e6'),
-      URL = $__require('b1'),
-      Quoted = $__require('ac'),
-      Ruleset = $__require('e7'),
-      Anonymous = $__require('ad');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js'),
+      Media = $__require('npm:less@2.7.1/lib/less/tree/media.js'),
+      URL = $__require('npm:less@2.7.1/lib/less/tree/url.js'),
+      Quoted = $__require('npm:less@2.7.1/lib/less/tree/quoted.js'),
+      Ruleset = $__require('npm:less@2.7.1/lib/less/tree/ruleset.js'),
+      Anonymous = $__require('npm:less@2.7.1/lib/less/tree/anonymous.js');
   var Import = function(path, features, options, index, currentFileInfo, visibilityInfo) {
     this.options = options;
     this.index = index;
@@ -48971,15 +48971,15 @@ $__System.registerDynamic("e5", ["e2", "e6", "b1", "ac", "e7", "ad", "4"], true,
   return module.exports;
 });
 
-$__System.registerDynamic("e8", ["e2", "e9", "ea", "bf", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/mixin-call.js", ["npm:less@2.7.1/lib/less/tree/node.js", "npm:less@2.7.1/lib/less/tree/selector.js", "npm:less@2.7.1/lib/less/tree/mixin-definition.js", "npm:less@2.7.1/lib/less/functions/default.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2'),
-      Selector = $__require('e9'),
-      MixinDefinition = $__require('ea'),
-      defaultFunc = $__require('bf');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js'),
+      Selector = $__require('npm:less@2.7.1/lib/less/tree/selector.js'),
+      MixinDefinition = $__require('npm:less@2.7.1/lib/less/tree/mixin-definition.js'),
+      defaultFunc = $__require('npm:less@2.7.1/lib/less/functions/default.js');
   var MixinCall = function(elements, args, index, currentFileInfo, important) {
     this.selector = new Selector(elements);
     this.arguments = args || [];
@@ -49183,17 +49183,17 @@ $__System.registerDynamic("e8", ["e2", "e9", "ea", "bf", "4"], true, function($_
   return module.exports;
 });
 
-$__System.registerDynamic("ea", ["e9", "eb", "e7", "ec", "b8", "c8", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/mixin-definition.js", ["npm:less@2.7.1/lib/less/tree/selector.js", "npm:less@2.7.1/lib/less/tree/element.js", "npm:less@2.7.1/lib/less/tree/ruleset.js", "npm:less@2.7.1/lib/less/tree/rule.js", "npm:less@2.7.1/lib/less/tree/expression.js", "npm:less@2.7.1/lib/less/contexts.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Selector = $__require('e9'),
-      Element = $__require('eb'),
-      Ruleset = $__require('e7'),
-      Rule = $__require('ec'),
-      Expression = $__require('b8'),
-      contexts = $__require('c8');
+  var Selector = $__require('npm:less@2.7.1/lib/less/tree/selector.js'),
+      Element = $__require('npm:less@2.7.1/lib/less/tree/element.js'),
+      Ruleset = $__require('npm:less@2.7.1/lib/less/tree/ruleset.js'),
+      Rule = $__require('npm:less@2.7.1/lib/less/tree/rule.js'),
+      Expression = $__require('npm:less@2.7.1/lib/less/tree/expression.js'),
+      contexts = $__require('npm:less@2.7.1/lib/less/contexts.js');
   var Definition = function(name, params, rules, condition, variadic, frames, visibilityInfo) {
     this.name = name;
     this.selectors = [new Selector([new Element(null, name, this.index, this.currentFileInfo)])];
@@ -49385,13 +49385,13 @@ $__System.registerDynamic("ea", ["e9", "eb", "e7", "ec", "b8", "c8", "4"], true,
   return module.exports;
 });
 
-$__System.registerDynamic("ed", ["e2", "ee", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/js-eval-node.js", ["npm:less@2.7.1/lib/less/tree/node.js", "npm:less@2.7.1/lib/less/tree/variable.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2'),
-      Variable = $__require('ee');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js'),
+      Variable = $__require('npm:less@2.7.1/lib/less/tree/variable.js');
   var JsEvalNode = function() {};
   JsEvalNode.prototype = new Node();
   JsEvalNode.prototype.evaluateJavaScript = function(expression, context) {
@@ -49452,14 +49452,14 @@ $__System.registerDynamic("ed", ["e2", "ee", "4"], true, function($__require, ex
   return module.exports;
 });
 
-$__System.registerDynamic("ac", ["e2", "ed", "ee", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/quoted.js", ["npm:less@2.7.1/lib/less/tree/node.js", "npm:less@2.7.1/lib/less/tree/js-eval-node.js", "npm:less@2.7.1/lib/less/tree/variable.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2'),
-      JsEvalNode = $__require('ed'),
-      Variable = $__require('ee');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js'),
+      JsEvalNode = $__require('npm:less@2.7.1/lib/less/tree/js-eval-node.js'),
+      Variable = $__require('npm:less@2.7.1/lib/less/tree/variable.js');
   var Quoted = function(str, content, escaped, index, currentFileInfo) {
     this.escaped = (escaped == null) ? true : escaped;
     this.value = content || '';
@@ -49514,15 +49514,15 @@ $__System.registerDynamic("ac", ["e2", "ed", "ee", "4"], true, function($__requi
   return module.exports;
 });
 
-$__System.registerDynamic("b6", ["ed", "aa", "ac", "ad", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/javascript.js", ["npm:less@2.7.1/lib/less/tree/js-eval-node.js", "npm:less@2.7.1/lib/less/tree/dimension.js", "npm:less@2.7.1/lib/less/tree/quoted.js", "npm:less@2.7.1/lib/less/tree/anonymous.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var JsEvalNode = $__require('ed'),
-      Dimension = $__require('aa'),
-      Quoted = $__require('ac'),
-      Anonymous = $__require('ad');
+  var JsEvalNode = $__require('npm:less@2.7.1/lib/less/tree/js-eval-node.js'),
+      Dimension = $__require('npm:less@2.7.1/lib/less/tree/dimension.js'),
+      Quoted = $__require('npm:less@2.7.1/lib/less/tree/quoted.js'),
+      Anonymous = $__require('npm:less@2.7.1/lib/less/tree/anonymous.js');
   var JavaScript = function(string, escaped, index, currentFileInfo) {
     this.escaped = escaped;
     this.expression = string;
@@ -49547,12 +49547,12 @@ $__System.registerDynamic("b6", ["ed", "aa", "ac", "ad", "4"], true, function($_
   return module.exports;
 });
 
-$__System.registerDynamic("ef", ["e2", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/assignment.js", ["npm:less@2.7.1/lib/less/tree/node.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js');
   var Assignment = function(key, val) {
     this.key = key;
     this.value = val;
@@ -49580,12 +49580,12 @@ $__System.registerDynamic("ef", ["e2", "4"], true, function($__require, exports,
   return module.exports;
 });
 
-$__System.registerDynamic("f0", ["e2", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/condition.js", ["npm:less@2.7.1/lib/less/tree/node.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js');
   var Condition = function(op, l, r, i, negate) {
     this.op = op.trim();
     this.lvalue = l;
@@ -49625,12 +49625,12 @@ $__System.registerDynamic("f0", ["e2", "4"], true, function($__require, exports,
   return module.exports;
 });
 
-$__System.registerDynamic("ad", ["e2", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/anonymous.js", ["npm:less@2.7.1/lib/less/tree/node.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js');
   var Anonymous = function(value, index, currentFileInfo, mapLines, rulesetLike, visibilityInfo) {
     this.value = value;
     this.index = index;
@@ -49658,12 +49658,12 @@ $__System.registerDynamic("ad", ["e2", "4"], true, function($__require, exports,
   return module.exports;
 });
 
-$__System.registerDynamic("f1", ["e2", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/value.js", ["npm:less@2.7.1/lib/less/tree/node.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js');
   var Value = function(value) {
     this.value = value;
     if (!value) {
@@ -49699,14 +49699,14 @@ $__System.registerDynamic("f1", ["e2", "4"], true, function($__require, exports,
   return module.exports;
 });
 
-$__System.registerDynamic("ec", ["e2", "f1", "ba", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/rule.js", ["npm:less@2.7.1/lib/less/tree/node.js", "npm:less@2.7.1/lib/less/tree/value.js", "npm:less@2.7.1/lib/less/tree/keyword.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2'),
-      Value = $__require('f1'),
-      Keyword = $__require('ba');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js'),
+      Value = $__require('npm:less@2.7.1/lib/less/tree/value.js'),
+      Keyword = $__require('npm:less@2.7.1/lib/less/tree/keyword.js');
   var Rule = function(name, value, important, merge, index, currentFileInfo, inline, variable) {
     this.name = name;
     this.value = (value instanceof Node) ? value : new Value([value]);
@@ -49791,8 +49791,8 @@ $__System.registerDynamic("ec", ["e2", "f1", "ba", "4"], true, function($__requi
   return module.exports;
 });
 
-$__System.registerDynamic("c8", ["4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/contexts.js", ["github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -49865,12 +49865,12 @@ $__System.registerDynamic("c8", ["4"], true, function($__require, exports, modul
   return module.exports;
 });
 
-$__System.registerDynamic("ba", ["e2", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/keyword.js", ["npm:less@2.7.1/lib/less/tree/node.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js');
   var Keyword = function(value) {
     this.value = value;
   };
@@ -49891,13 +49891,13 @@ $__System.registerDynamic("ba", ["e2", "4"], true, function($__require, exports,
   return module.exports;
 });
 
-$__System.registerDynamic("bf", ["ba", "ae", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/functions/default.js", ["npm:less@2.7.1/lib/less/tree/keyword.js", "npm:less@2.7.1/lib/less/functions/function-registry.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Keyword = $__require('ba'),
-      functionRegistry = $__require('ae');
+  var Keyword = $__require('npm:less@2.7.1/lib/less/tree/keyword.js'),
+      functionRegistry = $__require('npm:less@2.7.1/lib/less/functions/function-registry.js');
   var defaultFunc = {
     eval: function() {
       var v = this.value_,
@@ -49924,20 +49924,20 @@ $__System.registerDynamic("bf", ["ba", "ae", "4"], true, function($__require, ex
   return module.exports;
 });
 
-$__System.registerDynamic("e7", ["e2", "ec", "e9", "eb", "f2", "c8", "ae", "bf", "f3", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/ruleset.js", ["npm:less@2.7.1/lib/less/tree/node.js", "npm:less@2.7.1/lib/less/tree/rule.js", "npm:less@2.7.1/lib/less/tree/selector.js", "npm:less@2.7.1/lib/less/tree/element.js", "npm:less@2.7.1/lib/less/tree/paren.js", "npm:less@2.7.1/lib/less/contexts.js", "npm:less@2.7.1/lib/less/functions/function-registry.js", "npm:less@2.7.1/lib/less/functions/default.js", "npm:less@2.7.1/lib/less/tree/debug-info.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2'),
-      Rule = $__require('ec'),
-      Selector = $__require('e9'),
-      Element = $__require('eb'),
-      Paren = $__require('f2'),
-      contexts = $__require('c8'),
-      globalFunctionRegistry = $__require('ae'),
-      defaultFunc = $__require('bf'),
-      getDebugInfo = $__require('f3');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js'),
+      Rule = $__require('npm:less@2.7.1/lib/less/tree/rule.js'),
+      Selector = $__require('npm:less@2.7.1/lib/less/tree/selector.js'),
+      Element = $__require('npm:less@2.7.1/lib/less/tree/element.js'),
+      Paren = $__require('npm:less@2.7.1/lib/less/tree/paren.js'),
+      contexts = $__require('npm:less@2.7.1/lib/less/contexts.js'),
+      globalFunctionRegistry = $__require('npm:less@2.7.1/lib/less/functions/function-registry.js'),
+      defaultFunc = $__require('npm:less@2.7.1/lib/less/functions/default.js'),
+      getDebugInfo = $__require('npm:less@2.7.1/lib/less/tree/debug-info.js');
   var Ruleset = function(selectors, rules, strictImports, visibilityInfo) {
     this.selectors = selectors;
     this.rules = rules;
@@ -50509,14 +50509,14 @@ $__System.registerDynamic("e7", ["e2", "ec", "e9", "eb", "f2", "c8", "ae", "bf",
   return module.exports;
 });
 
-$__System.registerDynamic("f4", ["e2", "e9", "e7", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/directive.js", ["npm:less@2.7.1/lib/less/tree/node.js", "npm:less@2.7.1/lib/less/tree/selector.js", "npm:less@2.7.1/lib/less/tree/ruleset.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2'),
-      Selector = $__require('e9'),
-      Ruleset = $__require('e7');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js'),
+      Selector = $__require('npm:less@2.7.1/lib/less/tree/selector.js'),
+      Ruleset = $__require('npm:less@2.7.1/lib/less/tree/ruleset.js');
   var Directive = function(name, value, rules, index, currentFileInfo, debugInfo, isRooted, visibilityInfo) {
     var i;
     this.name = name;
@@ -50638,17 +50638,17 @@ $__System.registerDynamic("f4", ["e2", "e9", "e7", "4"], true, function($__requi
   return module.exports;
 });
 
-$__System.registerDynamic("e6", ["e7", "f1", "e9", "ad", "b8", "f4", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/media.js", ["npm:less@2.7.1/lib/less/tree/ruleset.js", "npm:less@2.7.1/lib/less/tree/value.js", "npm:less@2.7.1/lib/less/tree/selector.js", "npm:less@2.7.1/lib/less/tree/anonymous.js", "npm:less@2.7.1/lib/less/tree/expression.js", "npm:less@2.7.1/lib/less/tree/directive.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Ruleset = $__require('e7'),
-      Value = $__require('f1'),
-      Selector = $__require('e9'),
-      Anonymous = $__require('ad'),
-      Expression = $__require('b8'),
-      Directive = $__require('f4');
+  var Ruleset = $__require('npm:less@2.7.1/lib/less/tree/ruleset.js'),
+      Value = $__require('npm:less@2.7.1/lib/less/tree/value.js'),
+      Selector = $__require('npm:less@2.7.1/lib/less/tree/selector.js'),
+      Anonymous = $__require('npm:less@2.7.1/lib/less/tree/anonymous.js'),
+      Expression = $__require('npm:less@2.7.1/lib/less/tree/expression.js'),
+      Directive = $__require('npm:less@2.7.1/lib/less/tree/directive.js');
   var Media = function(value, features, index, currentFileInfo, visibilityInfo) {
     this.index = index;
     this.currentFileInfo = currentFileInfo;
@@ -50763,12 +50763,12 @@ $__System.registerDynamic("e6", ["e7", "f1", "e9", "ad", "b8", "f4", "4"], true,
   return module.exports;
 });
 
-$__System.registerDynamic("f5", ["e2", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/unicode-descriptor.js", ["npm:less@2.7.1/lib/less/tree/node.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js');
   var UnicodeDescriptor = function(value) {
     this.value = value;
   };
@@ -50778,14 +50778,14 @@ $__System.registerDynamic("f5", ["e2", "4"], true, function($__require, exports,
   return module.exports;
 });
 
-$__System.registerDynamic("bc", ["e2", "ab", "aa", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/operation.js", ["npm:less@2.7.1/lib/less/tree/node.js", "npm:less@2.7.1/lib/less/tree/color.js", "npm:less@2.7.1/lib/less/tree/dimension.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2'),
-      Color = $__require('ab'),
-      Dimension = $__require('aa');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js'),
+      Color = $__require('npm:less@2.7.1/lib/less/tree/color.js'),
+      Dimension = $__require('npm:less@2.7.1/lib/less/tree/dimension.js');
   var Operation = function(op, operands, isSpaced) {
     this.op = op.trim();
     this.operands = operands;
@@ -50832,14 +50832,14 @@ $__System.registerDynamic("bc", ["e2", "ab", "aa", "4"], true, function($__requi
   return module.exports;
 });
 
-$__System.registerDynamic("f6", ["e2", "bc", "aa", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/negative.js", ["npm:less@2.7.1/lib/less/tree/node.js", "npm:less@2.7.1/lib/less/tree/operation.js", "npm:less@2.7.1/lib/less/tree/dimension.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2'),
-      Operation = $__require('bc'),
-      Dimension = $__require('aa');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js'),
+      Operation = $__require('npm:less@2.7.1/lib/less/tree/operation.js'),
+      Dimension = $__require('npm:less@2.7.1/lib/less/tree/dimension.js');
   var Negative = function(node) {
     this.value = node;
   };
@@ -50859,12 +50859,12 @@ $__System.registerDynamic("f6", ["e2", "bc", "aa", "4"], true, function($__requi
   return module.exports;
 });
 
-$__System.registerDynamic("f7", ["e2", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/combinator.js", ["npm:less@2.7.1/lib/less/tree/node.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js');
   var Combinator = function(value) {
     if (value === ' ') {
       this.value = ' ';
@@ -50889,14 +50889,14 @@ $__System.registerDynamic("f7", ["e2", "4"], true, function($__require, exports,
   return module.exports;
 });
 
-$__System.registerDynamic("eb", ["e2", "f2", "f7", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/element.js", ["npm:less@2.7.1/lib/less/tree/node.js", "npm:less@2.7.1/lib/less/tree/paren.js", "npm:less@2.7.1/lib/less/tree/combinator.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2'),
-      Paren = $__require('f2'),
-      Combinator = $__require('f7');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js'),
+      Paren = $__require('npm:less@2.7.1/lib/less/tree/paren.js'),
+      Combinator = $__require('npm:less@2.7.1/lib/less/tree/combinator.js');
   var Element = function(combinator, value, index, currentFileInfo, info) {
     this.combinator = combinator instanceof Combinator ? combinator : new Combinator(combinator);
     if (typeof value === 'string') {
@@ -50947,13 +50947,13 @@ $__System.registerDynamic("eb", ["e2", "f2", "f7", "4"], true, function($__requi
   return module.exports;
 });
 
-$__System.registerDynamic("e9", ["e2", "eb", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/selector.js", ["npm:less@2.7.1/lib/less/tree/node.js", "npm:less@2.7.1/lib/less/tree/element.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2'),
-      Element = $__require('eb');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js'),
+      Element = $__require('npm:less@2.7.1/lib/less/tree/element.js');
   var Selector = function(elements, extendList, condition, index, currentFileInfo, visibilityInfo) {
     this.elements = elements;
     this.extendList = extendList;
@@ -51060,13 +51060,13 @@ $__System.registerDynamic("e9", ["e2", "eb", "4"], true, function($__require, ex
   return module.exports;
 });
 
-$__System.registerDynamic("f8", ["e2", "e9", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/extend.js", ["npm:less@2.7.1/lib/less/tree/node.js", "npm:less@2.7.1/lib/less/tree/selector.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2'),
-      Selector = $__require('e9');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js'),
+      Selector = $__require('npm:less@2.7.1/lib/less/tree/selector.js');
   var Extend = function Extend(selector, option, index, currentFileInfo, visibilityInfo) {
     this.selector = selector;
     this.option = option;
@@ -51117,12 +51117,12 @@ $__System.registerDynamic("f8", ["e2", "e9", "4"], true, function($__require, ex
   return module.exports;
 });
 
-$__System.registerDynamic("ee", ["e2", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/variable.js", ["npm:less@2.7.1/lib/less/tree/node.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js');
   var Variable = function(name, index, currentFileInfo) {
     this.name = name;
     this.index = index;
@@ -51181,13 +51181,13 @@ $__System.registerDynamic("ee", ["e2", "4"], true, function($__require, exports,
   return module.exports;
 });
 
-$__System.registerDynamic("f9", ["e2", "ee", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/ruleset-call.js", ["npm:less@2.7.1/lib/less/tree/node.js", "npm:less@2.7.1/lib/less/tree/variable.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2'),
-      Variable = $__require('ee');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js'),
+      Variable = $__require('npm:less@2.7.1/lib/less/tree/variable.js');
   var RulesetCall = function(variable) {
     this.variable = variable;
     this.allowRoot = true;
@@ -51202,61 +51202,61 @@ $__System.registerDynamic("f9", ["e2", "ee", "4"], true, function($__require, ex
   return module.exports;
 });
 
-$__System.registerDynamic("c6", ["e2", "e1", "ab", "f4", "bb", "bc", "aa", "fa", "ba", "ee", "e7", "eb", "e3", "f7", "e9", "ac", "b8", "ec", "e4", "b1", "e5", "e8", "ea", "fb", "ad", "f1", "b6", "ef", "f0", "f2", "e6", "f5", "f6", "f8", "f9", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/index.js", ["npm:less@2.7.1/lib/less/tree/node.js", "npm:less@2.7.1/lib/less/tree/alpha.js", "npm:less@2.7.1/lib/less/tree/color.js", "npm:less@2.7.1/lib/less/tree/directive.js", "npm:less@2.7.1/lib/less/tree/detached-ruleset.js", "npm:less@2.7.1/lib/less/tree/operation.js", "npm:less@2.7.1/lib/less/tree/dimension.js", "npm:less@2.7.1/lib/less/tree/unit.js", "npm:less@2.7.1/lib/less/tree/keyword.js", "npm:less@2.7.1/lib/less/tree/variable.js", "npm:less@2.7.1/lib/less/tree/ruleset.js", "npm:less@2.7.1/lib/less/tree/element.js", "npm:less@2.7.1/lib/less/tree/attribute.js", "npm:less@2.7.1/lib/less/tree/combinator.js", "npm:less@2.7.1/lib/less/tree/selector.js", "npm:less@2.7.1/lib/less/tree/quoted.js", "npm:less@2.7.1/lib/less/tree/expression.js", "npm:less@2.7.1/lib/less/tree/rule.js", "npm:less@2.7.1/lib/less/tree/call.js", "npm:less@2.7.1/lib/less/tree/url.js", "npm:less@2.7.1/lib/less/tree/import.js", "npm:less@2.7.1/lib/less/tree/mixin-call.js", "npm:less@2.7.1/lib/less/tree/mixin-definition.js", "npm:less@2.7.1/lib/less/tree/comment.js", "npm:less@2.7.1/lib/less/tree/anonymous.js", "npm:less@2.7.1/lib/less/tree/value.js", "npm:less@2.7.1/lib/less/tree/javascript.js", "npm:less@2.7.1/lib/less/tree/assignment.js", "npm:less@2.7.1/lib/less/tree/condition.js", "npm:less@2.7.1/lib/less/tree/paren.js", "npm:less@2.7.1/lib/less/tree/media.js", "npm:less@2.7.1/lib/less/tree/unicode-descriptor.js", "npm:less@2.7.1/lib/less/tree/negative.js", "npm:less@2.7.1/lib/less/tree/extend.js", "npm:less@2.7.1/lib/less/tree/ruleset-call.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
   var tree = {};
-  tree.Node = $__require('e2');
-  tree.Alpha = $__require('e1');
-  tree.Color = $__require('ab');
-  tree.Directive = $__require('f4');
-  tree.DetachedRuleset = $__require('bb');
-  tree.Operation = $__require('bc');
-  tree.Dimension = $__require('aa');
-  tree.Unit = $__require('fa');
-  tree.Keyword = $__require('ba');
-  tree.Variable = $__require('ee');
-  tree.Ruleset = $__require('e7');
-  tree.Element = $__require('eb');
-  tree.Attribute = $__require('e3');
-  tree.Combinator = $__require('f7');
-  tree.Selector = $__require('e9');
-  tree.Quoted = $__require('ac');
-  tree.Expression = $__require('b8');
-  tree.Rule = $__require('ec');
-  tree.Call = $__require('e4');
-  tree.URL = $__require('b1');
-  tree.Import = $__require('e5');
+  tree.Node = $__require('npm:less@2.7.1/lib/less/tree/node.js');
+  tree.Alpha = $__require('npm:less@2.7.1/lib/less/tree/alpha.js');
+  tree.Color = $__require('npm:less@2.7.1/lib/less/tree/color.js');
+  tree.Directive = $__require('npm:less@2.7.1/lib/less/tree/directive.js');
+  tree.DetachedRuleset = $__require('npm:less@2.7.1/lib/less/tree/detached-ruleset.js');
+  tree.Operation = $__require('npm:less@2.7.1/lib/less/tree/operation.js');
+  tree.Dimension = $__require('npm:less@2.7.1/lib/less/tree/dimension.js');
+  tree.Unit = $__require('npm:less@2.7.1/lib/less/tree/unit.js');
+  tree.Keyword = $__require('npm:less@2.7.1/lib/less/tree/keyword.js');
+  tree.Variable = $__require('npm:less@2.7.1/lib/less/tree/variable.js');
+  tree.Ruleset = $__require('npm:less@2.7.1/lib/less/tree/ruleset.js');
+  tree.Element = $__require('npm:less@2.7.1/lib/less/tree/element.js');
+  tree.Attribute = $__require('npm:less@2.7.1/lib/less/tree/attribute.js');
+  tree.Combinator = $__require('npm:less@2.7.1/lib/less/tree/combinator.js');
+  tree.Selector = $__require('npm:less@2.7.1/lib/less/tree/selector.js');
+  tree.Quoted = $__require('npm:less@2.7.1/lib/less/tree/quoted.js');
+  tree.Expression = $__require('npm:less@2.7.1/lib/less/tree/expression.js');
+  tree.Rule = $__require('npm:less@2.7.1/lib/less/tree/rule.js');
+  tree.Call = $__require('npm:less@2.7.1/lib/less/tree/call.js');
+  tree.URL = $__require('npm:less@2.7.1/lib/less/tree/url.js');
+  tree.Import = $__require('npm:less@2.7.1/lib/less/tree/import.js');
   tree.mixin = {
-    Call: $__require('e8'),
-    Definition: $__require('ea')
+    Call: $__require('npm:less@2.7.1/lib/less/tree/mixin-call.js'),
+    Definition: $__require('npm:less@2.7.1/lib/less/tree/mixin-definition.js')
   };
-  tree.Comment = $__require('fb');
-  tree.Anonymous = $__require('ad');
-  tree.Value = $__require('f1');
-  tree.JavaScript = $__require('b6');
-  tree.Assignment = $__require('ef');
-  tree.Condition = $__require('f0');
-  tree.Paren = $__require('f2');
-  tree.Media = $__require('e6');
-  tree.UnicodeDescriptor = $__require('f5');
-  tree.Negative = $__require('f6');
-  tree.Extend = $__require('f8');
-  tree.RulesetCall = $__require('f9');
+  tree.Comment = $__require('npm:less@2.7.1/lib/less/tree/comment.js');
+  tree.Anonymous = $__require('npm:less@2.7.1/lib/less/tree/anonymous.js');
+  tree.Value = $__require('npm:less@2.7.1/lib/less/tree/value.js');
+  tree.JavaScript = $__require('npm:less@2.7.1/lib/less/tree/javascript.js');
+  tree.Assignment = $__require('npm:less@2.7.1/lib/less/tree/assignment.js');
+  tree.Condition = $__require('npm:less@2.7.1/lib/less/tree/condition.js');
+  tree.Paren = $__require('npm:less@2.7.1/lib/less/tree/paren.js');
+  tree.Media = $__require('npm:less@2.7.1/lib/less/tree/media.js');
+  tree.UnicodeDescriptor = $__require('npm:less@2.7.1/lib/less/tree/unicode-descriptor.js');
+  tree.Negative = $__require('npm:less@2.7.1/lib/less/tree/negative.js');
+  tree.Extend = $__require('npm:less@2.7.1/lib/less/tree/extend.js');
+  tree.RulesetCall = $__require('npm:less@2.7.1/lib/less/tree/ruleset-call.js');
   module.exports = tree;
   return module.exports;
 });
 
-$__System.registerDynamic("c4", ["c8", "ce", "c6", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/transform-tree.js", ["npm:less@2.7.1/lib/less/contexts.js", "npm:less@2.7.1/lib/less/visitors/index.js", "npm:less@2.7.1/lib/less/tree/index.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var contexts = $__require('c8'),
-      visitor = $__require('ce'),
-      tree = $__require('c6');
+  var contexts = $__require('npm:less@2.7.1/lib/less/contexts.js'),
+      visitor = $__require('npm:less@2.7.1/lib/less/visitors/index.js'),
+      tree = $__require('npm:less@2.7.1/lib/less/tree/index.js');
   module.exports = function(root, options) {
     options = options || {};
     var evaldRoot,
@@ -51305,8 +51305,8 @@ $__System.registerDynamic("c4", ["c8", "ce", "c6", "4"], true, function($__requi
   return module.exports;
 });
 
-$__System.registerDynamic("cd", ["4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/utils.js", ["github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -51328,8 +51328,8 @@ $__System.registerDynamic("cd", ["4"], true, function($__require, exports, modul
   return module.exports;
 });
 
-$__System.registerDynamic("d9", ["4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/plugin-manager.js", ["github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -51406,8 +51406,8 @@ $__System.registerDynamic("d9", ["4"], true, function($__require, exports, modul
   return module.exports;
 });
 
-$__System.registerDynamic("a4", ["4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/logger.js", ["github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -51448,8 +51448,8 @@ $__System.registerDynamic("a4", ["4"], true, function($__require, exports, modul
   return module.exports;
 });
 
-$__System.registerDynamic("fc", ["a5", "c6", "a8", "14", "ce", "c9", "bd", "c8", "c0", "c1", "c2", "c7", "ca", "d8", "c3", "c4", "cd", "d9", "a4", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/index.js", ["npm:less@2.7.1/lib/less/data/index.js", "npm:less@2.7.1/lib/less/tree/index.js", "npm:less@2.7.1/lib/less/environment/environment.js", "npm:less@2.7.1/lib/less/environment/abstract-file-manager.js", "npm:less@2.7.1/lib/less/visitors/index.js", "npm:less@2.7.1/lib/less/parser/parser.js", "npm:less@2.7.1/lib/less/functions/index.js", "npm:less@2.7.1/lib/less/contexts.js", "npm:less@2.7.1/lib/less/source-map-output.js", "npm:less@2.7.1/lib/less/source-map-builder.js", "npm:less@2.7.1/lib/less/parse-tree.js", "npm:less@2.7.1/lib/less/import-manager.js", "npm:less@2.7.1/lib/less/render.js", "npm:less@2.7.1/lib/less/parse.js", "npm:less@2.7.1/lib/less/less-error.js", "npm:less@2.7.1/lib/less/transform-tree.js", "npm:less@2.7.1/lib/less/utils.js", "npm:less@2.7.1/lib/less/plugin-manager.js", "npm:less@2.7.1/lib/less/logger.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -51461,34 +51461,34 @@ $__System.registerDynamic("fc", ["a5", "c6", "a8", "14", "ce", "c9", "bd", "c8",
         Environment;
     var less = {
       version: [2, 7, 1],
-      data: $__require('a5'),
-      tree: $__require('c6'),
-      Environment: (Environment = $__require('a8')),
-      AbstractFileManager: $__require('14'),
+      data: $__require('npm:less@2.7.1/lib/less/data/index.js'),
+      tree: $__require('npm:less@2.7.1/lib/less/tree/index.js'),
+      Environment: (Environment = $__require('npm:less@2.7.1/lib/less/environment/environment.js')),
+      AbstractFileManager: $__require('npm:less@2.7.1/lib/less/environment/abstract-file-manager.js'),
       environment: (environment = new Environment(environment, fileManagers)),
-      visitors: $__require('ce'),
-      Parser: $__require('c9'),
-      functions: $__require('bd')(environment),
-      contexts: $__require('c8'),
-      SourceMapOutput: (SourceMapOutput = $__require('c0')(environment)),
-      SourceMapBuilder: (SourceMapBuilder = $__require('c1')(SourceMapOutput, environment)),
-      ParseTree: (ParseTree = $__require('c2')(SourceMapBuilder)),
-      ImportManager: (ImportManager = $__require('c7')(environment)),
-      render: $__require('ca')(environment, ParseTree, ImportManager),
-      parse: $__require('d8')(environment, ParseTree, ImportManager),
-      LessError: $__require('c3'),
-      transformTree: $__require('c4'),
-      utils: $__require('cd'),
-      PluginManager: $__require('d9'),
-      logger: $__require('a4')
+      visitors: $__require('npm:less@2.7.1/lib/less/visitors/index.js'),
+      Parser: $__require('npm:less@2.7.1/lib/less/parser/parser.js'),
+      functions: $__require('npm:less@2.7.1/lib/less/functions/index.js')(environment),
+      contexts: $__require('npm:less@2.7.1/lib/less/contexts.js'),
+      SourceMapOutput: (SourceMapOutput = $__require('npm:less@2.7.1/lib/less/source-map-output.js')(environment)),
+      SourceMapBuilder: (SourceMapBuilder = $__require('npm:less@2.7.1/lib/less/source-map-builder.js')(SourceMapOutput, environment)),
+      ParseTree: (ParseTree = $__require('npm:less@2.7.1/lib/less/parse-tree.js')(SourceMapBuilder)),
+      ImportManager: (ImportManager = $__require('npm:less@2.7.1/lib/less/import-manager.js')(environment)),
+      render: $__require('npm:less@2.7.1/lib/less/render.js')(environment, ParseTree, ImportManager),
+      parse: $__require('npm:less@2.7.1/lib/less/parse.js')(environment, ParseTree, ImportManager),
+      LessError: $__require('npm:less@2.7.1/lib/less/less-error.js'),
+      transformTree: $__require('npm:less@2.7.1/lib/less/transform-tree.js'),
+      utils: $__require('npm:less@2.7.1/lib/less/utils.js'),
+      PluginManager: $__require('npm:less@2.7.1/lib/less/plugin-manager.js'),
+      logger: $__require('npm:less@2.7.1/lib/less/logger.js')
     };
     return less;
   };
   return module.exports;
 });
 
-$__System.registerDynamic("fd", ["4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less-node/lessc-helper.js", ["github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -51571,8 +51571,8 @@ $__System.registerDynamic("fd", ["4"], true, function($__require, exports, modul
   return module.exports;
 });
 
-$__System.registerDynamic("fe", ["@node/path", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less-node/plugin-loader.js", ["@node/path", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -51652,12 +51652,12 @@ $__System.registerDynamic("fe", ["@node/path", "4"], true, function($__require, 
   return module.exports;
 });
 
-$__System.registerDynamic("ff", ["100", "@node/constants", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:graceful-fs@4.1.4/polyfills.js", ["npm:graceful-fs@4.1.4/fs.js", "@node/constants", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var fs = $__require('100');
+  var fs = $__require('npm:graceful-fs@4.1.4/fs.js');
   var constants = $__require('@node/constants');
   var origCwd = process.cwd;
   var cwd = null;
@@ -51864,8 +51864,8 @@ $__System.registerDynamic("ff", ["100", "@node/constants", "4"], true, function(
   return module.exports;
 });
 
-$__System.registerDynamic("101", ["@node/stream", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:graceful-fs@4.1.4/legacy-streams.js", ["@node/stream", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -51967,9 +51967,9 @@ $__System.registerDynamic("101", ["@node/stream", "4"], true, function($__requir
   return module.exports;
 });
 
-$__System.registerDynamic("100", ["@node/fs", "4"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:graceful-fs@4.1.4/fs.js", ["@node/fs", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
   "use strict";
-  var process = $__require("4");
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -51990,14 +51990,14 @@ $__System.registerDynamic("100", ["@node/fs", "4"], true, function($__require, e
   return module.exports;
 });
 
-$__System.registerDynamic("102", ["@node/fs", "ff", "101", "@node/util", "@node/assert", "100", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:graceful-fs@4.1.4/graceful-fs.js", ["@node/fs", "npm:graceful-fs@4.1.4/polyfills.js", "npm:graceful-fs@4.1.4/legacy-streams.js", "@node/util", "@node/assert", "npm:graceful-fs@4.1.4/fs.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
   var fs = $__require('@node/fs');
-  var polyfills = $__require('ff');
-  var legacy = $__require('101');
+  var polyfills = $__require('npm:graceful-fs@4.1.4/polyfills.js');
+  var legacy = $__require('npm:graceful-fs@4.1.4/legacy-streams.js');
   var queue = [];
   var util = $__require('@node/util');
   function noop() {}
@@ -52016,7 +52016,7 @@ $__System.registerDynamic("102", ["@node/fs", "ff", "101", "@node/util", "@node/
       $__require('@node/assert').equal(queue.length, 0);
     });
   }
-  module.exports = patch($__require('100'));
+  module.exports = patch($__require('npm:graceful-fs@4.1.4/fs.js'));
   if (process.env.TEST_GRACEFUL_FS_GLOBAL_PATCH) {
     module.exports = patch(fs);
   }
@@ -52208,14 +52208,14 @@ $__System.registerDynamic("102", ["@node/fs", "ff", "101", "@node/util", "@node/
   return module.exports;
 });
 
-$__System.registerDynamic("13", ["102", "@node/fs", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less-node/fs.js", ["npm:graceful-fs@4.1.4/graceful-fs.js", "@node/fs", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
   var fs;
   try {
-    fs = $__require('102');
+    fs = $__require('npm:graceful-fs@4.1.4/graceful-fs.js');
   } catch (e) {
     fs = $__require('@node/fs');
   }
@@ -52223,8 +52223,8 @@ $__System.registerDynamic("13", ["102", "@node/fs", "4"], true, function($__requ
   return module.exports;
 });
 
-$__System.registerDynamic("a7", ["4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/data/unit-conversions.js", ["github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -52252,13 +52252,13 @@ $__System.registerDynamic("a7", ["4"], true, function($__require, exports, modul
   return module.exports;
 });
 
-$__System.registerDynamic("fa", ["e2", "a7", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/unit.js", ["npm:less@2.7.1/lib/less/tree/node.js", "npm:less@2.7.1/lib/less/data/unit-conversions.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2'),
-      unitConversions = $__require('a7');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js'),
+      unitConversions = $__require('npm:less@2.7.1/lib/less/data/unit-conversions.js');
   var Unit = function(numerator, denominator, backupUnit) {
     this.numerator = numerator ? numerator.slice(0).sort() : [];
     this.denominator = denominator ? denominator.slice(0).sort() : [];
@@ -52369,8 +52369,8 @@ $__System.registerDynamic("fa", ["e2", "a7", "4"], true, function($__require, ex
   return module.exports;
 });
 
-$__System.registerDynamic("a6", ["4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/data/colors.js", ["github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -52527,13 +52527,13 @@ $__System.registerDynamic("a6", ["4"], true, function($__require, exports, modul
   return module.exports;
 });
 
-$__System.registerDynamic("ab", ["e2", "a6", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/color.js", ["npm:less@2.7.1/lib/less/tree/node.js", "npm:less@2.7.1/lib/less/data/colors.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2'),
-      colors = $__require('a6');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js'),
+      colors = $__require('npm:less@2.7.1/lib/less/data/colors.js');
   var Color = function(rgb, a, originalForm) {
     if (Array.isArray(rgb)) {
       this.rgb = rgb;
@@ -52704,15 +52704,15 @@ $__System.registerDynamic("ab", ["e2", "a6", "4"], true, function($__require, ex
   return module.exports;
 });
 
-$__System.registerDynamic("aa", ["e2", "a7", "fa", "ab", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/dimension.js", ["npm:less@2.7.1/lib/less/tree/node.js", "npm:less@2.7.1/lib/less/data/unit-conversions.js", "npm:less@2.7.1/lib/less/tree/unit.js", "npm:less@2.7.1/lib/less/tree/color.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2'),
-      unitConversions = $__require('a7'),
-      Unit = $__require('fa'),
-      Color = $__require('ab');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js'),
+      unitConversions = $__require('npm:less@2.7.1/lib/less/data/unit-conversions.js'),
+      Unit = $__require('npm:less@2.7.1/lib/less/tree/unit.js'),
+      Color = $__require('npm:less@2.7.1/lib/less/tree/color.js');
   var Dimension = function(value, unit) {
     this.value = parseFloat(value);
     this.unit = (unit && unit instanceof Unit) ? unit : new Unit(unit ? [unit] : undefined);
@@ -52844,12 +52844,12 @@ $__System.registerDynamic("aa", ["e2", "a7", "fa", "ab", "4"], true, function($_
   return module.exports;
 });
 
-$__System.registerDynamic("f2", ["e2", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/paren.js", ["npm:less@2.7.1/lib/less/tree/node.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js');
   var Paren = function(node) {
     this.value = node;
   };
@@ -52867,8 +52867,8 @@ $__System.registerDynamic("f2", ["e2", "4"], true, function($__require, exports,
   return module.exports;
 });
 
-$__System.registerDynamic("e2", ["4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/node.js", ["github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -52980,8 +52980,8 @@ $__System.registerDynamic("e2", ["4"], true, function($__require, exports, modul
   return module.exports;
 });
 
-$__System.registerDynamic("f3", ["4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/debug-info.js", ["github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -53021,13 +53021,13 @@ $__System.registerDynamic("f3", ["4"], true, function($__require, exports, modul
   return module.exports;
 });
 
-$__System.registerDynamic("fb", ["e2", "f3", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/comment.js", ["npm:less@2.7.1/lib/less/tree/node.js", "npm:less@2.7.1/lib/less/tree/debug-info.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2'),
-      getDebugInfo = $__require('f3');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js'),
+      getDebugInfo = $__require('npm:less@2.7.1/lib/less/tree/debug-info.js');
   var Comment = function(value, isLineComment, index, currentFileInfo) {
     this.value = value;
     this.isLineComment = isLineComment;
@@ -53050,14 +53050,14 @@ $__System.registerDynamic("fb", ["e2", "f3", "4"], true, function($__require, ex
   return module.exports;
 });
 
-$__System.registerDynamic("b8", ["e2", "f2", "fb", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/tree/expression.js", ["npm:less@2.7.1/lib/less/tree/node.js", "npm:less@2.7.1/lib/less/tree/paren.js", "npm:less@2.7.1/lib/less/tree/comment.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var Node = $__require('e2'),
-      Paren = $__require('f2'),
-      Comment = $__require('fb');
+  var Node = $__require('npm:less@2.7.1/lib/less/tree/node.js'),
+      Paren = $__require('npm:less@2.7.1/lib/less/tree/paren.js'),
+      Comment = $__require('npm:less@2.7.1/lib/less/tree/comment.js');
   var Expression = function(value) {
     this.value = value;
     if (!value) {
@@ -53113,8 +53113,8 @@ $__System.registerDynamic("b8", ["e2", "f2", "fb", "4"], true, function($__requi
   return module.exports;
 });
 
-$__System.registerDynamic("ae", ["4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less/functions/function-registry.js", ["github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
@@ -53143,16 +53143,16 @@ $__System.registerDynamic("ae", ["4"], true, function($__require, exports, modul
   return module.exports;
 });
 
-$__System.registerDynamic("103", ["104", "105", "106", "107", "108", "109", "10a", "10b", "10c"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:image-size@0.5.0/lib/detector.js", ["npm:image-size@0.5.0/lib/types.js", "npm:image-size@0.5.0/lib/types/bmp.js", "npm:image-size@0.5.0/lib/types/gif.js", "npm:image-size@0.5.0/lib/types/jpg.js", "npm:image-size@0.5.0/lib/types/png.js", "npm:image-size@0.5.0/lib/types/psd.js", "npm:image-size@0.5.0/lib/types/svg.js", "npm:image-size@0.5.0/lib/types/tiff.js", "npm:image-size@0.5.0/lib/types/webp.js"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
   var typeMap = {};
-  var types = $__require('104');
+  var types = $__require('npm:image-size@0.5.0/lib/types.js');
   types.forEach(function(type) {
-    typeMap[type] = $__require('./types/' + type).detect;
+    typeMap[type] = $__require('npm:image-size@0.5.0/lib/types/' + type + '.js').detect;
   });
   module.exports = function(buffer, filepath) {
     var type,
@@ -53167,7 +53167,7 @@ $__System.registerDynamic("103", ["104", "105", "106", "107", "108", "109", "10a
   return module.exports;
 });
 
-$__System.registerDynamic("104", [], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:image-size@0.5.0/lib/types.js", [], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -53177,7 +53177,7 @@ $__System.registerDynamic("104", [], true, function($__require, exports, module)
   return module.exports;
 });
 
-$__System.registerDynamic("105", [], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:image-size@0.5.0/lib/types/bmp.js", [], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -53199,7 +53199,7 @@ $__System.registerDynamic("105", [], true, function($__require, exports, module)
   return module.exports;
 });
 
-$__System.registerDynamic("106", [], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:image-size@0.5.0/lib/types/gif.js", [], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -53223,7 +53223,7 @@ $__System.registerDynamic("106", [], true, function($__require, exports, module)
   return module.exports;
 });
 
-$__System.registerDynamic("107", [], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:image-size@0.5.0/lib/types/jpg.js", [], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -53269,7 +53269,7 @@ $__System.registerDynamic("107", [], true, function($__require, exports, module)
   return module.exports;
 });
 
-$__System.registerDynamic("108", [], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:image-size@0.5.0/lib/types/png.js", [], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -53297,7 +53297,7 @@ $__System.registerDynamic("108", [], true, function($__require, exports, module)
   return module.exports;
 });
 
-$__System.registerDynamic("109", [], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:image-size@0.5.0/lib/types/psd.js", [], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -53319,7 +53319,7 @@ $__System.registerDynamic("109", [], true, function($__require, exports, module)
   return module.exports;
 });
 
-$__System.registerDynamic("10a", [], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:image-size@0.5.0/lib/types/svg.js", [], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -53397,7 +53397,7 @@ $__System.registerDynamic("10a", [], true, function($__require, exports, module)
   return module.exports;
 });
 
-$__System.registerDynamic("10d", [], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:image-size@0.5.0/lib/readUInt.js", [], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -53413,14 +53413,14 @@ $__System.registerDynamic("10d", [], true, function($__require, exports, module)
   return module.exports;
 });
 
-$__System.registerDynamic("10b", ["@node/fs", "10d"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:image-size@0.5.0/lib/types/tiff.js", ["@node/fs", "npm:image-size@0.5.0/lib/readUInt.js"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
   var fs = $__require('@node/fs');
-  var readUInt = $__require('10d');
+  var readUInt = $__require('npm:image-size@0.5.0/lib/readUInt.js');
   function isTIFF(buffer) {
     var hex4 = buffer.toString('hex', 0, 4);
     return ('49492a00' === hex4 || '4d4d002a' === hex4);
@@ -53500,7 +53500,7 @@ $__System.registerDynamic("10b", ["@node/fs", "10d"], true, function($__require,
   return module.exports;
 });
 
-$__System.registerDynamic("10c", [], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:image-size@0.5.0/lib/types/webp.js", [], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -53543,7 +53543,7 @@ $__System.registerDynamic("10c", [], true, function($__require, exports, module)
   return module.exports;
 });
 
-$__System.registerDynamic("10e", ["@node/fs", "@node/path", "103", "104", "105", "106", "107", "108", "109", "10a", "10b", "10c"], true, function($__require, exports, module) {
+$__System.registerDynamic("npm:image-size@0.5.0/lib/index.js", ["@node/fs", "@node/path", "npm:image-size@0.5.0/lib/detector.js", "npm:image-size@0.5.0/lib/types.js", "npm:image-size@0.5.0/lib/types/bmp.js", "npm:image-size@0.5.0/lib/types/gif.js", "npm:image-size@0.5.0/lib/types/jpg.js", "npm:image-size@0.5.0/lib/types/png.js", "npm:image-size@0.5.0/lib/types/psd.js", "npm:image-size@0.5.0/lib/types/svg.js", "npm:image-size@0.5.0/lib/types/tiff.js", "npm:image-size@0.5.0/lib/types/webp.js"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -53551,11 +53551,11 @@ $__System.registerDynamic("10e", ["@node/fs", "@node/path", "103", "104", "105",
       GLOBAL = this;
   var fs = $__require('@node/fs');
   var path = $__require('@node/path');
-  var detector = $__require('103');
+  var detector = $__require('npm:image-size@0.5.0/lib/detector.js');
   var handlers = {};
-  var types = $__require('104');
+  var types = $__require('npm:image-size@0.5.0/lib/types.js');
   types.forEach(function(type) {
-    handlers[type] = $__require('./types/' + type);
+    handlers[type] = $__require('npm:image-size@0.5.0/lib/types/' + type + '.js');
   });
   var MaxBufferSize = 128 * 1024;
   function lookup(buffer, filepath) {
@@ -53626,15 +53626,15 @@ $__System.registerDynamic("10e", ["@node/fs", "@node/path", "103", "104", "105",
   return module.exports;
 });
 
-$__System.registerDynamic("10f", ["aa", "b8", "ae", "10e", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less-node/image-size.js", ["npm:less@2.7.1/lib/less/tree/dimension.js", "npm:less@2.7.1/lib/less/tree/expression.js", "npm:less@2.7.1/lib/less/functions/function-registry.js", "npm:image-size@0.5.0/lib/index.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
   module.exports = function(environment) {
-    var Dimension = $__require('aa'),
-        Expression = $__require('b8'),
-        functionRegistry = $__require('ae');
+    var Dimension = $__require('npm:less@2.7.1/lib/less/tree/dimension.js'),
+        Expression = $__require('npm:less@2.7.1/lib/less/tree/expression.js'),
+        functionRegistry = $__require('npm:less@2.7.1/lib/less/functions/function-registry.js');
     function imageSize(functionContext, filePathNode) {
       var filePath = filePathNode.value;
       var currentFileInfo = functionContext.currentFileInfo;
@@ -53656,7 +53656,7 @@ $__System.registerDynamic("10f", ["aa", "b8", "ae", "10e", "4"], true, function(
       if (fileSync.error) {
         throw fileSync.error;
       }
-      var sizeOf = $__require('10e');
+      var sizeOf = $__require('npm:image-size@0.5.0/lib/index.js');
       return sizeOf(fileSync.filename);
     }
     var imageFunctions = {
@@ -53678,21 +53678,21 @@ $__System.registerDynamic("10f", ["aa", "b8", "ae", "10e", "4"], true, function(
   return module.exports;
 });
 
-$__System.registerDynamic("110", ["10", "12", "a3", "fc", "fd", "fe", "13", "10f", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/lib/less-node/index.js", ["npm:less@2.7.1/lib/less-node/environment.js", "npm:less@2.7.1/lib/less-node/file-manager.js", "npm:less@2.7.1/lib/less-node/url-file-manager.js", "npm:less@2.7.1/lib/less/index.js", "npm:less@2.7.1/lib/less-node/lessc-helper.js", "npm:less@2.7.1/lib/less-node/plugin-loader.js", "npm:less@2.7.1/lib/less-node/fs.js", "npm:less@2.7.1/lib/less-node/image-size.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  var environment = $__require('10'),
-      FileManager = $__require('12'),
-      UrlFileManager = $__require('a3'),
-      createFromEnvironment = $__require('fc'),
+  var environment = $__require('npm:less@2.7.1/lib/less-node/environment.js'),
+      FileManager = $__require('npm:less@2.7.1/lib/less-node/file-manager.js'),
+      UrlFileManager = $__require('npm:less@2.7.1/lib/less-node/url-file-manager.js'),
+      createFromEnvironment = $__require('npm:less@2.7.1/lib/less/index.js'),
       less = createFromEnvironment(environment, [new FileManager(), new UrlFileManager()]),
-      lesscHelper = $__require('fd');
+      lesscHelper = $__require('npm:less@2.7.1/lib/less-node/lessc-helper.js');
   less.createFromEnvironment = createFromEnvironment;
   less.lesscHelper = lesscHelper;
-  less.PluginLoader = $__require('fe');
-  less.fs = $__require('13');
+  less.PluginLoader = $__require('npm:less@2.7.1/lib/less-node/plugin-loader.js');
+  less.fs = $__require('npm:less@2.7.1/lib/less-node/fs.js');
   less.FileManager = FileManager;
   less.UrlFileManager = UrlFileManager;
   less.formatError = function(ctx, options) {
@@ -53741,7 +53741,7 @@ $__System.registerDynamic("110", ["10", "12", "a3", "fc", "fd", "fe", "13", "10f
     }
     console.error(less.formatError(ctx, options));
   };
-  $__require('10f')(less.environment);
+  $__require('npm:less@2.7.1/lib/less-node/image-size.js')(less.environment);
   module.exports = less;
   return module.exports;
 });
@@ -53756,7 +53756,7 @@ $__System.registerDynamic("@system-env", [], false, function() {
   };
 });
 
-$__System.registerDynamic("4", ["@system-env", "@node/process"], true, function($__require, exports, module) {
+$__System.registerDynamic("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js", ["@system-env", "@node/process"], true, function($__require, exports, module) {
   ;
   var define,
       global = this,
@@ -53769,12 +53769,12 @@ $__System.registerDynamic("4", ["@system-env", "@node/process"], true, function(
   return module.exports;
 });
 
-$__System.registerDynamic("1", ["110", "4"], true, function($__require, exports, module) {
-  var process = $__require("4");
+$__System.registerDynamic("npm:less@2.7.1/index.js", ["npm:less@2.7.1/lib/less-node/index.js", "github:jspm/nodelibs-process@0.2.0-alpha/process-node.js"], true, function($__require, exports, module) {
+  var process = $__require("github:jspm/nodelibs-process@0.2.0-alpha/process-node.js");
   var define,
       global = this,
       GLOBAL = this;
-  module.exports = $__require('110');
+  module.exports = $__require('npm:less@2.7.1/lib/less-node/index.js');
   return module.exports;
 });
 
