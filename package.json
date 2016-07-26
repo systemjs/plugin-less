@@ -4,11 +4,11 @@
   "main": "less.js",
   "dependencies": {
     "less": "^2.7.1",
-    "systemjs-plugin-css": "0.1.24"
+    "systemjs-plugin-css": "0.1.25"
   },
   "jspm": {
     "dependencies": {
-      "css": "github:systemjs/plugin-css@0.1.24"
+      "css": "github:systemjs/plugin-css@0.1.25"
     },
     "map": {
       "lesscss": {
