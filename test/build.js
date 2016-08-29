@@ -4,7 +4,8 @@ var builder = new Builder('../', 'system.config.js');
 
 builder.config({
   map: {
-    lesscss: '@node/less'
+    lesscss: '@node/less',
+    'less-autoprefix': '@node/less-plugin-autoprefix'
   }
 });
 

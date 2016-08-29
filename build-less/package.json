@@ -10,6 +10,7 @@
     "main": "build-less.js",
     "dependencies": {
       "less": "npm:less@^2.7.1",
+      "less-plugin-autoprefix": "npm:less-plugin-autoprefix@^1.5.1",
       "request": "npm:request@^2.74.0"
     },
     "devDependencies": {

@@ -12,8 +12,11 @@ module.exports = new CSSPluginBase(function compile(style, address, opts) {
   // use a file path in Node and a URL in the browser
   var filename = this.builder ? fromFileURL(address) : address;
 
-  return System['import']('lesscss', module.id)
-  .then(function(less) {
+  return Promise.all([System['import']('lesscss', module.id), this.builder ? System['import']('less-autoprefix') : Promise.resolve()])
+  .then(function(ms) {
+    var less = ms[0];
+    var autoprefix = ms[1];
+
     return less.render(style, {
       filename: filename,
       rootpath: (!opts.fileAsRoot || !loader.builder) && filename.replace(/[^/]+$/, ''),
@@ -21,7 +24,8 @@ module.exports = new CSSPluginBase(function compile(style, address, opts) {
       relativeUrls: opts.relativeUrls || false,
       sourceMap: loader.builder && {
         sourceMapBasepath: filename.replace(/[^/]+$/, '')
-      }
+      },
+      plugins: autoprefix ? [new autoprefix({ browsers: ["last 2 versions"] })] : []
     });
   })
   .then(function(output) {
