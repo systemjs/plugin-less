@@ -8,7 +8,4 @@ builder.config({
   }
 });
 
-builder.compile('test/test.less')
-.then(function(compiled) {
-  console.log(compiled);
-});
+builder.bundle('test/test.less', 'less-build.js', { sourceMaps: true });
