@@ -14,10 +14,16 @@ module.exports = new CSSPluginBase(function compile(style, address, opts) {
 
   return System['import']('lesscss', module.id)
   .then(function(less) {
+    var paths = opts.paths || [];
+
+    if (opts.fileAsRoot) {
+      paths.push(filename.replace(/[^/]+$/, ''));
+    }
+
     return less.render(style, {
       filename: filename,
       rootpath: (!opts.fileAsRoot || !loader.builder) && filename.replace(/[^/]+$/, ''),
-      paths: opts.fileAsRoot && [filename.replace(/[^/]+$/, '')],
+      paths: paths,
       relativeUrls: opts.relativeUrls || false,
       sourceMap: loader.builder && {
         sourceMapBasepath: filename.replace(/[^/]+$/, '')
