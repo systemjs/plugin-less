@@ -4,7 +4,7 @@
   "main": "less.js",
   "dependencies": {
     "less": "^2.7.1",
-    "systemjs-plugin-css": "0.1.29"
+    "systemjs-plugin-css": "systemjs/plugin-css#da1404e6"
   },
   "jspm": {
     "dependencies": {
