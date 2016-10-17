@@ -64,6 +64,16 @@ Source maps support is included.
 
 This plugin is built on the [CSS plugin base](http://github.com/systemjs/plugin-css) and supports the same [build options](https://github.com/systemjs/plugin-css#builder-support).
 
+Source maps in unbundled browser mode
+-------------------------------------
+
+Activating source maps generation in unbundled mode requires a few extra steps:
+- The [source-map](https://github.com/mozilla/source-map/tree/master/dist) module must be globally available, you can just add a script tag to it in your index.html.
+- The `inlineCssSourceMaps` loader option must be set to true.
+
+NB: don't use client-side source maps generation in production, live transpilation is already strongly discouraged, 
+producing source maps would add even more work to the client.
+
 License
 ---
 
